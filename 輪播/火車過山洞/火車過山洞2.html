@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>keyframes2</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        overflow: hidden;
+      }
+
+      img {
+        padding: 10px;
+        margin-left: 10px;
+        width: 550px;
+        height: 300px;
+
+        border: 1px solid #fff;
+        border-radius: 6px;
+        box-shadow: 3px 3px 5px #111;
+      }
+
+      .box,
+      .box1,
+      .box2 {
+        display: flex;
+        position: absolute;
+      }
+
+      .box1 {
+        animation: animate1 10s linear infinite;
+      }
+
+      .box2 {
+        transform: translateX(-100%);
+        animation: animate1 10s linear infinite;
+        animation-delay: 5s;
+      }
+
+      @keyframes animate1 {
+        0% {
+          transform: translateX(-100%);
+        }
+
+        100% {
+          transform: translateX(100%);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <div class="box1">
+        <img src="./img/原神圖片1.jpg" />
+        <img src="./img/原神圖片2.jpg" />
+        <img src="./img/原神圖片3.jpg" />
+        <img src="./img/原神圖片4.jpg" />
+      </div>
+      <div class="box2">
+        <img src="./img/原神圖片1.jpg" />
+        <img src="./img/原神圖片2.jpg" />
+        <img src="./img/原神圖片3.jpg" />
+        <img src="./img/原神圖片4.jpg" />
+      </div>
+    </div>
+  </body>
+</html>

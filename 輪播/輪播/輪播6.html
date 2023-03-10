@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3.2.37/dist/vue.global.js"></script>
+    <style>
+      body {
+        display: flex;
+      }
+
+      #app {
+        display: flex;
+        align-items: center;
+      }
+
+      #images {
+        position: relative;
+        width: 640px;
+        height: 360px;
+        overflow: hidden;
+      }
+
+      .image {
+        position: absolute;
+        transition: left 1s;
+      }
+
+      .image:last-child {
+        z-index: 50;
+      }
+
+      .operation {
+        padding: 0 10px;
+        font-size: 2rem;
+        background-color: rgba(96, 241, 83, 0.867);
+        height: 100%;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .operation:hover {
+        filter: brightness(1.5);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="operation" @click="prev">&lt;</div>
+      <div id="images">
+        <img
+          class="image"
+          v-for="(image, i) in images"
+          :src="image"
+          draggable="false"
+          width="640"
+          height="360"
+          :style="`left: ${i === images.length - 1 && left}`"
+          ref="images"
+        />
+      </div>
+      <div class="operation" @click="next">&gt;</div>
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+      const app = createApp({
+        data() {
+          return {
+            index: -1,
+            images: [
+              "./img/1.jpg",
+              "./img/2.jpg",
+              "./img/3.jpg",
+              "./img/4.jpg",
+            ],
+            left: "",
+            flag: true,
+          };
+        },
+        methods: {
+          prev() {
+            if (this.flag) {
+              this.$refs.images[0].style["z-index"] = 5;
+              this.flag = false;
+              this.left = "0px";
+              setTimeout(() => {
+                this.left = "640px";
+                setTimeout(() => {
+                  this.left = "auto";
+                  const firstImage = this.images.splice(0, 1)[0];
+                  this.images.push(firstImage);
+                  this.flag = true;
+                  this.$refs.images[0].style["z-index"] = "unset";
+                }, 1000);
+              });
+            }
+          },
+          next() {
+            if (this.flag) {
+              this.flag = false;
+              this.left = "0px";
+              setTimeout(() => {
+                this.left = "-640px";
+                setTimeout(() => {
+                  this.left = "auto";
+                  const lastImage = this.images.pop();
+                  this.images.splice(0, 0, lastImage);
+                  this.flag = true;
+                }, 1000);
+              });
+            }
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

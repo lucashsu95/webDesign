@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.css"
+      integrity="sha512-+ouAqATs1y4kpPMCHfKHVJwf308zo+tC9dlEYK9rKe7kiP35NiP+Oi35rCFnc16zdvk9aBkDUtEO3tIPl0xN5w=="
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+    <style>
+      h1 {
+        font-size: 1.5em;
+      }
+      label {
+        position: relative;
+        font-size: 30px;
+      }
+
+      input[type="radio"] {
+        display: none;
+      }
+
+      input[type="radio"] + label:after {
+        font-family: FontAwesome;
+        display: inline-block;
+        color: #ff0000;
+      }
+
+      input[type="radio"] + label:after {
+        content: "";
+      }
+      input[type="radio"]:checked + label:after {
+        content: "\f00C";
+      }
+
+      input[type="checkbox"] {
+        display: none;
+      }
+
+      input[type="checkbox"] + label:before {
+        font-family: FontAwesome;
+        display: inline-block;
+        color: #ff0000;
+
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, 0%);
+      }
+
+      input[type="checkbox"] + label:before {
+        content: "";
+        letter-spacing: 10px;
+      }
+
+      input[type="checkbox"]:checked + label:before {
+        content: "\f00C";
+      }
+
+      input[type="checkbox"]:checked + label:before {
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      <input type="radio" name="a" id="s1" />
+      <label for="s1"> radio </label>
+    </p>
+    <p>
+      <input type="radio" name="a" id="s2" />
+      <label for="s2"> radio2 </label>
+    </p>
+    <p>
+      <input type="radio" name="a" id="s3" />
+      <label for="s3"> radio3 </label>
+    </p>
+    <p>
+      <input type="checkbox" name="" id="s4" />
+      <label for="s4"> checkbox5 </label>
+    </p>
+  </body>
+</html>

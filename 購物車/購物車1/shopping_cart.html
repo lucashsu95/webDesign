@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購物車</title>
+    <link rel="stylesheet" href="./shopping_cart.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+    <article>
+        <a href="../index.html" class="btn">Back</a>
+    </article>
+    <!-- <form action="shopping_cart.php" method="post"> -->
+    <section>
+        <div class="products"></div>
+        <div class="buycar">
+            <h1>
+                購物車
+            </h1>
+            <br><br>
+            於左方選擇您所愛
+            <br><br>
+            按下"送出"後即可完成訂單
+            <br><br>
+            <div class="line"></div>
+            <div class='buyminSum'>小計$0元</div>
+            <div>運費$60元</div>
+            <div class="line"></div>
+            <div class='buySum'>總計$0元</div>
+            <br><br>
+            <button class="submit" onclick="f_show()">送出</button>
+            <!-- <button class="submit">送出</button> -->
+            <input type="hidden" name="hid" id="hid">
+        </div>
+    </section>
+    <!-- </form> -->
+    <script src="./shopping_cart.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .question {
+            font-size: 2rem;
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        .btn {
+            cursor: pointer;
+        }
+
+        .answer {
+            font-size: 1.5rem;
+            height: 0px;
+            overflow: hidden;
+            transition: height 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="question__container">
+        <!-- <div class="question">
+            <div class="title"></div>
+            <div class="btn">+</div>
+        </div>
+        <div class="answer"></div> -->
+    </div>
+    <script>
+        let data = [{
+            title: " Lorem ipsum dolor ",
+            answer: "one amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit. "
+
+        },
+        {
+            title: " Lorem ipsum dolor ",
+            answer: "two amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit. "
+        },
+        {
+            title: " Lorem ipsum dolor ",
+            answer: "three amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit. sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit."
+        }]
+
+        var container = document.querySelector('.question__container')
+
+        data.forEach((element, index) => {
+            container.innerHTML +=
+                `
+            <div class="question">
+                <div class="title">${element.title}</div>
+                <div class="btn" onclick="add(${index})">+</div>
+            </div>
+                <div class="answer">${element.answer}</div>
+            `
+        });
+
+        const answers = document.querySelectorAll('.answer');
+
+        function add(i) {
+            const isActive = answers[i].classList.contains('active');
+
+            if (isActive) {
+                answers[i].style.height = '0px';
+                answers[i].classList.remove('active');
+            } else {
+                answers[i].style.height = '54px '
+                answers[i].classList.add('active');
+            }
+        }
+    </script> 
+</body>
+
+</html>

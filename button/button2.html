@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>button2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .btn,
+        .btn2,
+        .btn3 {
+            margin: 50px;
+        }
+
+        .btn {
+            width: 150px;
+            height: 35px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border: 1px solid red;
+
+            color: red;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            transition: 0.1s;
+            text-decoration: none;
+        }
+
+
+        .btn:hover {
+            box-shadow: 6px 6px 0px 0.1px #fff,
+                6px 6px 0px 1px red;
+            transform: translate(-7px, -7px);
+        }
+
+        .btn2 {
+            width: 150px;
+            height: 35px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border: 1px solid red;
+            border-radius: 15px 0 15px 0;
+
+            color: red;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            transition: 0.1s;
+            text-decoration: none;
+        }
+
+        .btn2:hover {
+            box-shadow: 3px -3px 0px 0.8px #fff, 5px -5px 0px 1px red,
+                -3px 3px 0px 0.8px #fff, -5px 5px 0px 1px red,
+                3px 3px 0px 0.8px #fff, 5px 5px 0px 1px red,
+                -3px -3px 0px 0.8px #fff, -5px -5px 0px 1px red;
+            background: #fff;
+            transform: scale(1.1);
+        }
+
+        .btn3 {
+            width: 150px;
+            height: 35px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border: 1px solid red;
+
+            color: red;
+            font-family: 微軟正黑體;
+            font-weight: bold;
+            transition: 0.1s;
+            text-decoration: none;
+        }
+
+        .btn3:hover {
+            box-shadow: -10px -10px 0px 0.1px #fff,
+                -10px -10px 0px 1px red,
+                10px 10px 0px 0.1px #fff,
+                10px 10px 0px 1px red;
+            background: #fff;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <a href="https://github.com/lucashsu95" target="_blank" class="btn">
+        Button
+    </a>
+    <a href="https://github.com/lucashsu95" target="_blank" class="btn2">
+        Button
+    </a>
+    <a href="https://github.com/lucashsu95" target="_blank" class="btn3">
+        Button
+    </a>
+
+</body>
+
+</html>

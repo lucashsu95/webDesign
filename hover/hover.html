@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100vh;
+            display: grid;
+            grid-template-columns: auto auto auto auto auto;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #090821;
+        }
+
+        /* aa */
+
+        div{
+            color: aliceblue;
+            font-size: 20px;
+            position: relative;
+            padding: 5px 0px;
+            cursor: pointer;
+        }
+
+        .aa::before{
+            content: '';
+            position: absolute;
+            top: -1px;
+            right: 0;
+            bottom:-1px;
+            left: 0;
+            border: 3px solid transparent;
+            border-top: 3px solid #98edf6;
+            border-bottom: 3px solid #98edf6;
+            transform-origin: right;
+            transform: scaleX(0);
+            transition: transform ease 300ms;
+        }
+        
+        .aa:hover::before{
+            transform: scaleX(1);
+            transform-origin: left;
+            transition: transform ease 300ms;
+        }
+
+        /* bb */
+
+        .bb::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;    
+            right: 0;
+            height: 3px;
+            background-color: #98edf6;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 300ms;
+        }
+
+        .bb::after{
+            content: '';
+            position: absolute;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #98edf6;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 300ms;
+        }
+        
+        .bb:hover::after{
+            transform: scaleX(1);
+            transform-origin: right;
+        }
+
+        .bb:hover::before{
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* cc */
+
+        .cc::before{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            left: 0;
+            top: 0;
+            border: 3px solid transparent;
+            border-bottom: 3px solid #98edf6;
+            border-top: 3px solid #98edf6;
+            transform-origin: center;
+            transform: scaleX(0);
+            transition: transform 300ms;
+        }
+
+        .cc:hover::before{
+            transform: scaleX(1);
+        }
+
+        /* dd */
+
+        .dd::before{
+            content: '';
+            position: absolute;
+            z-index: -1;
+            background-color: #fc2f70;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            transform-origin: right;
+            transition: transform 300ms;
+            transform: scaleX(0);
+        }
+        
+        .dd:hover::before{
+            transform-origin: left;
+            transform: scaleX(1);
+        }
+
+        /* ee */
+
+        .ee::before{
+            content: '';
+            position: absolute;
+            z-index: -1;
+            right: -3px;
+            left: -3px;
+            bottom: 0;
+            top: 0;
+            background-color: #fc2f70; 
+            transform: scaleY(0.1);
+            transform-origin: bottom;
+            transition: all 300ms;
+        }
+        
+        .ee:hover::before{
+            transform: scaleY(1);
+        }
+
+        /* ff */
+
+        .ff::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 2px;
+            background-color: #fc2f70;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 300ms;
+        }
+
+        .ff:hover::before{
+            transform-origin: left;
+            transform: scaleX(1);
+        }
+
+        /* gg */
+
+        .gg::before{
+            content: '';
+            position: absolute;
+            background-color: #98edf6;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 2px;
+            opacity: 0;
+            transform: scaleX(0);
+            transition: all 300ms;
+        }
+
+        .gg:hover::before{
+            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        /* hh */
+
+        .hh::before,.hh::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: -10px;
+            width: 2px;
+            background-color: #98edf6;
+            transform-origin: top;
+            transform: scaleY(0);
+            transition: transform 300ms;
+        }
+
+        .hh::after{
+            left: -10px;
+        }
+
+        .hh:hover::before,
+        .hh:hover::after{
+            transform-origin: bottom;
+            transform: scaleY(1);
+        }
+
+        /* ii */
+
+        .ii::after,.ii::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #fc2f70;
+            transform: scaleY(0);
+            transition: transform 300ms;
+        }
+
+        .ii::after{
+            right: -10px;
+            transform-origin: top;
+        }
+
+        .ii::before{
+            transform-origin: bottom;
+            left: -10px;
+        }
+
+        .ii:hover::after{
+            transform-origin: bottom;
+            transform: scaleY(1);
+        }
+        
+        .ii:hover::before{
+            transform: scaleY(1);
+            transform-origin: top;
+        }
+
+        /* jj */
+
+        .jj::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -10px;
+            right: -10px;
+            border: 2px solid transparent;
+            border-left: 2px solid #fc2f70;
+            border-right: 2px solid #fc2f70;
+            transform-origin:center ;
+            transform: scaleY(0);
+            transition: transform 300ms;
+        }
+
+        .jj:hover::after{
+            transform: scaleY(1);
+        }
+
+        /* kk */
+
+        .kk::after{
+            content: '';
+            position: absolute;
+            right: 0;
+            left: 0;
+            top:48%;
+            height: 3px;
+            background-color: #fc2f70;
+            transform-origin:right;
+            transform: scaleX(0);
+            transition: transform 300ms;
+        }
+        
+        .kk:hover::after{
+            transform-origin: left;
+            transform: scaleX(1);
+            height: 3px;
+        }
+
+        /* ll */
+
+        .ll::before{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            height: 2px;
+            background-color: #98edf6;
+            transform-origin: right;
+            transform: scaleX(0);
+            transition: transform 300ms;
+        }
+
+        .ll:hover::before{
+            transform-origin: left;
+            transform: scaleX(1);
+        }
+
+        /* mm */
+
+        .mm::after{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #98edf6;
+            transform: scaleX(1);
+            transform-origin: left;
+            transition: transform 300ms;            
+        }
+
+        .mm:hover::after{
+            transform-origin: right;
+            transform: scaleX(0);
+        }
+
+        /* nn */
+        
+        .nn::after{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background-color: #98edf6;
+            height: 2px;
+            transform: scaleX(0);
+            transition: transform 300ms;
+        }
+
+        .nn:hover::after{
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+<body>
+    <div class="aa">hihihihi</div>
+    <div class="bb">hihihihi</div>
+    <div class="cc">hihihihi</div>
+    <div class="dd">hihihihi</div>
+    <div class="ee">hihihihi</div>
+    <div class="ff">hihihihi</div>
+    <div class="gg">hihihihi</div>
+    <div class="hh">hihihihi</div>
+    <div class="ii">hihihihi</div>
+    <div class="jj">hihihihi</div>
+    <div class="kk">hihihihi</div>
+    <div class="ll">hihihihi</div>
+    <div class="mm">hihihihi</div>
+    <div class="nn">hihihihi</div>
+</body>
+</html>

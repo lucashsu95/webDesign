@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #090821;
+      }
+
+      /* one */
+
+      div {
+        position: relative;
+      }
+
+      input {
+        width: 6.5em;
+        background-color: #2d3058;
+        padding: 10px 15px;
+        border: 1px solid transparent;
+        color: aliceblue;
+      }
+
+      input:focus {
+        outline: none;
+        color: rgb(250, 252, 253);
+      }
+
+      input::placeholder {
+        color: rgb(121, 126, 131);
+        text-align: center;
+      }
+
+      .one span {
+        position: absolute;
+        background-color: rgb(118, 205, 252);
+        transition: transform 500ms;
+      }
+
+      .onetop,
+      .onebottom {
+        height: 1px;
+        left: 0;
+        right: 0;
+        transform: scaleX(0);
+      }
+
+      .oneright,
+      .oneleft {
+        width: 1px;
+        top: 0;
+        bottom: 0;
+        transform: scaleY(0);
+      }
+
+      .onebottom {
+        bottom: 0;
+        transform-origin: right;
+      }
+
+      .one input:focus ~ .onebottom {
+        transform-origin: left;
+        transform: scaleX(1);
+      }
+
+      .onetop {
+        top: 0;
+        transform-origin: left;
+      }
+
+      .one input:focus ~ .onetop {
+        transform-origin: right;
+        transform: scaleX(1);
+      }
+
+      .oneright {
+        right: 0;
+        transform-origin: top;
+      }
+
+      .one input:focus ~ .oneright {
+        transform-origin: bottom;
+        transform: scaleX(1);
+      }
+
+      .oneleft {
+        transform-origin: bottom;
+        left: 0;
+      }
+
+      .one input:focus ~ .oneleft {
+        transform-origin: top;
+        transform: scaleX(1);
+      }
+
+      /* two */
+
+      .two span {
+        position: absolute;
+        background-color: rgb(254, 61, 170);
+        transition: transform 500ms;
+      }
+
+      .twotop,
+      .twobottom {
+        height: 1px;
+        right: 0;
+        left: 0;
+        transform: scaleX(0);
+        transform-origin: center;
+      }
+
+      .tworight,
+      .twoleft {
+        width: 1px;
+        top: 0;
+        bottom: 0;
+        transform: scaleY(0);
+        transform-origin: center;
+      }
+
+      .twotop {
+        top: 0;
+      }
+
+      .tworight {
+        right: 0;
+      }
+
+      .twoleft {
+        left: 0;
+      }
+
+      .twobottom {
+        bottom: 0;
+      }
+
+      .two input:focus ~ .twotop,
+      .two input:focus ~ .twobottom {
+        transform: scaleX(1);
+      }
+
+      .two input:focus ~ .tworight,
+      .two input:focus ~ .twoleft {
+        transform: scaleX(1);
+      }
+
+      /* three */
+
+      .three span {
+        position: absolute;
+        background-color: rgb(149, 255, 214);
+      }
+
+      .threetop,
+      .threebottom {
+        height: 1px;
+        right: 0;
+        left: 0;
+        transform: scaleX(0);
+        transition: transform 0.1s;
+      }
+
+      .threeright,
+      .threeleft {
+        width: 1px;
+        top: 0;
+        bottom: 0;
+        transform: scaleY(0);
+        transition: transform 0.1s;
+      }
+
+      .threebottom {
+        bottom: 0;
+        transform-origin: right;
+      }
+
+      .three input:focus ~ .threebottom {
+        transform-origin: left;
+        transform: scaleX(1);
+      }
+
+      .threeright {
+        right: 0;
+        transform-origin: top;
+        transition-delay: 0.15s;
+      }
+
+      .three input:focus ~ .threeright {
+        transform-origin: bottom;
+        transform: scaleY(1);
+      }
+
+      .threetop {
+        top: 0;
+        transform-origin: left;
+        transition-delay: 0.25s;
+      }
+
+      .three input:focus ~ .threetop {
+        transform-origin: right;
+        transform: scaleX(1);
+      }
+
+      .threeleft {
+        left: 0;
+        transform-origin: bottom;
+        transition-delay: 0.35s;
+      }
+
+      .three input:focus ~ .threeleft {
+        transform-origin: top;
+        transform: scaleY(1);
+      }
+
+      /* four */
+
+      .four,
+      .five {
+        background-color: transparent;
+      }
+
+      .four::placeholder,
+      .five::placeholder {
+        color: rgb(126, 124, 124);
+        font-size: 18px;
+      }
+
+      .fourspan,
+      .fivespan {
+        position: absolute;
+        height: 1px;
+        width: 100%;
+        left: 0;
+        bottom: 5px;
+        background-color: rgb(224, 170, 236);
+        transform-origin: right;
+        transform: scaleX(0);
+        transition: transform 500ms;
+      }
+
+      .four:focus ~ .fourspan,
+      .five:focus ~ .fivespan {
+        transform-origin: left;
+        transform: scaleX(1);
+        background-color: rgb(224, 170, 236);
+      }
+
+      /* five */
+
+      .fivespan {
+        transform-origin: center;
+      }
+
+      .five:focus ~ .fivespan {
+        transform-origin: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="one">
+      <input type="text" placeholder="input outline" />
+      <span class="onetop"></span>
+      <span class="onebottom"></span>
+      <span class="oneleft"></span>
+      <span class="oneright"></span>
+    </div>
+
+    <div class="two">
+      <input type="text" placeholder="input outline" />
+      <span class="twotop"></span>
+      <span class="twobottom"></span>
+      <span class="twoleft"></span>
+      <span class="tworight"></span>
+    </div>
+
+    <div class="three">
+      <input type="text" placeholder="input outline" />
+      <span class="threetop"></span>
+      <span class="threebottom"></span>
+      <span class="threeleft"></span>
+      <span class="threeright"></span>
+    </div>
+
+    <div>
+      <input type="text" class="four" placeholder="input it" />
+      <span class="fourspan"></span>
+    </div>
+
+    <div>
+      <input type="text" class="five" placeholder="input it" />
+      <span class="fivespan"></span>
+    </div>
+  </body>
+</html>

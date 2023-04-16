@@ -1,0 +1,57 @@
+* {
+    font-weight: bolder;
+    box-sizing: border-box;
+    font-family: 微軟正黑體;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #333;
+}
+
+h1 {
+    color: #fff;
+}
+
+.process {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 80%;
+    font-size: 18px;
+}
+
+div {
+    color: #fff;
+    margin: 50px;
+}
+
+input[type='text'] {
+    width: 400px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type='text']:focus {
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 50%);
+}
+
+@media(max-width:900px) {
+    .process {
+        display: flex;
+    }
+
+    input[type='text'] {
+        width: 250px;
+    }
+}

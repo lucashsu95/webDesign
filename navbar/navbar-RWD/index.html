@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+    <style>
+        .box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 100px;
+        }
+
+        .content {
+            margin-bottom: 20px;
+            padding: 10px;
+            width: 700px;
+            height: 300px;
+            background-color: #DDD;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+
+            <div class="LOGO"><a href="#">LOGO</a></div>
+
+            <div class="nav-links" id="navLinks">
+                <div class="fa" onclick="hideMenu()"><img src="./img/./close(白).png" alt="close"></div>
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">COURSE</a></li>
+                    <li><a href="#">BLOG</a></li>
+                </ul>
+            </div>
+            <div class="fa" onclick="showMenu()"><img src="./img/menu(白).png" alt="menu"></div>
+        </div>
+    </header>
+    <div class="box">
+        <div class="content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In dicta nemo optio eligendi
+            recusandae ad, similique non assumenda soluta nam quisquam, exercitationem nulla inventore quasi suscipit
+            perspiciatis repellendus ex nisi?</div>
+        <div class="content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In dicta nemo optio eligendi
+            recusandae ad, similique non assumenda soluta nam quisquam, exercitationem nulla inventore quasi suscipit
+            perspiciatis repellendus ex nisi?</div>
+        <div class="content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In dicta nemo optio eligendi
+            recusandae ad, similique non assumenda soluta nam quisquam, exercitationem nulla inventore quasi suscipit
+            perspiciatis repellendus ex nisi?</div>
+    </div>
+
+</body>
+
+<script>
+    var navLinks = document.getElementById('navLinks');
+    function showMenu() {
+        navLinks.style.right = '0';
+
+    }
+    function hideMenu() {
+        navLinks.style.right = '-200px';
+    }
+</script>
+
+</html>

@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#navbar,
+.navbar-list {
+  display: flex;
+}
+
+#navbar {
+  padding: 10px;
+  box-shadow: 0 4px 2px rgba(0, 0, 0, .075);
+}
+
+.navbar-name {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.navbar-list>a>div {
+  margin-right: 10px;
+}
+
+.navbar-list {
+  margin-left: auto;
+  align-items: center;
+  font-size: 18px;
+}
+
+#main {
+  margin-top: 20px;
+  width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#widgets {
+  display: flex;
+}
+
+.widget {
+  width: 280px;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.widget>a {
+  text-decoration: none;
+  color: #39f;
+  padding: 10px 2px;
+}

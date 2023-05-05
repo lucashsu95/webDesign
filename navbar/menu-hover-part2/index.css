@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #111;
+}
+
+header {
+    width: 100%;
+    height: 100px;
+    background: beige;
+}
+
+.navbar {
+    font-size: 18px;
+    padding: 2% 6%;
+}
+
+.nav-links>ul {
+    display: flex;
+
+}
+
+.nav-links ul li {
+    list-style: none;
+    padding: 10px;
+    width: 75px;
+}
+
+.Lhidden {
+    display: none;
+}
+
+li:hover .Lhidden {
+    display: flex;
+    flex-direction: column;
+}
+
+li:hover .Lhidden li {
+    background: tan;
+}
+
+.Lhidden::before {
+    content: '';
+    transform: translateX(3px) translateY(8.7px) rotate(45deg);
+    width: 15px;
+    height: 15px;
+    background: tan;
+
+}
+
+
+li:hover .Lhidden li a {
+    color: #FFF;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tests</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.2/vue.global.js'
+        integrity='sha512-KnhQ2qDDo4xtzMglIRUqBBGmUQjt55uMJV1lGsiYrVlh3DfJgrwxVVnJkqtOcFaq45INrDM8SD/BA4qHnRJeEg=='
+        crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <header>
+            <div id="logo">logo</div>
+            <div id="icon">icon</div>
+            <nav>
+                <ul>
+                    <li><a href="test.html" target="_top">首頁</a></li>
+                    <li><a href="#about">關於我們</a></li>
+                    <li><a href="#us">聯絡我們</a></li>
+                    <li><a href="#contact">設定</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section id="cau">
+            <div class="control-box">
+                <button @click="cau_flag = cau_flag == 0 ? 2 : cau_flag - 1">&lt;</button>
+                <button @click="cau_flag = cau_flag == 2 ? 0 : cau_flag + 1">&gt;</button>
+            </div>
+            <div class="container" :style="'transform:translateX(calc(' + cau_flag + ' * 100% * -1))'">
+                <img v-for="i,index in cau" :src="i" :alt="index" :class="'sort' + index">
+            </div>
+        </section>
+        <section id="about">
+
+        </section>
+
+
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>

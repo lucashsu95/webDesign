@@ -6,10 +6,159 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>webdesing</title>
+    <script src="./vue.js"></script>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: rgb(28, 137, 247);
+            font-size: 22px;
+        }
+
+        ul {
+            line-height: 45px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        section>h2 {
+            text-transform: capitalize;
+        }
+    </style>
 </head>
 
 <body>
-    這裡什麼也沒有
+    <div id="app">
+        <h1>DEMO</h1>
+        <hr>
+        <section>
+
+            <h2>animation</h2>
+            <hr>
+            <ul>
+                <a href="./Animation/" target="_blank">All</a>
+                <li v-for="i in animation"><a :href="`Animation/${i}`" target="_blank">{{i}}</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>background</h2>
+            <hr>
+            <ul>
+                <li v-for="i in background"><a :href="`background/${i}`" target="_blank">{{i}}</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>button</h2>
+            <hr>
+            <ul>
+                <a href="./button" target="_blank">All</a>
+                <li v-for="i in button"><a :href="`button/${i}`" target="_blank">{{i}}</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>canvas</h2>
+            <hr>
+            <ul>
+                <a href="./canvas" target="_blank">All</a>
+                <li v-for="i in canvas"><a :href="`canvas/${i}`" target="_blank">{{i}}</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>card</h2>
+            <hr>
+            <ul>
+                <li v-for="i in card"><a :href="`card/${i}`" target="_blank">{{i}}</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>進制轉換計算機</h2>
+            <hr>
+            <ul>
+                <li v-for="i in carry_system"><a :href="`Carry_system/${i}`" target="_blank">{{i}}</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>clip-path</h2>
+            <hr>
+            <ul>
+                <li v-for="i in clipPath"><a :href="`clip-path/${i}`" target="_blank">{{i}}</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>hover</h2>
+            <hr>
+            <ul>
+                <li v-for="i in hover"><a :href="`hover/${i}`" target="_blank">{{i}}</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>input</h2>
+            <hr>
+            <ul>
+                <li v-for="i in input"><a :href="`input/${i}`" target="_blank">{{i}}</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>JS動畫</h2>
+            <hr>
+            <ul>
+                <li><a href="JS動畫/JS動畫.html" target="_blank">JS動畫</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>navbar</h2>
+            <hr>
+            <ul>
+                <a href="./navbar" target="_blank">All</a>
+                <li v-for="i in navbar"><a :href="`navbar/${i}`" target="_blank">{{i}}</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>parallax視差</h2>
+            <hr>
+            <ul>
+                <a href="./parallax視差" target="_blank">All</a>
+                <li v-for="i in parallax"><a :href="`parallax視差/${i}`" target="_blank">{{i}}</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>Q&A</h2>
+            <hr>
+            <ul>
+                <li v-for="i in QandA"><a :href="`Q&A/${i}`" target="_blank">{{i}}</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>radio</h2>
+            <hr>
+            <ul>
+                <li v-for="i in radio"><a :href="`radio/${i}`" target="_blank">{{i}}</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>range</h2>
+            <hr>
+            <ul>
+                <li v-for="i in range"><a :href="`range/${i}`" target="_blank">{{i}}</a></li>
+            </ul>
+        </section>
+
+    </div>
+
+    <script src="./script.js"></script>
 </body>
 
 </html>

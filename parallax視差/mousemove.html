@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>parallax視差</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow-x: hidden;
+            background-color: #444;
+        }
+
+        img {
+            border-radius: 4px;
+            box-shadow: 0 0 30px 2px gray;
+        }
+
+        #about {
+            color: #eee;
+            padding: 50px;
+        }
+
+        .sech1 {
+            font-size: 52px;
+        }
+
+        p {
+            line-height: 40px;
+            font-size: 20px;
+            margin: auto;
+        }
+
+        section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        /* <-----------main Start-----------> */
+
+        #main {
+            height: 110vh;
+        }
+
+        .background-img,
+        .background-object {
+            position: absolute;
+            width: 105vw;
+            height: 100%;
+            object-fit: cover;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            z-index: 0;
+        }
+
+        .main-img {
+            position: absolute;
+            top: 35%;
+            left: -10%;
+            width: 40vw;
+            height: 25%;
+
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .col-img {
+            position: absolute;
+            width: 200px;
+            z-index: 2;
+        }
+
+        .col-img-1 {
+            top: 30%;
+            right: 0;
+        }
+
+        .col-img-2 {
+            top: 50%;
+            left: 55%;
+        }
+
+        .col-img-3 {
+
+
+            top: 10%;
+            left: 0;
+        }
+
+        .move {
+            width: 100vw;
+            height: 100vh;
+            z-index: 999;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="main">
+
+        <img src="./img/background-bg.png" alt="" class="background-img" draggable="false">
+        <img src="./img/background-ojbect.png" alt="" class="background-object">
+        <img src="./img/col1.jpg" alt="" class="col-img col-img-1">
+        <img src="./img/col2.jpg" alt="" class="col-img col-img-2">
+        <img src="./img/col3.jpg" alt="" class="col-img col-img-3">
+        <img src="./img/main-img.png" alt="" class="main-img" draggable="false">
+
+        <div class="move"></div>
+
+    </section>
+
+    <section id="about">
+        <h1 class="sech1">About me</h1>
+        <hr>
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur modi at rem quas fugiat dignissimos,
+            dicta amet perspiciatis ducimus ratione nisi quibusdam mollitia voluptate eligendi, sint eum, adipisci
+            architecto debitis?
+            Quis consequuntur sit quaerat iure ratione et corrupti fuga sed! Tenetur exercitationem non laborum corrupti
+            ducimus minus aliquam laboriosam quam? Recusandae repudiandae sapiente cum ducimus ipsum perspiciatis
+            aliquam corporis excepturi?
+            Pariatur, quibusdam dolores vitae molestiae veritatis reprehenderit omnis quam. Voluptatibus libero
+            possimus, atque amet voluptas similique distinctio sequi ratione velit iure ipsa laudantium ullam voluptate
+            porro molestiae corporis natus maiores?
+            Quis velit cumque pariatur porro non error ea ullam, harum quas ipsa eos, exercitationem explicabo, dolor
+            adipisci. Nesciunt possimus excepturi quas? Cumque cum commodi delectus aliquam exercitationem itaque
+            similique a!
+        </p>
+    </section>
+
+
+    <script>
+        const main = document.getElementById('main');
+        const offsetWidth = document.body.offsetWidth;
+        const offsetHeight = document.body.offsetHeight;
+
+        let col_imgs = document.querySelectorAll('.col-img');
+        let bg_img = document.querySelector('.background-img');
+        let main_img = document.querySelector('.main-img');
+        let bg_object = document.querySelector('.background-object');
+
+
+        const col_parallaxX = 5
+        const col_parallaxY = 8
+
+        const main_parallaxX = 3
+        const main_parallaxY = 5
+
+        const bg_object_parallaxX = 27
+        const bg_object_parallaxY = 34
+
+        const bg_parallaxX = 35
+        const bg_parallaxY = 30
+
+
+        function translateOffsetImg(x, y, e) {
+            return `translate(${((e.offsetX - offsetWidth / 2) / x) * -1}px,${((e.offsetY - offsetHeight / 2) / y) * -1}px)`
+        }
+
+        function translateOffsetBg(x, y, e) {
+            return `translate(calc(-50% + ${((e.offsetX - offsetWidth / 2) / x) * -1}px),calc(-50% + ${((e.offsetY - offsetHeight / 2) / y) * -1}px))`;
+        }
+
+
+        main.addEventListener('mousemove', (e) => {
+            col_imgs.forEach((img, i) => {
+                console.log(e);
+                img.style.transform = translateOffsetImg(col_parallaxX * (i + 1), col_parallaxY * (i + 1), e);
+            })
+            main_img.style.transform = translateOffsetImg(main_parallaxX, main_parallaxY, e);
+            bg_object.style.transform = translateOffsetBg(bg_object_parallaxY, bg_object_parallaxY, e);
+            bg_img.style.transform = translateOffsetBg(bg_parallaxX, bg_parallaxY, e);
+        })
+    </script>
+</body>
+
+</html>

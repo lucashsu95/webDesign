@@ -6,77 +6,84 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://unpkg.com/vue@3.2.37/dist/vue.global.js"></script>
+
     <style>
         .question {
-            font-size: 2rem;
-            display: flex;
-            justify-content: space-between;
-            margin: 10px 0;
+            margin: .5rem 0;
+            border-radius: 10px;
+            color: #fff;
         }
 
-        .btn {
+        .question-title {
+            background-color: #39f;
+            padding: .5rem 1rem;
+            margin-bottom: .5rem;
             cursor: pointer;
         }
 
-        .answer {
-            font-size: 1.5rem;
-            height: 0px;
+        .question-answer {
+            color: #333;
             overflow: hidden;
+            padding: 0 .5rem;
             transition: height 1s;
         }
     </style>
 </head>
 
 <body>
-    <div class="question__container">
-        <!-- <div class="question">
-            <div class="title"></div>
-            <div class="btn">+</div>
+    <div id="app">
+        <div class="question" v-for="question in questions">
+            <div class="question-title" @click="onClick(question)">{{ question.title }}</div>
+            <div class="question-answer" ref="questions" :style="getQuestionStyle(question)">
+                {{ question.answer }}
+            </div>
         </div>
-        <div class="answer"></div> -->
     </div>
     <script>
-        let data = [{
-            title: " Lorem ipsum dolor ",
-            answer: "one amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit. "
-
-        },
-        {
-            title: " Lorem ipsum dolor ",
-            answer: "two amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit. "
-        },
-        {
-            title: " Lorem ipsum dolor ",
-            answer: "three amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit. sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit.sit amet consectetur adipisicing elit."
-        }]
-
-        var container = document.querySelector('.question__container')
-
-        data.forEach((element, index) => {
-            container.innerHTML +=
-                `
-            <div class="question">
-                <div class="title">${element.title}</div>
-                <div class="btn" onclick="add(${index})">+</div>
-            </div>
-                <div class="answer">${element.answer}</div>
-            `
-        });
-
-        const answers = document.querySelectorAll('.answer');
-
-        function add(i) {
-            const isActive = answers[i].classList.contains('active');
-
-            if (isActive) {
-                answers[i].style.height = '0px';
-                answers[i].classList.remove('active');
-            } else {
-                answers[i].style.height = '54px '
-                answers[i].classList.add('active');
+        const { createApp } = Vue
+        const app = createApp({
+            data() {
+                return {
+                    init: false,
+                    questions: [{
+                        title: 'Epcot Center 1',
+                        answer: 'Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.',
+                        height: null,
+                        isOpen: true,
+                    }, {
+                        title: 'Epcot Center 2',
+                        answer: 'Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.',
+                        height: null,
+                        isOpen: true,
+                    }, {
+                        title: 'Epcot Center 3',
+                        answer: 'Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.',
+                        height: null,
+                        isOpen: true,
+                    }]
+                }
+            },
+            methods: {
+                onClick(question) {
+                    question.isOpen = !question.isOpen
+                },
+                getQuestionStyle(question) {
+                    // if (question.height === null) return ''
+                    if (!this.init) return ''
+                    return `height: ${question.isOpen ? question.height : 0}px;`
+                }
+            },
+            mounted() {
+                // console.log(this.$refs)
+                this.questions.forEach((question, i) => {
+                    question.height = this.$refs.questions[i].clientHeight
+                    question.isOpen = false
+                });
+                this.init = true
             }
-        }
-    </script> 
+        }).mount('#app')
+    </script>
 </body>
 
 </html>

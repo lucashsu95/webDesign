@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 95vh;
+        }
+
+        .box {
+
+            position: relative;
+            width: 40px;
+            height: 20px;
+            border: 1px solid #333;
+            border-radius: 20px;
+        }
+
+        .user {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 16px;
+            height: 16px;
+            background: #333;
+            border-radius: 50%;
+            transition: 0.5s;
+        }
+
+        .user2 {
+            background: #fff;
+            margin-left: 20px;
+        }
+
+        .box2 {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="index.html" method="get">
+        <div class="box" onclick="remember_me()">
+            <div class="user"></div>
+        </div>
+        <input type="submit" value="submit">
+    </form>
+</body>
+
+<script>
+
+    function remember_me() {
+        var user = document.querySelector(".user");
+        var box = document.querySelector(".box");
+        user.classList.toggle("user2");
+        box.classList.toggle("box2");
+    }
+</script>
+
+</html>

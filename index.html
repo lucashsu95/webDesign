@@ -96,19 +96,47 @@
             </ul>
         </section>
 
-        <section>
-            <h2>hover</h2>
-            <hr>
-            <ul>
-                <li v-for="i in hover"><a :href="`hover/${i}`" target="_blank">{{i}}</a></li>
-            </ul>
-        </section>
 
         <section>
             <h2>input</h2>
             <hr>
             <ul>
-                <li v-for="i in input"><a :href="`input/${i}`" target="_blank">{{i}}</a></li>
+                <li>
+                    <section>
+                        <h3>input</h3>
+                        <hr>
+                        <ul>
+                            <li v-for="i in input"><a :href="`input/${i}`" target="_blank">{{i}}</a></li>
+                        </ul>
+                    </section>
+                </li>
+                <li>
+                    <section>
+                        <h3>radio</h3>
+                        <hr>
+                        <ul>
+                            <li v-for="i in radio"><a :href="`radio/${i}`" target="_blank">{{i}}</a></li>
+                        </ul>
+                    </section>
+                </li>
+                <li>
+                    <section>
+                        <h3>range</h3>
+                        <hr>
+                        <ul>
+                            <li v-for="i in range"><a :href="`range/${i}`" target="_blank">{{i}}</a></li>
+                        </ul>
+                    </section>
+                </li>
+                <li>
+                    <section>
+                        <h3>hover</h3>
+                        <hr>
+                        <ul>
+                            <li v-for="i in hover"><a :href="`hover/${i}`" target="_blank">{{i}}</a></li>
+                        </ul>
+                    </section>
+                </li>
             </ul>
         </section>
         <section>
@@ -141,20 +169,7 @@
                 <li v-for="i in QandA"><a :href="`Q&A/${i}`" target="_blank">{{i}}</a></li>
             </ul>
         </section>
-        <section>
-            <h2>radio</h2>
-            <hr>
-            <ul>
-                <li v-for="i in radio"><a :href="`radio/${i}`" target="_blank">{{i}}</a></li>
-            </ul>
-        </section>
-        <section>
-            <h2>range</h2>
-            <hr>
-            <ul>
-                <li v-for="i in range"><a :href="`range/${i}`" target="_blank">{{i}}</a></li>
-            </ul>
-        </section>
+
 
     </div>
 

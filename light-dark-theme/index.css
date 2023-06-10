@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+:root {
+  --header: #f90;
+  --fontColor: #444;
+  --logoColor: #eee;
+  --backgroundColor: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  transition: 0.5s;
+  color: var(--fontColor);
+  background-color: var(--backgroundColor);
+}
+section {
+  min-height: 90vh;
+  height: auto;
+  position: relative;
+  line-height: 40px;
+  letter-spacing: 1px;
+  padding-top: 100px;
+}
+.sech1 {
+  font-size: 42px;
+  border-left: 4px solid var(--fontColor);
+  margin: 30px 0;
+  padding-left: 10px;
+}
+/* header Start */
+header {
+  display: flex;
+  width: 100%;
+  background-color: var(--header);
+  padding: 1.5% 2%;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  z-index: 2;
+}
+
+#logo {
+  color: var(--logoColor);
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+}
+
+nav li {
+  list-style: none;
+  margin-right: 50px;
+}
+
+nav a {
+  color: var(--fontColor);
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 6px;
+  transition: 0.5s;
+}
+
+.switch {
+  width: 40px;
+  height: 22px;
+  display: block;
+  border-radius: 11px;
+  position: relative;
+  border: 1.5px solid var(--fontColor);
+  transition: 0.5s all;
+  background-color: var(--backgroundColor);
+  zoom: 150%;
+}
+
+.switch:hover {
+  border: 1.5px solid var(--fontColor);
+}
+
+.switch span {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1px;
+
+  width: 18px;
+  height: 18px;
+  font-size: 14px;
+  border: 1.5px solid var(--fontColor);
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.25s;
+}
+.switch.active span {
+  left: 50%;
+}
+
+.switch img {
+  width: 14px;
+  height: 14px;
+}
+
+.switch .dark {
+  display: none;
+}
+
+.switch.active .light {
+  display: none;
+}
+.switch.active .dark {
+  display: block;
+}
+
+/* header End */
+
+/* main Start */
+main {
+  padding: 5% 3.5% 0 3.5%;
+  margin: 0 auto;
+  width: 70%;
+  box-shadow: 0 0 35px #eee;
+}
+/* main End */

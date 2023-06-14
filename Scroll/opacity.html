@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sticky</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        user-select: none;
+      }
+
+      @property --opacity {
+        syntax: "<number>";
+        inherits: false;
+        initial-value: 0;
+      }
+
+      h1 {
+        font-size: 52px;
+      }
+
+      li {
+        list-style: none;
+        line-height: 200px;
+        font-size: 52px;
+        text-align: center;
+
+        @media (max-width: 1200px) {
+          & {
+            line-height: 150px;
+          }
+        }
+      }
+
+      nav {
+        width: 100%;
+        height: 30px;
+        position: fixed;
+        text-align: center;
+        background: #fff;
+        z-index: 999;
+      }
+
+      section {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+
+        &:nth-of-type(1) {
+          background: #0fda;
+          padding-top: 30px;
+        }
+        &:nth-of-type(2) {
+          background: #fbda;
+        }
+        &:nth-of-type(3) {
+          background: #1bd;
+        }
+      }
+
+      .box {
+        position: absolute;
+
+        & .item {
+          padding: 5% 20%;
+          font-size: 32px;
+          position: relative;
+        }
+      }
+
+      .sticky {
+        height: 350vh;
+        color: #fff;
+        position: relative;
+
+        & > * {
+          z-index: 2;
+        }
+      }
+
+      .bg,
+      .bg2 {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        z-index: 1;
+        filter: brightness(60%);
+      }
+
+      .list2 li {
+        opacity: var(--opacity);
+        transition: --opacity 0.3s;
+        
+        &.active {
+          --opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>Header</nav>
+    <section>
+      <h1>Title1</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
+        placeat minus magni delectus labore veniam omnis blanditiis esse
+        temporibus quaerat hic, sint iste nihil asperiores est sapiente dolore,
+        neque error.
+      </p>
+    </section>
+    <section class="sticky">
+      <div class="box">
+        <article class="item">
+          <h1>Title2</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim non
+            obcaecati quaerat laudantium maiores. Fugiat, magnam illo a tenetur
+            unde laudantium, autem ullam minus atque quaerat voluptatibus vero
+            dolor suscipit?
+          </p>
+        </article>
+        <article class="item">
+          <ul class="list">
+            <li>自大</li>
+            <li>驕傲</li>
+            <li>自負</li>
+            <li>目中無人</li>
+            <li>傲視一切</li>
+            <li>唯我獨尊</li>
+            <li>不可一世</li>
+            <li>高高在上</li>
+          </ul>
+        </article>
+      </div>
+
+      <img src="./bg.png" alt="bg" class="bg" />
+    </section>
+    <section class="sticky sticky2">
+      <div class="box">
+        <article class="item">
+          <h1>Title2</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim non
+            obcaecati quaerat laudantium maiores. Fugiat, magnam illo a tenetur
+            unde laudantium, autem ullam minus atque quaerat voluptatibus vero
+            dolor suscipit?
+          </p>
+        </article>
+        <article class="item">
+          <ul class="list2">
+            <li>謙遜的</li>
+            <li>謙虛的</li>
+            <li>謙恭的</li>
+            <li>謙卑的</li>
+            <li>謙和的</li>
+            <li>謙讓的</li>
+            <li>謙虛自省的</li>
+            <li>謙虛順從的</li>
+          </ul>
+        </article>
+      </div>
+
+      <img src="./bg2.jpg" alt="bg" class="bg" />
+    </section>
+    <script>
+      const lis = [...document.querySelectorAll(".list > li")];
+      const lis2 = [...document.querySelectorAll(".list2 > li")];
+      const sticky = document.querySelector(".sticky");
+      const sticky2 = document.querySelector(".sticky2");
+      addEventListener("scroll", () => {
+        const scrollNow = document.documentElement.scrollTop;
+
+        // 第一種
+
+        const diff = scrollNow - sticky.offsetTop;
+
+        lis.map((li) => {
+          const is = Math.abs(diff - li.offsetTop) / 100;
+          const opacity = is <= 1 ? Math.abs(1 - is) + 0.3 : 0;
+          return (li.style.opacity = opacity);
+        });
+
+        // 第二種
+
+        const diff2 = scrollNow - sticky2.offsetTop;
+        lis2.map((li) => li.classList.remove("active"));
+        lis2.map((li) => {
+          if (diff2 + 100 > li.offsetTop && diff2 < li.offsetTop + 200)
+            li.classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>

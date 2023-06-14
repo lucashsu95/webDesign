@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>scroll-snap</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        user-select: none;
+      }
+
+      html {
+        /* 讓網頁在滾動的時候可以強制對齊 */
+        scroll-snap-type: y mandatory;
+        /* 滾動後在網頁上面留30padding */
+        scroll-padding-top: 30px;
+      }
+
+      .box {
+        height: 100vh;
+
+        /* 做用在哪一個元素上就設這個 後面的是定位在前面有start,center,end */
+        scroll-snap-align: start;
+        /* 可以在手機上大力滑動時只動一頁 */
+        scroll-snap-stop: always;
+        /* 滾動後在網頁上面留30margin */
+        /* scroll-margin-top: 30px; */
+
+        &:nth-of-type(1) {
+          background: #0fda;
+          padding-top: 30px;
+        }
+        &:nth-of-type(2) {
+          background: #fbda;
+        }
+        &:nth-of-type(3) {
+          background: #1bd;
+        }
+        &:nth-of-type(4) {
+          background: #db8;
+        }
+      }
+
+      nav {
+        width: 100%;
+        height: 30px;
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>Header</nav>
+    <section class="box">
+      <h1>title1</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
+        placeat minus magni delectus labore veniam omnis blanditiis esse
+        temporibus quaerat hic, sint iste nihil asperiores est sapiente dolore,
+        neque error.
+      </p>
+    </section>
+    <section class="box">
+      <h1>title2</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
+        placeat minus magni delectus labore veniam omnis blanditiis esse
+        temporibus quaerat hic, sint iste nihil asperiores est sapiente dolore,
+        neque error.
+      </p>
+    </section>
+    <section class="box">
+      <h1>title3</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
+        placeat minus magni delectus labore veniam omnis blanditiis esse
+        temporibus quaerat hic, sint iste nihil asperiores est sapiente dolore,
+        neque error.
+      </p>
+    </section>
+    <section class="box">
+      <h1>title4</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
+        placeat minus magni delectus labore veniam omnis blanditiis esse
+        temporibus quaerat hic, sint iste nihil asperiores est sapiente dolore,
+        neque error.
+      </p>
+    </section>
+  </body>
+</html>

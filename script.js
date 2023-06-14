@@ -35,6 +35,7 @@ const app = Vue.createApp({
       QandA: ["Q&A.html"],
       radio: ["index.html"],
       range:['range.html'],
+      range:['index.html','opacity.html'],
       
     };
   },

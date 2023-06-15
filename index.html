@@ -122,7 +122,7 @@
         <a href="#item-13" class="nav-link">parallax視差</a>
         <a href="#item-14" class="nav-link">Q&A</a>
         <a href="#item-15" class="nav-link">Scroll</a>
-        <a href="#item-15" class="nav-link">購物車</a>
+        <a href="#item-16" class="nav-link">購物車</a>
         <nav class="nav nav-pills flex-column"></nav>
       </nav>
       <div
@@ -319,6 +319,19 @@
                 </li>
               </ul>
             </li>
+            <li id="item-9-5">
+              <h5>audio</h5>
+              <ul>
+                <li>
+                  <a
+                    class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                    href="./音樂播放器/index.html"
+                    target="_blank"
+                    >音樂播放器</a
+                  >
+                </li>
+              </ul>
+            </li>
           </ul>
         </section>
         <section id="item-10">
@@ -422,7 +435,7 @@
             <li v-for="i in shopCar">
               <a
                 class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                :href="i"
+                :href="'購物車/' + i"
                 target="_blank"
                 >{{i}}</a
               >

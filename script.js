@@ -1,6 +1,7 @@
 const app = Vue.createApp({
   data() {
     return {
+      navToggleFlag: false,
       animation: [
         "animation.html",
         "loading.html",
@@ -34,9 +35,13 @@ const app = Vue.createApp({
       parallax: ["scroll.html", "mousemove.html"],
       QandA: ["Q&A.html"],
       radio: ["index.html"],
-      range:['range.html'],
-      range:['index.html','opacity.html'],
-      
+      range: ["range.html"],
+      scroll: ["index.html", "opacity.html"],
+      shopCar: [
+        "購物車1/shopping_cart.html",
+        "購物車2/order.html",
+        "購物車3/index.html",
+      ],
     };
   },
 }).mount("#app");

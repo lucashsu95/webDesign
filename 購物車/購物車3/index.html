@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New-Vue</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.js"
+      integrity="sha512-w39cIBZHEf0ac8RERRGs+aTrQbBIpb+0qGsMCKfwvJSmN6YV8brsbYN1a/nTmuQgfrGyg7p3WI4HRu1rs3rLvw=="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        display: flex;
+      }
+
+      .shop {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border: 1px solid #999;
+        border-radius: 25px;
+        margin: 25px;
+        padding: 5px;
+      }
+
+      .photo {
+        width: 120px;
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .photo img {
+        width: 100%;
+      }
+
+      button,
+      input {
+        padding: 5px 10px;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <section class="container">
+        <article v-for="shop,index in shops" class="shop">
+          <div class="photo">
+            <img :src="shop.img" alt="avatar" />
+          </div>
+          <h1>{{shop.name}}</h1>
+          <h2>${{shop.price}}</h2>
+          <p class="control">
+            <button @click="shop.amount = Math.max(0,shop.amount-1)">-</button>
+            <input type="text" v-model="shop.amount" />
+            <button @click="shop.amount++">+</button>
+          </p>
+        </article>
+      </section>
+      <div>目前{{shopSum}}</div>
+      <button type="submit" @click="onSubmit">submit</button>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            shops: [
+              {
+                name: "艾爾海森",
+                img: "https://media.9game.cn/gamebase/ieu-gdc-pre-process/images/20221209/5/5/e2a0ebd00e76ba6b5e54804148f4b551.jpg",
+                price: 150,
+                amount: 0,
+              },
+              {
+                name: "公子",
+                img: "https://pic4.zhimg.com/80/v2-fd4d27f4bc0b0483707fac4083e2a1e7_720w.webp",
+                price: 100,
+                amount: 0,
+              },
+            ],
+          };
+        },
+        computed: {
+          shopSum() {
+            return this.shops.reduce((sum, x) => x.price * x.amount + sum, 0);
+          },
+        },
+        methods: {
+          onSubmit() {
+            alert(`總額是${this.shopSum}元`);
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

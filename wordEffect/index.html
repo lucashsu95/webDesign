@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wordEffect</title>
+    <style>
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+      }
+      @keyframes caret {
+        50% {
+          border-color: transparent;
+        }
+      }
+
+      h1 {
+        width: 11em;
+        border-right: 0.05em solid;
+        overflow: hidden;
+        white-space: nowrap;
+        animation: typing 3s steps(15) infinite alternate,
+          caret 1s steps(1) infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus,
+      tempore aperiam. Ipsam eos enim incidunt amet tempora inventore atque
+      eius! Animi sed quam ratione. Explicabo voluptatem repellat quia eaque
+      amet.
+    </h1>
+
+    <p>
+      <details>
+        <summary>social media</summary>
+        <p>ig</p>
+        <p>fb</p>
+        <p>twitter</p>
+        <p>youtub</p>
+      </details>
+    </p>
+
+    <p>
+      <input type="color" name="" id="" />
+      <input type="search" name="" id="" />
+    </p>
+  </body>
+</html>

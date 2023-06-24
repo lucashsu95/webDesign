@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>視差</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      p {
+        line-height: 200px;
+      }
+
+      section {
+        font-size: 35px;
+        background: #fff;
+      }
+
+      #app {
+        height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        perspective: 10px;
+      }
+
+      .title {
+        font-size: 7rem;
+        color: #fff;
+        text-shadow: 0 0 5px black;
+      }
+
+      header {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        transform-style: preserve-3d;
+        z-index: -1;
+      }
+
+      #bg,
+      #fg {
+        position: absolute;
+        object-fit: cover;
+      }
+
+      #bg {
+        width: 100%;
+        height: 100%;
+        transform: translateZ(-10px) scale(2.01);
+      }
+
+      #fg {
+        left: 0;
+        bottom: 0;
+        transform: translateZ(-5px) scale(1.5);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <header>
+        <img src="./img/bg.jpg" alt="bg" id="bg" />
+        <img src="./img/Tree.png" alt="tree" id="fg" />
+        <h1 class="title">Welcome!</h1>
+      </header>
+
+      <section>
+        <h1>title</h1>
+        <hr />
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, cum.
+          Rem provident et fuga magnam nisi, quaerat hic voluptates ab autem
+          odit impedit possimus eos, aliquam nam sunt ratione enim? Lorem ipsum
+          dolor sit amet consectetur adipisicing elit. Placeat, cum. Rem
+          provident et fuga magnam nisi, quaerat hic voluptates ab autem odit
+          impedit possimus eos, aliquam nam sunt ratione enim? Lorem ipsum dolor
+          sit amet consectetur adipisicing elit. Placeat, cum. Rem provident et
+          fuga magnam nisi, quaerat hic voluptates ab autem odit impedit
+          possimus eos, aliquam nam sunt ratione enim? Lorem ipsum dolor sit
+          amet consectetur adipisicing elit. Placeat, cum. Rem provident et fuga
+          magnam nisi,
+        </p>
+      </section>
+    </div>
+  </body>
+</html>

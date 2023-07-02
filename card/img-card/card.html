@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>card</title>
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+        }
+
+        .card {
+            width: 350px;
+            height: 200px;
+            transition: height 0.5s;
+            background: #333;
+            color: #fff;
+            text-align: center;
+            position: relative;
+
+            & .card-body {
+                height: 100%;
+                position: relative;
+            }
+
+            & .card-title {
+                font-size: 1.3rem;
+                font-weight: bold;
+            }
+
+            & .card-text {
+                transition: opacity .5s;
+                opacity: 0;
+            }
+        }
+
+        .card:hover {
+            height: 450px;
+        }
+
+        .card:hover .card-text {
+            opacity: 1;
+        }
+
+        .imgBx {
+            position: relative;
+            top: -50px;
+            left: 50%;
+            width: 150px;
+            height: 150px;
+            transition: width 0.5s, height 0.5s;
+            transform: translateX(-50%);
+            background: #000;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .imgBx img {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: calc(100% - 10px);
+            height: calc(100% - 10px);
+            object-fit: cover;
+
+        }
+
+
+        .lines {
+            position: absolute;
+            overflow: hidden;
+            inset: 0;
+            background: #000;
+
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 3px;
+                background: #292929;
+            }
+        }
+
+        .lines::before,
+        .imgBx::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 450px;
+            height: 120px;
+            background: linear-gradient(transparent, aqua, aqua, aqua, transparent);
+            animation: rotate 4s linear infinite;
+        }
+
+
+
+        .imgBx::before {
+            background: linear-gradient(transparent, #f1f, #f1f, #f1f, transparent);
+            animation: rotate2 6s linear infinite;
+        }
+
+        .card:hover .imgBx {
+            width: 250px;
+            height: 250px;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes rotate2 {
+            from {
+                transform: translate(-50%, -50%) rotate(-360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <article class="card">
+        <div class="lines"></div>
+        <div class="imgBx">
+            <img src="https://picsum.photos/300/200/?random=10">
+        </div>
+        <div class="card-body">
+            <div class="card-title">Title1</div>
+            <div class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic eveniet nam
+                harum sint
+                voluptatibus illum nobis officia cumque eos, suscipit a est enim asperiores beatae rem unde
+                ducimus
+                deserunt vitae.
+            </div>
+        </div>
+    </article>
+</body>
+
+</html>

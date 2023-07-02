@@ -1,449 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WebDesing</title>
-    <script src="./vue.js"></script>
-    <script src="./bootstrap.min.js"></script>
-    <link rel="stylesheet" href="./bootstrap.min.css" />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        box-sizing: border-box;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebDesing</title>
+  <script src="./vue.js"></script>
+  <script src="./bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./bootstrap.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-snap-type: y mandatory;
+      scroll-snap-stop: always;
+      scroll-padding-bottom: 5%;
+    }
+
+    h1 {
+      text-transform: capitalize;
+      font-weight: bold;
+    }
+
+    li {
+      list-style: none;
+      padding: 10px;
+    }
+
+    section {
+      width: clamp(60%, 900px, 100%);
+
+      scroll-snap-align: start;
+      height: 100vh;
+
+      margin-inline: auto;
+      margin-bottom: 5%;
+      padding: clamp(0.2rem, 8vw, 4rem);
+      transition: all 0.5s;
+      box-shadow: 2px 2px 30px #ccc;
+      animation: 1.5s shadow infinite alternate ease-in-out;
+    }
+
+    .container a {
+      text-transform: capitalize;
+      font-size: clamp(16px, 2.5vw, 22px);
+    }
+
+    nav:nth-of-type(1) {
+      transition: 0.5s;
+      border-radius: 25px;
+      padding: 20px;
+      position: fixed;
+      left: 3%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #ffffff48;
+
+      &:hover {
+        box-shadow: 2px 2px 50px #ddd;
       }
+    }
 
-      html {
-        scroll-snap-type: y mandatory;
-        scroll-snap-stop: always;
-        scroll-padding-bottom: 5%;
-      }
+    .toggle_nav_btn {
+      display: none;
+      width: 50px;
+      height: 45px;
+      position: fixed;
+      left: 5%;
+      bottom: 5%;
+      background: #ddd;
+      cursor: pointer;
+    }
 
-      h1 {
-        text-transform: capitalize;
-        font-weight: bold;
-      }
-
-      li {
-        list-style: none;
-        padding: 10px;
-      }
-
-      section {
-        width: clamp(60%, 900px, 100%);
-
-        scroll-snap-align: start;
-        height: 100vh;
-
-        margin-inline: auto;
-        margin-bottom: 5%;
-        padding: clamp(0.2rem, 8vw, 4rem);
-        transition: all 0.5s;
-        box-shadow: 2px 2px 30px #ccc;
-        animation: 1.5s shadow infinite alternate ease-in-out;
-      }
-
-      .container a {
-        text-transform: capitalize;
-        font-size: clamp(16px, 2.5vw, 22px);
-      }
-
+    @media (max-width: 900px) {
       nav:nth-of-type(1) {
-        transition: 0.5s;
-        border-radius: 25px;
-        padding: 20px;
-        position: fixed;
-        left: 3%;
-        top: 50%;
-        transform: translateY(-50%);
-        background: #ffffff48;
-
-        &:hover {
-          box-shadow: 2px 2px 50px #ddd;
-        }
+        left: -50%;
       }
 
       .toggle_nav_btn {
-        display: none;
-        width: 50px;
-        height: 45px;
-        position: fixed;
-        left: 5%;
-        bottom: 5%;
-        background: #ddd;
-        cursor: pointer;
+        display: block;
       }
+    }
 
-      @media (max-width: 900px) {
-        nav:nth-of-type(1) {
-          left: -50%;
-        }
-        .toggle_nav_btn {
-          display: block;
-        }
+    @keyframes shadow {
+      100% {
+        box-shadow: 2px 2px 50px 20px #bbb;
       }
+    }
+  </style>
+</head>
 
-      @keyframes shadow {
-        100% {
-          box-shadow: 2px 2px 50px 20px #bbb;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <div id="app">
-      <div class="toggle_nav_btn" @click="navToggleFlag = !navToggleFlag">
-        <svg width="50px" height="40px" preserveAspectRatio="xMidYMid slice">
-          <rect width="30px" height="5px" fill="black" x="10px" y="10px" />
-          <rect width="30px" height="5px" fill="black" x="10px" y="20px" />
-          <rect width="30px" height="5px" fill="black" x="10px" y="30px" />
-        </svg>
-      </div>
-      <nav
-        class="nav nav-pills flex-column"
-        :style="{left:navToggleFlag ? '3%' : ''}"
-      >
-        <a href="#item-1" class="nav-link">animation</a>
-        <a href="#item-2" class="nav-link">background</a>
-        <a href="#item-3" class="nav-link">button</a>
-        <a href="#item-4" class="nav-link">canvas</a>
-        <a href="#item-5" class="nav-link">card</a>
-        <a href="#item-6" class="nav-link">進制轉換計算機</a>
-        <a href="#item-7" class="nav-link">Chat</a>
-        <a href="#item-8" class="nav-link">clip</a>
-        <a href="#item-9" class="nav-link">input</a>
-        <a href="#item-10" class="nav-link">JS動畫</a>
-        <a href="#item-11" class="nav-link">Light</a>
-        <a href="#item-12" class="nav-link">navbar</a>
-        <a href="#item-13" class="nav-link">parallax視差</a>
-        <a href="#item-14" class="nav-link">Q&A</a>
-        <a href="#item-15" class="nav-link">Scroll</a>
-        <a href="#item-16" class="nav-link">購物車</a>
-        <nav class="nav nav-pills flex-column"></nav>
-      </nav>
-      <div
-        data-bs-spy="scroll"
-        data-bs-target="#navbar-example3"
-        data-bs-smooth-scroll="true"
-        class="scrollspy-example container"
-        tabindex="0"
-      >
-        <section id="item-1" class="active">
-          <h1>animation</h1>
-          <hr />
-          <ul>
-            <a
-              class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              href="./animation/"
-              target="_blank"
-              >All</a
-            >
-
-            <li v-for="i in animation">
-              <a
-                class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                :href="`Animation/${i}`"
-                target="_blank"
-                >{{i}}</a
-              >
-            </li>
-          </ul>
-        </section>
-        <section id="item-2">
-          <h1>background</h1>
-          <hr />
-          <ul>
-            <li v-for="i in background">
-              <a
-                class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                :href="`background/${i}`"
-                target="_blank"
-                >{{i}}</a
-              >
-            </li>
-          </ul>
-        </section>
-        <section id="item-3">
-          <h1>button</h1>
-          <hr />
-          <ul>
-            <a
-              class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              href="./button"
-              target="_blank"
-              >All</a
-            >
-            <li v-for="i in button">
-              <a
-                class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                :href="`button/${i}`"
-                target="_blank"
-                >{{i}}</a
-              >
-            </li>
-          </ul>
-        </section>
-        <section id="item-4">
-          <h1>canvas</h1>
-          <hr />
-          <ul>
-            <a
-              class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              href="./canvas"
-              target="_blank"
-              >All</a
-            >
-            <li v-for="i in canvas">
-              <a
-                class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                :href="`canvas/${i}`"
-                target="_blank"
-                >{{i}}</a
-              >
-            </li>
-          </ul>
-        </section>
-        <section id="item-5">
-          <h1>card</h1>
-          <hr />
-          <ul>
-            <li v-for="i in card">
-              <a
-                class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                :href="`card/${i}`"
-                target="_blank"
-                >{{i}}</a
-              >
-            </li>
-          </ul>
-        </section>
-        <section id="item-6">
-          <h1>進制轉換計算機</h1>
-          <hr />
-          <ul>
-            <li v-for="i in carry_system">
-              <a
-                class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                :href="`Carry_system/${i}`"
-                target="_blank"
-                >{{i}}</a
-              >
-            </li>
-          </ul>
-        </section>
-        <section id="item-7">
-          <h1>Chat</h1>
-          <hr />
-          <ul>
-            <li>
-              <a
-                class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                href="./chat/chat.html"
-                target="_blank"
-                >Chat</a
-              >
-            </li>
-          </ul>
-        </section>
-        <section id="item-8">
-          <h1>clip</h1>
-          <hr />
-          <ul>
-            <li v-for="i in clipPath">
-              <a
-                class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                :href="`clip-path/${i}`"
-                target="_blank"
-                >{{i}}</a
-              >
-            </li>
-          </ul>
-        </section>
-        <section id="item-9">
-          <h1>input</h1>
-          <hr />
-          <ul>
-            <li id="item-9-1">
-              <h5>input</h5>
-              <ul>
-                <li v-for="i in input">
-                  <a
-                    class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                    :href="`input/${i}`"
-                    target="_blank"
-                    >{{i}}</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li id="item-9-2">
-              <h5>radio</h5>
-              <ul>
-                <li v-for="i in radio">
-                  <a
-                    class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                    :href="`radio/${i}`"
-                    target="_blank"
-                    >{{i}}</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li id="item-9-3">
-              <h5>range</h5>
-              <ul>
-                <li v-for="i in range">
-                  <a
-                    class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                    :href="`range/${i}`"
-                    target="_blank"
-                    >{{i}}</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li id="item-9-4">
-              <h5>hover</h5>
-              <ul>
-                <li v-for="i in hover">
-                  <a
-                    class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                    :href="`hover/${i}`"
-                    target="_blank"
-                    >{{i}}</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li id="item-9-5">
-              <h5>audio</h5>
-              <ul>
-                <li>
-                  <a
-                    class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                    href="./音樂播放器/index.html"
-                    target="_blank"
-                    >音樂播放器</a
-                  >
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </section>
-        <section id="item-10">
-          <h1>JS動畫</h1>
-          <hr />
-          <ul>
-            <li>
-              <a
-                class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                href="JS動畫/JS動畫.html"
-                target="_blank"
-                >JS動畫</a
-              >
-            </li>
-          </ul>
-        </section>
-        <section id="item-11">
-          <h1>Light</h1>
-          <hr />
-          <ul>
-            <a
-              class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              href="./light-dark-theme/index.html"
-              target="_blank"
-              >Light-Dark-Theme</a
-            >
-          </ul>
-        </section>
-        <section id="item-12">
-          <h1>navbar</h1>
-          <hr />
-          <ul>
-            <a
-              class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              href="./navbar"
-              target="_blank"
-              >All</a
-            >
-            <li v-for="i in navbar">
-              <a
-                class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                :href="`navbar/${i}`"
-                target="_blank"
-                >{{i}}</a
-              >
-            </li>
-          </ul>
-        </section>
-        <section id="item-13">
-          <h1>parallax視差</h1>
-          <hr />
-          <ul>
-            <a
-              class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              href="./parallax視差"
-              target="_blank"
-              >All</a
-            >
-            <li v-for="i in parallax">
-              <a
-                class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                :href="`parallax視差/${i}`"
-                target="_blank"
-                >{{i}}</a
-              >
-            </li>
-          </ul>
-        </section>
-        <section id="item-14">
-          <h1>Q&A</h1>
-          <hr />
-          <ul>
-            <li v-for="i in QandA">
-              <a
-                class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                :href="`Q&A/${i}`"
-                target="_blank"
-                >{{i}}</a
-              >
-            </li>
-          </ul>
-        </section>
-        <section id="item-15">
-          <h1>Scroll</h1>
-          <hr />
-          <ul>
-            <li v-for="i in scroll">
-              <a
-                class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                :href="`Scroll/${i}`"
-                target="_blank"
-                >{{i}}</a
-              >
-            </li>
-          </ul>
-        </section>
-        <section id="item-16">
-          <h1>購物車</h1>
-          <hr />
-          <ul>
-            <li v-for="i in shopCar">
-              <a
-                class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                :href="'購物車/' + i"
-                target="_blank"
-                >{{i}}</a
-              >
-            </li>
-          </ul>
-        </section>
-      </div>
+<body>
+  <div id="app">
+    <div class="toggle_nav_btn" @click="navToggleFlag = !navToggleFlag">
+      <svg width="50px" height="40px" preserveAspectRatio="xMidYMid slice">
+        <rect width="30px" height="5px" fill="black" x="10px" y="10px" />
+        <rect width="30px" height="5px" fill="black" x="10px" y="20px" />
+        <rect width="30px" height="5px" fill="black" x="10px" y="30px" />
+      </svg>
     </div>
-    <script src="./script.js"></script>
-  </body>
+    <nav class="nav nav-pills flex-column" :style="{left:navToggleFlag ? '3%' : ''}">
+      <a href="#item-1" class="nav-link">animation</a>
+      <a href="#item-2" class="nav-link">background</a>
+      <a href="#item-3" class="nav-link">button</a>
+      <a href="#item-4" class="nav-link">canvas</a>
+      <a href="#item-5" class="nav-link">card</a>
+      <a href="#item-6" class="nav-link">進制轉換計算機</a>
+      <a href="#item-7" class="nav-link">Chat</a>
+      <a href="#item-8" class="nav-link">clip</a>
+      <a href="#item-9" class="nav-link">input</a>
+      <a href="#item-10" class="nav-link">JS動畫</a>
+      <a href="#item-11" class="nav-link">Light</a>
+      <a href="#item-12" class="nav-link">navbar</a>
+      <a href="#item-13" class="nav-link">parallax視差</a>
+      <a href="#item-14" class="nav-link">Q&A</a>
+      <a href="#item-15" class="nav-link">Scroll</a>
+      <a href="#item-16" class="nav-link">Slider</a>
+      <a href="#item-17" class="nav-link">購物車</a>
+      <nav class="nav nav-pills flex-column"></nav>
+    </nav>
+    <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true"
+      class="scrollspy-example container" tabindex="0">
+      <section id="item-1" class="active">
+        <h1>animation</h1>
+        <hr />
+        <ul>
+          <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+            href="./animation/" target="_blank">All</a>
+
+          <li v-for="i in animation">
+            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              :href="`Animation/${i}`" target="_blank">{{i}}</a>
+          </li>
+        </ul>
+      </section>
+      <section id="item-2">
+        <h1>background</h1>
+        <hr />
+        <ul>
+          <li v-for="i in background">
+            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              :href="`background/${i}`" target="_blank">{{i}}</a>
+          </li>
+        </ul>
+      </section>
+      <section id="item-3">
+        <h1>button</h1>
+        <hr />
+        <ul>
+          <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="./button"
+            target="_blank">All</a>
+          <li v-for="i in button">
+            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              :href="`button/${i}`" target="_blank">{{i}}</a>
+          </li>
+        </ul>
+      </section>
+      <section id="item-4">
+        <h1>canvas</h1>
+        <hr />
+        <ul>
+          <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="./canvas"
+            target="_blank">All</a>
+          <li v-for="i in canvas">
+            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              :href="`canvas/${i}`" target="_blank">{{i}}</a>
+          </li>
+        </ul>
+      </section>
+      <section id="item-5">
+        <h1>card</h1>
+        <hr />
+        <ul>
+          <li v-for="i in card">
+            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              :href="`card/${i}`" target="_blank">{{i}}</a>
+          </li>
+        </ul>
+      </section>
+      <section id="item-6">
+        <h1>進制轉換計算機</h1>
+        <hr />
+        <ul>
+          <li v-for="i in carry_system">
+            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              :href="`Carry_system/${i}`" target="_blank">{{i}}</a>
+          </li>
+        </ul>
+      </section>
+      <section id="item-7">
+        <h1>Chat</h1>
+        <hr />
+        <ul>
+          <li>
+            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              href="./chat/chat.html" target="_blank">Chat</a>
+          </li>
+        </ul>
+      </section>
+      <section id="item-8">
+        <h1>clip</h1>
+        <hr />
+        <ul>
+          <li v-for="i in clipPath">
+            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              :href="`clip-path/${i}`" target="_blank">{{i}}</a>
+          </li>
+        </ul>
+      </section>
+      <section id="item-9">
+        <h1>input</h1>
+        <hr />
+        <ul>
+          <li id="item-9-1">
+            <h5>input</h5>
+            <ul>
+              <li v-for="i in input">
+                <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                  :href="`input/${i}`" target="_blank">{{i}}</a>
+              </li>
+            </ul>
+          </li>
+          <li id="item-9-2">
+            <h5>radio</h5>
+            <ul>
+              <li v-for="i in radio">
+                <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                  :href="`radio/${i}`" target="_blank">{{i}}</a>
+              </li>
+            </ul>
+          </li>
+          <li id="item-9-3">
+            <h5>range</h5>
+            <ul>
+              <li v-for="i in range">
+                <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                  :href="`range/${i}`" target="_blank">{{i}}</a>
+              </li>
+            </ul>
+          </li>
+          <li id="item-9-4">
+            <h5>hover</h5>
+            <ul>
+              <li v-for="i in hover">
+                <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                  :href="`hover/${i}`" target="_blank">{{i}}</a>
+              </li>
+            </ul>
+          </li>
+          <li id="item-9-5">
+            <h5>audio</h5>
+            <ul>
+              <li>
+                <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                  href="./音樂播放器/index.html" target="_blank">音樂播放器</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="item-10">
+        <h1>JS動畫</h1>
+        <hr />
+        <ul>
+          <li>
+            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              href="JS動畫/JS動畫.html" target="_blank">JS動畫</a>
+          </li>
+        </ul>
+      </section>
+      <section id="item-11">
+        <h1>Light</h1>
+        <hr />
+        <ul>
+          <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+            href="./light-dark-theme/index.html" target="_blank">Light-Dark-Theme</a>
+        </ul>
+      </section>
+      <section id="item-12">
+        <h1>navbar</h1>
+        <hr />
+        <ul>
+          <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="./navbar"
+            target="_blank">All</a>
+          <li v-for="i in navbar">
+            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              :href="`navbar/${i}`" target="_blank">{{i}}</a>
+          </li>
+        </ul>
+      </section>
+      <section id="item-13">
+        <h1>parallax視差</h1>
+        <hr />
+        <ul>
+          <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+            href="./parallax視差" target="_blank">All</a>
+          <li v-for="i in parallax">
+            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              :href="`parallax視差/${i}`" target="_blank">{{i}}</a>
+          </li>
+        </ul>
+      </section>
+      <section id="item-14">
+        <h1>Q&A</h1>
+        <hr />
+        <ul>
+          <li v-for="i in QandA">
+            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              :href="`Q&A/${i}`" target="_blank">{{i}}</a>
+          </li>
+        </ul>
+      </section>
+      <section id="item-15">
+        <h1>Scroll</h1>
+        <hr />
+        <ul>
+          <li v-for="i in scroll">
+            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              :href="`Scroll/${i}`" target="_blank">{{i}}</a>
+          </li>
+        </ul>
+      </section>
+      <section id="item-16">
+        <h1>slider</h1>
+        <hr />
+        <ul>
+          <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+            href="./slider" target="_blank">All</a>
+          <li v-for="i in slider">
+            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              :href="`slider/${i}`" target="_blank">{{i}}</a>
+          </li>
+        </ul>
+      </section>
+      <section id="item-17">
+        <h1>購物車</h1>
+        <hr />
+        <ul>
+          <li v-for="i in shopCar">
+            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              :href="'購物車/' + i" target="_blank">{{i}}</a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </div>
+  <script src="./script.js"></script>
+</body>
+
 </html>

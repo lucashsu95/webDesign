@@ -19,7 +19,7 @@ const app = Vue.createApp({
         "remember2.0/index.html",
       ],
       canvas: ["drawball.html", "調色盤.html", "小畫家"],
-      card: ["border-cards", "Glass-morphism"],
+      card: ["border-cards", "Glass-morphism", "img-card"],
       carry_system: ["Carry_system.html"],
       clipPath: ["index.html"],
       hover: ["hover.html"],
@@ -42,6 +42,7 @@ const app = Vue.createApp({
         "購物車2/order.html",
         "購物車3/index.html",
       ],
+      slider: ["slider-lg.html", "slider-sm.html", "slider2-sm.html", "slider-fade.html", "only-css.html", "vue-lg.html", "vue-sm.html", '火車過山洞.html'],
     };
   },
 }).mount("#app");

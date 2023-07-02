@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>slider2-sm</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      .container {
+        position: relative;
+        margin: 0 auto;
+        width: 800px;
+        height: 320px;
+        border: 1px solid #000;
+        overflow: hidden;
+      }
+
+      .img {
+        position: absolute;
+        transition: all 0ms linear;
+        width: 450px;
+        height: 220px;
+        transition: all 0.5s;
+        object-fit: cover;
+      }
+
+      .img.active {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+      }
+
+      .img.prev:hover {
+        cursor: pointer;
+        transform: translate(0, -50%) scale(1.2);
+      }
+
+      .img.next:hover {
+        cursor: pointer;
+        transform: translate(-100%, -50%) scale(1.2);
+      }
+
+      .img.prev,
+      .img.next,
+      .img.prev2,
+      .img.next2 {
+        top: 50%;
+        z-index: 1;
+        width: 225px;
+        height: 100px;
+      }
+
+      .img.prev {
+        left: 5%;
+        transform: translate(0, -50%);
+      }
+
+      .img.next {
+        left: 95%;
+        transform: translate(-100%, -50%);
+      }
+
+      .img.next2 {
+        left: 130%;
+        transform: translate(-100%, -50%);
+      }
+
+      .img.prev2 {
+        left: -30%;
+        transform: translate(0, -50%);
+      }
+
+      .no-transition {
+        transition: unset !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <img src="./img/1.jpg" class="img" />
+      <img src="./img/2.jpg" class="img" />
+      <img src="./img/3.jpg" class="img" />
+      <img src="./img/4.jpg" class="img" />
+      <img src="./img/5.jpg" class="img" />
+    </div>
+    <script>
+      const images = document.querySelectorAll("img");
+      let count = 0;
+
+      function getIndex(i) {
+        if (i % images.length === 0) return 0;
+
+        if (Math.sign(i) >= 0) {
+          return i % images.length;
+        } else {
+          return (i % images.length) + images.length;
+        }
+      }
+
+      function updateClass(n) {
+        count += n;
+        const index = getIndex(count);
+
+        const total = images.length;
+        let nextCount = Math.floor(total / 2);
+
+        images.forEach((image) => {
+          image.className = "img";
+        });
+
+        images[index].classList.add("active");
+        let i = getIndex(index + 1);
+        images[i].classList.add("next");
+        while (nextCount > 1) {
+          i = (i + 1) % images.length;
+          images[i].classList.add("next2");
+          nextCount -= 1;
+        }
+
+        if (Math.sign(n) === 1) {
+          images[i].classList.add("no-transition");
+          setTimeout(() => {
+            images[i].classList.remove("no-transition");
+          });
+        }
+
+        i = getIndex(index - 1);
+        images[i].classList.add("prev");
+        let lastIndex = -1;
+
+        images.forEach((image, idx) => {
+          if (image.className === "img") {
+            lastIndex = idx;
+            image.classList.add("prev2");
+          }
+        });
+
+        if (Math.sign(n) === -1) {
+          images[lastIndex].classList.add("no-transition");
+          setTimeout(() => {
+            images[lastIndex].classList.remove("no-transition");
+          });
+        }
+      }
+
+      updateClass(0);
+
+      window.addEventListener("click", (e) => {
+        console.log(e);
+        if (e.target.classList.contains("next")) {
+          updateClass(1);
+        }
+
+        if (e.target.classList.contains("prev")) {
+          updateClass(-1);
+        }
+      });
+    </script>
+  </body>
+</html>

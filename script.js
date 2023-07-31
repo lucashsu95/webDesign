@@ -42,7 +42,13 @@ const app = Vue.createApp({
         "購物車2/order.html",
         "購物車3/index.html",
       ],
-      slider: ["slider-lg.html", "slider-sm.html", "slider2-sm.html", "slider-fade.html", "only-css.html", "vue-lg.html", "vue-sm.html", '火車過山洞.html'],
+      slider: [
+        "slider-fade.html",
+        "slider.html",
+        "only-css.html",
+        "vue-lg.html",
+        "vue-sm.html",
+        '火車過山洞.html'],
     };
   },
 }).mount("#app");

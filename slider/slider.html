@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --slider-w: 100vw;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .slider {
+            display: flex;
+            width: var(--slider-w);
+            height: 100vh;
+            transition: transform .5s;
+        }
+
+        .slider img {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+
+        /* <------control------> */
+        .control {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100vw;
+            height: 100vh;
+            z-index: 99;
+
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control button {
+            background: none;
+            border: none;
+            color: #333;
+            padding: 2%;
+
+            cursor: pointer;
+            font-size: 55px;
+            opacity: 0.85;
+            transition: opacity .5s;
+        }
+
+        .control button:hover {
+            opacity: 1;
+        }
+
+        /* <------index------> */
+
+        .slider_index {
+            width: 100%;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            bottom: 5%;
+            z-index: 99;
+        }
+
+        .slider_index div {
+            width: 100px;
+            height: 8px;
+            background: #3339;
+            border: 1px solid #444;
+            cursor: pointer;
+            transition: all .5s;
+        }
+
+        .slider_index div:hover {
+            background: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="slider">
+            <img src="https://picsum.photos/id/660/1920/1080">
+            <img src="https://picsum.photos/id/409/1920/1080">
+            <img src="https://picsum.photos/id/78/1920/1080">
+            <img src="https://picsum.photos/id/825/1920/1080">
+            <img src="https://picsum.photos/id/1084/1920/1080">
+        </div>
+        <!-- control -->
+        <div class="control">
+            <button class="prev" onclick="changeSlider(-1)">&lt;</button>
+            <button class="next" onclick="changeSlider()">></button>
+        </div>
+        <!-- index -->
+        <div class="slider_index"></div>
+    </header>
+    <script>
+        const slider = document.querySelector('.slider')
+        const slider_index = document.querySelector('.slider_index')
+        const slider_index_Divs = []
+        const img_len = slider.querySelectorAll('img').length
+        let currentIndex = 0
+        let auto = null
+
+        const root = document.documentElement
+        root.style.setProperty('--slider-w', `${img_len * 100}vw`)
+
+        for (let i = 0; i < img_len; i++) {
+            const div = document.createElement('div')
+            slider_index_Divs.push(div)
+            slider_index.appendChild(div)
+        }
+
+        function renderSlider() {
+            clearInterval(auto)
+            auto = setTimeout(changeSlider, 3000)
+            slider.style.transform = `translateX(-${100 * currentIndex}vw)`
+        }
+
+        function changeSlider(flag = 1) {
+            currentIndex = (currentIndex + flag + img_len) % img_len;
+            renderSlider()
+        }
+
+        slider_index_Divs.forEach((div, index) => {
+            div.addEventListener('click', () => {
+                currentIndex = index;
+                renderSlider()
+            })
+        })
+
+        renderSlider()
+    </script>
+
+</body>
+
+</html>

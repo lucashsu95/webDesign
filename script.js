@@ -42,6 +42,10 @@ const app = Vue.createApp({
         "購物車2/order.html",
         "購物車3/index.html",
       ],
+      TodoList: [
+        'index.html',
+        'index-modal.html',
+      ],
       slider: [
         "slider-fade.html",
         "slider.html",

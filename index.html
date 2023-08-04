@@ -120,9 +120,10 @@
       <a href="#item-12" class="nav-link">navbar</a>
       <a href="#item-13" class="nav-link">parallax視差</a>
       <a href="#item-14" class="nav-link">Q&A</a>
-      <a href="#item-15" class="nav-link">Scroll</a>
-      <a href="#item-16" class="nav-link">Slider</a>
-      <a href="#item-17" class="nav-link">購物車</a>
+      <a href="#item-15" class="nav-link">TodoList</a>
+      <a href="#item-16" class="nav-link">Scroll</a>
+      <a href="#item-17" class="nav-link">Slider</a>
+      <a href="#item-18" class="nav-link">購物車</a>
       <nav class="nav nav-pills flex-column"></nav>
     </nav>
     <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true"
@@ -318,6 +319,16 @@
         </ul>
       </section>
       <section id="item-15">
+        <h1>TodoList</h1>
+        <hr />
+        <ul>
+          <li v-for="i in TodoList">
+            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              :href="`TodoList/${i}`" target="_blank">{{i}}</a>
+          </li>
+        </ul>
+      </section>
+      <section id="item-16">
         <h1>Scroll</h1>
         <hr />
         <ul>
@@ -327,19 +338,19 @@
           </li>
         </ul>
       </section>
-      <section id="item-16">
+      <section id="item-17">
         <h1>slider</h1>
         <hr />
         <ul>
-          <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-            href="./slider" target="_blank">All</a>
+          <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="./slider"
+            target="_blank">All</a>
           <li v-for="i in slider">
             <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
               :href="`slider/${i}`" target="_blank">{{i}}</a>
           </li>
         </ul>
       </section>
-      <section id="item-17">
+      <section id="item-18">
         <h1>購物車</h1>
         <hr />
         <ul>

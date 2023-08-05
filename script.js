@@ -45,6 +45,7 @@ const app = Vue.createApp({
       TodoList: [
         'index.html',
         'index-modal.html',
+        'index-vue.html',
       ],
       slider: [
         "slider-fade.html",

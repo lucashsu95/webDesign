@@ -10,34 +10,32 @@
     <link rel="stylesheet" href="./main.css">
 </head>
 
-<body class="bg-dark text-light">
+<body>
     <header class="my-5 pt-5">
-        <h1 class="text-center fw-bold text-warning">—　Todo List　—</h1>
+        <h1 class="text-center fw-bold">—　Todo List　—</h1>
     </header>
-    <main>
-        <div class="container">
-            <div class="row gap-5">
-                <div class="col-4 border border-warning rounded">
-                    <section id="control" class="p-4">
-                        <p>
-                            <label for="title" class="form-label">標題：</label>
-                            <input type="text" id="title" class="form-control" placeholder="請輸入標題">
-                        </p>
-                        <p>
-                            <label for="content" class="form-label">內容：</label>
-                            <textarea class="form-control" id="content" rows="3"></textarea>
-                        </p>
-                        <button class="btn btn-primary" onclick="addmsg()">新增</button>
-                    </section>
-                </div>
-                <div class="col-6 border border-warning rounded">
-                    <section id="messages" class="p-4 overflow-y-auto" style="max-height: 50vh;">
-                    </section>
-                </div>
+    <div class="container">
+        <div class="row gap-3">
+            <div class="col-12 col-lg-4">
+                <section id="control" class="p-4 border rounded shadow">
+                    <p>
+                        <label for="title">標題：</label>
+                        <input type="text" id="title" class="form-control" placeholder="請輸入標題">
+                    </p>
+                    <p>
+                        <label for="content">內容：</label>
+                        <textarea id="content" class="form-control" rows="3"></textarea>
+                    </p>
+                    <button class="btn btn-primary" onclick="addmsg()">新增</button>
+                </section>
+            </div>
+            <div class="col-12 col-lg-6">
+                <ul id="messages" class="list-group shadow overflow-auto" style="max-height: 50vh;">
+                </ul>
             </div>
         </div>
-    </main>
-    <script src="./main.js"></script>
+    </div>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>

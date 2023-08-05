@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="./main.css">
 </head>
 
-<body class="bg-dark text-light">
+<body>
     <header class="my-5 pt-5">
-        <h1 class="text-center fw-bold text-warning">—　Todo List　—</h1>
+        <h1 class="text-center fw-bold">—　Todo List　—</h1>
     </header>
     <main>
         <div class="modal fade" id="modalId">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content text-dark">
+            <div class="modal-dialog">
+                <div class="modal-content">
                     <div class="modal-header">
                         <h3 class="modal-title" id="modalTitleId">新增待辦事項</h3>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -41,24 +41,23 @@
             </div>
         </div>
 
-        <div class="container">
-            <div class="row">
-                <button type="button" class="w-auto btn btn-warning btn-lg mb-5" data-bs-toggle="modal"
+        <div class="container px-5">
+            <div class="row px-5">
+                <button type="button" class="w-auto btn btn-primary btn-lg mb-5" data-bs-toggle="modal"
                     data-bs-target="#modalId">
                     新增待辦事項
                 </button>
                 <hr>
-                <section id="messages" class="border border-warning rounded p-4 overflow-y-auto"
-                    style="height: 50vh;">
-
-                </section>
+                <ul id="messages" class="list-group overflow-auto mx-auto"
+                    style="height: 50vh;width: 70vh;">
+                </ul>
             </div>
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
-    <script src="./main.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>

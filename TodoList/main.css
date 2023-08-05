@@ -1,11 +1,14 @@
-.message.active {
+.message.show {
     animation: 1s fadeIn ease-in-out;
 }
 
 .message.del {
     animation: 1s fadeIn ease-in-out reverse;
 }
-
+h5{
+    border-left: 4px solid #f90;
+    padding-left: 10px;
+}
 @keyframes fadeIn {
     to {
         transform: scale(1);

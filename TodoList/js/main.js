@@ -9,34 +9,34 @@ function addmsg() {
         return
     }
     messages.innerHTML += `
-        <article class="active message border p-3 m-3 d-flex justify-content-between" data-id="${++id}">
+        <li class="show message list-group-item d-flex justify-content-between" data-id="${++id}">
             <div>
                 <h5>${title.value}</h5>
                 <p>${content.value}</p>
                 <small class='text-muted'>${new Date().toLocaleString()}</small>
             </div>
-            <div class='d-flex gap-2 justify-content-between align-items-center'>
+            <div class='d-flex gap-2 align-items-end'>
                 <button class="btn btn-outline-success" onclick="editmsg(${id})">修改</button>
                 <button class="btn btn-outline-danger" onclick="deletemsg(${id})">刪除</button>
             </div>
-        </article>
+        </li>
     `
     
     title.value = ''
     content.value = ''
     setTimeout(() => {
-        const article = document.querySelector(`article[data-id="${id}"]`)
-        article.classList.remove('active')
+        const li = document.querySelector(`li[data-id="${id}"]`)
+        li.classList.remove('show')
         updateData()
     }, 1000);
 }
 
 function deletemsg(id) {
     console.log(id);
-    const article = document.querySelector(`article[data-id="${id}"]`)
-    article.classList.add('del')
+    const li = document.querySelector(`li[data-id="${id}"]`)
+    li.classList.add('del')
     setTimeout(() => {
-        article.remove()
+        li.remove()
         updateData()
     }, 800);
 }
@@ -57,13 +57,13 @@ function render() {
 render()
 
 function editmsg(id) {
-    const article = document.querySelector(`article[data-id="${id}"]`)
-    const btn = article.querySelector('.btn-outline-success')
-    const h5 = article.querySelector('h5')
-    const p = article.querySelector('p')
+    const li = document.querySelector(`li[data-id="${id}"]`)
+    const btn = li.querySelector('.btn-outline-success')
+    const h5 = li.querySelector('h5')
+    const p = li.querySelector('p')
     if (btn.innerText === '確認') {
-        h5.innerHTML = article.querySelector('.tt').value
-        p.innerHTML = article.querySelector('.pp').value
+        h5.innerHTML = li.querySelector('.tt').value
+        p.innerHTML = li.querySelector('.pp').value
         btn.innerText = '修改'
     } else {
         h5.innerHTML = `<input type="text" class="form-control w-100 tt" value="${h5.innerText}">`

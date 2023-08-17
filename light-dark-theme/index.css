@@ -4,6 +4,7 @@
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
 }
+
 :root {
   --header: #f90;
   --fontColor: #444;
@@ -20,6 +21,7 @@ body {
   color: var(--fontColor);
   background-color: var(--backgroundColor);
 }
+
 section {
   min-height: 90vh;
   height: auto;
@@ -28,12 +30,14 @@ section {
   letter-spacing: 1px;
   padding-top: 100px;
 }
+
 .sech1 {
   font-size: 42px;
   border-left: 4px solid var(--fontColor);
   margin: 30px 0;
   padding-left: 10px;
 }
+
 /* header Start */
 header {
   display: flex;
@@ -102,6 +106,7 @@ nav a {
   align-items: center;
   transition: 0.25s;
 }
+
 .switch.active span {
   left: 50%;
 }
@@ -118,6 +123,7 @@ nav a {
 .switch.active .light {
   display: none;
 }
+
 .switch.active .dark {
   display: block;
 }
@@ -131,4 +137,5 @@ main {
   width: 70%;
   box-shadow: 0 0 35px #eee;
 }
+
 /* main End */

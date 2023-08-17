@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <section class="form-table">
+            <h1>sign up</h1>
+            <input type="text" placeholder="Full Name">
+            <input type="text" placeholder="Email">
+            <input type="text" placeholder="Password">
+            <button class="send">sign up</button>
+        </section>
+        <section class="text-table">
+            <h2>
+                Have an account ?
+            </h2>
+            <small>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem officia nobis distinctio expedita
+                perspiciatis atque!
+            </small>
+            <button class="change" onclick="render('signup')">sign up</button>
+        </section>
+    </div>
+    <script>
+        const wrap = document.querySelector('.wrap')
+        let component = `
+            <section class="text-table">
+                <h2>
+                    Have an account ?
+                </h2>
+                <small>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem officia nobis distinctio expedita
+                    perspiciatis atque!
+                </small>
+                <button class="change" onclick="render('login')">log in</button>
+            </section>
+            <section class="form-table">
+                <h1>log in</h1>
+                <input type="text" placeholder="Email">
+                <input type="text" placeholder="Password">
+                <button class="send">log in</button>
+            </section>`;
+        function render(type) {
+            temp = wrap.innerHTML
+            wrap.innerHTML = component
+            component = temp
+        }
+
+    </script>
+</body>
+
+</html>

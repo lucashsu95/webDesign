@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>chat</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.2/vue.global.js"
+    integrity="sha512-KnhQ2qDDo4xtzMglIRUqBBGmUQjt55uMJV1lGsiYrVlh3DfJgrwxVVnJkqtOcFaq45INrDM8SD/BA4qHnRJeEg=="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="app">
+    <div class="chatBtn" @click="chatType = !chatType" :class="{active:chatType}">
+      <img src="./img/chat.png" alt="chat" />
+    </div>
+
+    <div id="chat" :style="`transform:scale(${chatType ? 0 : 1})`">
+      <header>
+        <h1>New Chat</h1>
+      </header>
+      <main ref="mainDiv">
+        <div v-for="item in main" class="message" :class="{myChat:item.role === 'user'}">
+          <div class="people-img">
+            <img :src="item.role === 'user' ? './img/R.jpg' : './img/L.jpg' " alt="" />
+          </div>
+          <div class="content">{{item.message}}</div>
+        </div>
+        <!-- <div class="message myChat">
+          <div class="people-img"><img src="./L.jpg" alt="" /></div>
+          <div class="content">Hi ~</div>
+        </div>
+
+        <div class="message">
+          <div class="people-img"><img src="./R.jpg" alt="" /></div>
+          <div class="content">Hello ~</div>
+        </div> -->
+      </main>
+
+      <section class="message-input">
+        <button @click="onChatInput">4月最強</button>
+        <button @click="onChatInput">戀愛</button>
+        <button @click="onChatInput">異世界</button>
+      </section>
+      <form class="message-input" @submit.prevent="onChatInput">
+        <input type="text" placeholder="請輸入訊息" v-model="chatInput" />
+        <button>send</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          chatType: false,
+          chatInput: "",
+          main: [
+            {
+              message: "您好有什麼需要幫助的嗎?",
+              role: "robot",
+            },
+          ],
+        };
+      },
+      methods: {
+        onChatInput(e) {
+          let msg = "";
+          if (e.type === "submit") {
+            msg = this.chatInput;
+            this.chatInput = "";
+          } else if (e.type === "click") {
+            msg = e.target.textContent;
+          }
+          this.main.push({
+            message: msg,
+            role: "user",
+          });
+          this.updatescroll();
+
+          setTimeout(() => this.robotMessage(msg), 500);
+        },
+        robotMessage(msg) {
+          let data = "感謝您的回覆，如果還有什麼需求可以再告訴我喔~";
+          if (msg === "4月最強") {
+            data =
+              "「在演藝圈（這個世界）裡，謊言就是武器。」2023年4月最強廣世巨作「我推的孩子」";
+          } else if (msg === "戀愛") {
+            data =
+              "最近有「我內心的糟糕念頭」是最甜最甜的純真戀愛動漫，保證甜死你!";
+          } else if (msg === "異世界") {
+            data =
+              "如果你問我，那我也只能說高橋李依最棒!不訪試試看「為美好的世界獻上爆焰」！";
+          }
+
+          this.main.push({
+            message: data,
+            role: "robot",
+          });
+          this.updatescroll();
+        },
+        updatescroll() {
+          setTimeout(() => {
+            this.$refs.mainDiv.scrollTop = this.$refs.mainDiv.scrollHeight;
+          }, 10);
+        },
+      },
+    }).mount("#app");
+  </script>
+
+  <!-- <script>
+      const robotMessage = () => {
+        main.innerHTML += `
+          <div class="message">
+            <div class="people-img"><img src="./L.jpg" alt="" /></div>
+            <div class="content">感謝您的回覆，如果還有什麼需求可以再告訴我喔~</div>
+          </div>`;
+        main.scrollTop = main.scrollHeight;
+      };
+
+      const main = document.querySelector("main");
+      const input = document.querySelector("input");
+      const form = document.querySelector(".message-input");
+
+      const handleMessageSubmit = (e) => {
+        e.preventDefault();
+        const value = input.value;
+        main.innerHTML += `
+              <div class="message myChat">
+                  <div class="people-img"><img src="./R.jpg" alt="" /></div>
+                  <div class="content">${value}</div>
+              </div>`;
+        input.value = "";
+        setTimeout(() => {
+          robotMessage();
+        }, 500);
+      };
+
+      form.addEventListener("submit", handleMessageSubmit);
+    </script> -->
+  <!-- <script>
+      const main = document.querySelector("main");
+      const btns = [...document.querySelectorAll("button")];
+
+      const robotMessage = (msg) => {
+        let data = "";
+        if (msg === "4月最強新番") {
+          data =
+            "「在演藝圈（這個世界）裡，謊言就是武器。」2023年4月最強廣世巨作「我推的孩子」";
+        } else if (msg === "戀愛類型動漫") {
+          data =
+            "最近有「我內心的糟糕念頭」是最甜最甜的純真戀愛動漫，保證甜死你!";
+        } else if (msg === "異世界爛大街中脫穎而出的") {
+          data =
+            "如果你問我，那我也只能說高橋李依最棒!不訪試試看「為美好的世界獻上爆焰」！";
+        }
+        main.innerHTML += `
+          <div class="message">
+            <div class="people-img"><img src="./L.jpg" alt="" /></div>
+            <div class="content">${data}</div>
+          </div>`;
+
+        main.scrollTop = main.scrollHeight;
+      };
+
+      const handleMessageSubmit = (e) => {
+        const msg = e.target.dataset.key;
+        main.innerHTML += `
+              <div class="message myChat">
+                  <div class="people-img"><img src="./R.jpg" alt="" /></div>
+                  <div class="content">${msg}</div>
+              </div>`;
+        setTimeout(() => {
+          robotMessage(msg);
+        }, 500);
+      };
+
+      for (btn of btns) {
+        btn.addEventListener("click", handleMessageSubmit);
+      }
+    </script> -->
+</body>
+
+</html>

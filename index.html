@@ -6,94 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WebDesing</title>
-  <script src="./vue.js"></script>
-  <script src="./bootstrap.min.js"></script>
-  <link rel="stylesheet" href="./bootstrap.min.css" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-snap-type: y mandatory;
-      scroll-snap-stop: always;
-      scroll-padding-bottom: 5%;
-    }
-
-    h1 {
-      text-transform: capitalize;
-      font-weight: bold;
-    }
-
-    li {
-      list-style: none;
-      padding: 10px;
-    }
-
-    section {
-      width: clamp(60%, 900px, 100%);
-
-      scroll-snap-align: start;
-      height: 100vh;
-
-      margin-inline: auto;
-      margin-bottom: 5%;
-      padding: clamp(0.2rem, 8vw, 4rem);
-      transition: all 0.5s;
-      box-shadow: 2px 2px 30px #ccc;
-      animation: 1.5s shadow infinite alternate ease-in-out;
-    }
-
-    .container a {
-      text-transform: capitalize;
-      font-size: clamp(16px, 2.5vw, 22px);
-    }
-
-    nav:nth-of-type(1) {
-      transition: 0.5s;
-      border-radius: 25px;
-      padding: 20px;
-      position: fixed;
-      left: 3%;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #ffffff48;
-
-      &:hover {
-        box-shadow: 2px 2px 50px #ddd;
-      }
-    }
-
-    .toggle_nav_btn {
-      display: none;
-      width: 50px;
-      height: 45px;
-      position: fixed;
-      left: 5%;
-      bottom: 5%;
-      background: #ddd;
-      cursor: pointer;
-    }
-
-    @media (max-width: 900px) {
-      nav:nth-of-type(1) {
-        left: -50%;
-      }
-
-      .toggle_nav_btn {
-        display: block;
-      }
-    }
-
-    @keyframes shadow {
-      100% {
-        box-shadow: 2px 2px 50px 20px #bbb;
-      }
-    }
-  </style>
+  <script src="./src/js/vue.js"></script>
+  <script src="./src/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./src/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./src/css/style.css">
 </head>
 
 <body>
@@ -112,18 +28,18 @@
       <a href="#item-4" class="nav-link">canvas</a>
       <a href="#item-5" class="nav-link">card</a>
       <a href="#item-6" class="nav-link">進制轉換計算機</a>
-      <a href="#item-7" class="nav-link">Chat</a>
+      <a href="#item-7" class="nav-link">Chat聊天機器人</a>
       <a href="#item-8" class="nav-link">clip</a>
       <a href="#item-9" class="nav-link">input</a>
       <a href="#item-10" class="nav-link">JS動畫</a>
-      <a href="#item-11" class="nav-link">Light</a>
-      <a href="#item-12" class="nav-link">navbar</a>
-      <a href="#item-13" class="nav-link">parallax視差</a>
+      <a href="#item-11" class="nav-link">Light-Dark-Theme</a>
+      <a href="#item-12" class="nav-link">Navbar</a>
+      <a href="#item-13" class="nav-link">Parallax視差</a>
       <a href="#item-14" class="nav-link">Q&A</a>
       <a href="#item-15" class="nav-link">TodoList</a>
       <a href="#item-16" class="nav-link">Scroll</a>
       <a href="#item-17" class="nav-link">Slider</a>
-      <a href="#item-18" class="nav-link">購物車</a>
+      <a href="#item-18" class="nav-link">Components</a>
       <nav class="nav nav-pills flex-column"></nav>
     </nav>
     <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true"
@@ -196,12 +112,12 @@
         </ul>
       </section>
       <section id="item-7">
-        <h1>Chat</h1>
+        <h1>Chat聊天機器人</h1>
         <hr />
         <ul>
-          <li>
+          <li v-for="i in chat">
             <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              href="./chat/chat.html" target="_blank">Chat</a>
+              :href="`chat聊天機器人/${i}`" target="_blank">{{i}}</a>
           </li>
         </ul>
       </section>
@@ -225,15 +141,6 @@
               <li v-for="i in input">
                 <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                   :href="`input/${i}`" target="_blank">{{i}}</a>
-              </li>
-            </ul>
-          </li>
-          <li id="item-9-2">
-            <h5>radio</h5>
-            <ul>
-              <li v-for="i in radio">
-                <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                  :href="`radio/${i}`" target="_blank">{{i}}</a>
               </li>
             </ul>
           </li>
@@ -277,7 +184,7 @@
         </ul>
       </section>
       <section id="item-11">
-        <h1>Light</h1>
+        <h1>Light-Dark-Theme</h1>
         <hr />
         <ul>
           <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
@@ -351,18 +258,21 @@
         </ul>
       </section>
       <section id="item-18">
-        <h1>購物車</h1>
+        <h1>Components</h1>
         <hr />
         <ul>
-          <li v-for="i in shopCar">
+          <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="./slider"
+            target="_blank">All</a>
+          <li v-for="i in components">
             <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              :href="'購物車/' + i" target="_blank">{{i}}</a>
+              :href="`components/${i}`" target="_blank">{{i}}</a>
           </li>
         </ul>
       </section>
+
     </div>
   </div>
-  <script src="./script.js"></script>
+  <script src="./src/js/script.js"></script>
 </body>
 
 </html>

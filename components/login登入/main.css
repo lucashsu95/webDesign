@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 微軟正黑體;
+}
+
+h1 {
+    text-transform: uppercase;
+    color: #f60c;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url("https://picsum.photos/id/660/1920/1080") center center;
+}
+
+/* wrap */
+.wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 80%;
+    height: 400px;
+    background: #0009;
+}
+
+/* section */
+
+section {
+    color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 20px;
+    line-height: 3;
+
+    animation: fade 1s;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        filter: blur(5px);
+    }
+
+    to {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+section:first-child {
+    padding-left: 50px;
+}
+
+section:last-child {
+    padding-right: 50px;
+}
+
+/* component */
+.text-table {
+    line-height: 1.5;
+}
+
+.form-table {
+    margin: -50px 50px;
+    background: #fff;
+    box-shadow: 0 0 10px black;
+}
+
+/* input */
+:is(input, button) {
+    border: 0;
+    outline: none;
+    margin: 5px;
+}
+
+input {
+    border-bottom: 2px solid #999;
+    padding: 10px 0;
+    background: none;
+}
+
+/* button */
+button {
+    text-transform: uppercase;
+    color: #fff;
+    padding: .6rem 3rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: max-content;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.send {
+    background: #f60c;
+    margin-left: auto;
+}
+
+.change {
+    border: 1px solid #fff;
+    background: transparent;
+}

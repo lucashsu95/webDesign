@@ -81,36 +81,16 @@
                 radius * 2 - 1
             );
             for (let i = 0; i < 9; i++) {
-                const [r, g, b, a] = [
-                    pixel.data[i * 4 + 0],
-                    pixel.data[i * 4 + 1],
-                    pixel.data[i * 4 + 2],
-                    pixel.data[i * 4 + 3],
-                ];
-                const rgba = `rgba(${r}, ${g}, ${b}, ${a})`;
-
-                if (i == (divs.length - 1) / 2) {
-                    colorCenter.innerText = rgba;
-                }
-
-                divs[i].style.background = rgba
+                const [r, g, b, a] = [pixel.data[i * 4 + 0], pixel.data[i * 4 + 1], pixel.data[i *
+                    4 + 2], pixel.data[i * 4 + 3],]; const rgba = `rgba(${r}, ${g}, ${b}, ${a})`; if (i == (divs.length - 1) / 2) {
+                        colorCenter.innerText = rgba;
+                    } divs[i].style.background = rgba
             }
-        }
-
-        function drawStart(e) {
+        } function drawStart(e) {
             console.log(e);
             drawing = true;
-        }
-        function drawEnd(e) {
-            console.log(e);
-            drawing = false;
-        }
-
-
-        canvas.addEventListener('mouseover', drawStart);
-        canvas.addEventListener('mousemove', pick);
-        canvas.addEventListener('mouseout', drawEnd);
-
+        } function drawEnd(e) { console.log(e); drawing = false; } canvas.addEventListener('mouseover',
+            drawStart); canvas.addEventListener('mousemove', pick); canvas.addEventListener('mouseout', drawEnd);
     </script>
 </body>
 

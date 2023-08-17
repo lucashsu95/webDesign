@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/main.css">
+
+</head>
+
+<body>
+    <nav>
+        <a href="./index.html">
+            <h1>Bookstore</h1>
+        </a>
+        <ul>
+            <li><a href="#love">愛情</a></li>
+            <li><a href="#anime">科幻</a></li>
+            <li><a href="#scare">驚悚</a></li>
+            <li><a href="#product">線上購買</a></li>
+        </ul>
+    </nav>
+    <header id="home">
+        <div class="slogon">
+            <h1>書中自有黃金屋</h1>
+        </div>
+    </header>
+    <section id='love'>
+        <h1>愛情</h1>
+        <div class="wrap">
+            <div class="card">
+                <img src="./img/以俄語遮羞的鄰座艾莉同學.jpg" alt="">
+                <div class="card-body">
+                    <h2>以俄語遮羞的鄰座艾莉同學</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, accusantium!</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./img/我想告你十年份的.jpg" alt="">
+                <div class="card-body">
+                    <h2>我想告你十年份的</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, accusantium!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id='anime'>
+        <h1>科幻</h1>
+        <div class="wrap">
+            <article class="text">
+                <h2>交換謊言日記</h2>
+                <hr>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. In ullam porro aperiam. Doloribus non
+                    consequatur asperiores mollitia ullam esse, est labore incidunt corrupti repellendus, quasi tempora
+                    ducimus autem eligendi numquam.
+                </p>
+            </article>
+            <article class="imgbox">
+                <img src="./img/交換謊言日記.jpg" alt="">
+            </article>
+            <article class="imgbox">
+                <img src="./img/交換謊言日記2.jpg" alt="">
+            </article>
+            <article class="text">
+                <h2>交換謊言日記2</h2>
+                <hr>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. In ullam porro aperiam. Doloribus non
+                    consequatur asperiores mollitia ullam esse, est labore incidunt corrupti repellendus, quasi tempora
+                    ducimus autem eligendi numquam.
+                </p>
+            </article>
+            <article class="text">
+                <h2>交換謊言日記3</h2>
+                <hr>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. In ullam porro aperiam. Doloribus non
+                    consequatur asperiores mollitia ullam esse, est labore incidunt corrupti repellendus, quasi tempora
+                    ducimus autem eligendi numquam.
+                </p>
+            </article>
+            <article class="imgbox">
+                <img src="./img/交換謊言日記3.jpg" alt="">
+            </article>
+        </div>
+
+    </section>
+    <section id='scare'>
+        <h1>驚悚</h1>
+        <div class="wrap">
+            <h2>請解開<span style="color:#ffe3e3;font-size: 38px;">故事</span>謎底</h2>
+            <div class="img-items">
+                <div class="slider">
+                    <img src="./img/請解開故事謎底.jpg" alt="">
+                    <img src="./img/請解開故事謎底3.png" alt="">
+                    <img src="./img/請解開故事謎底4.jpg" alt="">
+                    <img src="./img/請解開故事謎底.jpg" alt="">
+                    <img src="./img/請解開故事謎底3.png" alt="">
+                    <img src="./img/請解開故事謎底4.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="product">
+        <h1>線上購買</h1>
+        <hr>
+        <div class="wrap">
+            <div class="control">
+                <form>
+                    <h2>購買表單</h2>
+                    <p>
+                        <label for="bookid">小說編號：</label>
+                        <input type="text" name="bookId" id="bookid" required>
+                    </p>
+                    <p>
+                        <label for="bookname">小說名字：</label>
+                        <input type="text" name="bookname" id="bookname" required>
+                    </p>
+                    <p>
+                        <label for="email">電子信箱：</label>
+                        <input type="email" name="email" id="email" required>
+                    </p>
+                    <br>
+                    <button class="submit">送出</button>
+                    <button type="reset">重置</button>
+                </form>
+            </div>
+            <div class="list">
+                <h2>購物清單列表</h2>
+                <ul>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <footer>
+        &copy;copyright 版權所有
+        製做於2023
+    </footer>
+
+
+    <script>
+        const list = document.querySelector('.list > ul')
+        const submit = document.querySelector('.submit')
+        const form = document.querySelector('form')
+        form.onsubmit = (event) => {
+            event.preventDefault()
+            if (confirm('是否送出?')) {
+                const bookid = document.querySelector('#bookid')
+                const bookname = document.querySelector('#bookname')
+                const email = document.querySelector('#email')
+                list.innerHTML += `
+                    <li>
+                        <div>編號:${bookid.value}</div>
+                        <div>名字:${bookname.value}</div>
+                        <div>電子信箱:${email.value}</div>
+                    </li>
+                    `
+                bookid.value = ''
+                bookname.value = ''
+                email.value = ''
+            }
+
+        }
+    </script>
+</body>
+
+</html>

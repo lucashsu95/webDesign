@@ -1,0 +1,47 @@
+/* 1 */
+.item:nth-child(1) {
+    background: url("https://picsum.photos/id/1048/1920/1080") no-repeat center center / cover;
+}
+
+.item:nth-child(1)::after {
+    background: #f605;
+}
+
+/* 2 */
+.item:nth-child(2) {
+    background: url("https://picsum.photos/id/660/1920/1080") no-repeat center center / cover;
+}
+
+.item:nth-child(2)::after {
+    background: #39f8;
+}
+
+/* 3 */
+
+.item:nth-child(3) {
+    background: url("https://picsum.photos/id/227/1920/1080") no-repeat center center / cover;
+}
+
+.item:nth-child(3)::after {
+    background: rgba(168, 168, 37, 0.6);
+}
+
+/* 4 */
+
+.item:nth-child(4) {
+    background: url("https://picsum.photos/id/770/1920/1080") no-repeat center center / cover;
+}
+
+.item:nth-child(4)::after {
+    background: rgba(112, 18, 170, 0.333);
+}
+
+/* 5 */
+
+.item:nth-child(5) {
+    background: url("https://picsum.photos/id/112/1920/1080") no-repeat center center / cover;
+}
+
+.item:nth-child(5)::after {
+    background: rgba(6, 234, 234, 0.333);
+}

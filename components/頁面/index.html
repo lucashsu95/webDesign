@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="set-bg.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="item">
+            <h1>html</h1>
+            <button>Read More</button>
+            <article class="text">
+                HTML是一種用於建立網頁結構和內容的標記語言。它
+                使用標籤（tags）來定義元素，如段落、標題、圖像
+                、超連結等。HTML為網頁提供了結構性的框架，瀏覽
+                器根據HTML的指示來渲染網頁。
+            </article>
+        </div>
+        <div class="item">
+            <h1>css</h1>
+            <button>Read More</button>
+            <article class="text">
+                CSS是一種用於設計和美化網頁外觀的語言。它允許您
+                控制元素的顏色、字型、間距、位置等外觀屬性。通過
+                將CSS樣式應用到HTML元素上，您可以實現各種外觀效
+                果，從而增強網頁的視覺吸引力和可讀性。
+            </article>
+        </div>
+        <div class="item">
+            <h1>javascript</h1>
+            <button>Read More</button>
+            <article class="text">
+                JavaScript是一種用於在瀏覽器中添加互動性和動態功
+                能的腳本語言。它能夠操縱HTML和CSS，使網頁能夠根據
+                用戶的操作進行反應。JavaScript可以用於表單驗證、
+                動畫、API呼叫、事件處理等，使網頁更具動態性。
+            </article>
+        </div>
+        <div class="item">
+            <h1>php</h1>
+            <button>Read More</button>
+            <article class="text">
+                PHP是一種後端程式語言，專門用於處理伺服器端的任務。
+                它可以生成動態網頁內容、與數據庫進行交互、處理表單提
+                交等。PHP能夠使網站實現更複雜的功能，例如用戶註冊、
+                登入系統、內容管理等。
+            </article>
+        </div>
+        <div class="item">
+            <h1>vue</h1>
+            <button>Read More</button>
+            <article class="text">
+                Vue.js是一個開源的JavaScript框架，用於構建用戶界面
+                。它專注於處理前端的應用程式邏輯和互動性。Vue.js使用
+                了組件化的架構，讓開發者可以將網頁拆分為多個可重用的組
+                件，這有助於保持代碼的組織性和可維護性。
+            </article>
+        </div>
+    </div>
+    <script>
+        const items = document.querySelectorAll('.item')
+        items.forEach(item => {
+            const btn = item.querySelector('button')
+            btn.addEventListener('click', () => {
+                item.classList.toggle('active')
+                btn.innerText = btn.innerText === 'Read More' ? 'Close' : "Read More"
+            })
+        });
+    </script>
+</body>
+
+</html>

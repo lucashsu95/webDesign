@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 微軟正黑體;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#home,
+#love,
+#anime,
+#scare,
+#product {
+    min-height: 100vh;
+    padding-top: 72px;
+}
+
+:is(#home, #love, #anime, #scare, #product) h1 {
+    font-size: 52px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-left: 60px;
+}
+
+input {
+    padding: .5rem 1rem;
+    margin: 10px;
+    border-radius: 50px;
+    outline: none;
+    border: 1px solid #888;
+    transition: .5s;
+}
+
+input:focus {
+    box-shadow: 0 0 8px #9cceff;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 2px solid #ccc;
+    font-weight: bold;
+    background: #3330;
+    transition: 300ms;
+    cursor: pointer;
+}
+
+button.submit {
+    color: #39f;
+    border: 2px solid #39f;
+}
+
+button:hover {
+    color: #fff;
+    background: #333;
+}
+
+button.submit:hover {
+    background: #39f;
+}
+
+/* home */
+#home {
+    background: url(../img/請解開故事謎底2.jpg) center center / cover no-repeat;
+    isolation: isolate;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#home::after {
+    content: '';
+    z-index: -1;
+    inset: 0;
+    background: #0009;
+    position: absolute;
+}
+
+#home h1 {
+    font-size: 72px;
+    color: #fff;
+    width: 600px;
+}
+
+.slogon {
+    border-right: 2px solid #fff;
+    animation: 2s typeing steps(11) infinite alternate;
+    width: 50px;
+    overflow: hidden;
+}
+
+
+@keyframes typeing {
+    to {
+        width: 610px;
+    }
+}
+
+/* love */
+
+#love {
+    background: url(../img/love-bg.jpg) center center / cover no-repeat;
+}
+
+#love .wrap {
+    margin: 0 auto;
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(3, 340px);
+    gap: 25px;
+}
+
+.card {
+    border: 1px solid #000;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 10px 25px;
+    background: linear-gradient(45deg, #e8b9a6, #eeebe3);
+}
+
+/* anime */
+#anime {
+    background: #fff6f3;
+}
+
+#anime .wrap {
+    margin: 0 auto;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 100px;
+}
+
+
+#anime .imgbox {
+    text-align: center;
+}
+
+#anime .imgbox img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+#anime .text {
+    line-height: 1.6;
+    padding: 25px;
+    background: #ffe2ef;
+    position: relative;
+    top: 50px;
+    height: max-content;
+}
+
+:is(#anime, #product) h2 {
+    border-left: 4px solid #fa0;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+/* scare */
+
+#anime .wrap {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.img-items {
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    animation: slider 5s linear infinite;
+}
+
+.slider img {
+    min-width: calc(34% - 10px);
+    margin: 0 5px;
+    object-fit: cover;
+}
+
+#scare {
+    background: #333;
+}
+
+#scare h1 {
+    color: #fff;
+}
+
+#scare h2 {
+    text-align: center;
+    font-size: 34px;
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+@keyframes slider {
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* product */
+
+#product .wrap {
+
+    width: 75%;
+    min-height: 80vh;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 25px;
+}
+
+#product .wrap>* {
+    height: 500px;
+    border-radius: 25px;
+    box-shadow: 3px 3px 5px #333;
+    line-height: 2;
+    border: 1px solid #000;
+    padding: 25px;
+}
+
+
+#product .list ul {
+    height: 400px;
+    overflow: auto;
+}
+
+#product .list li {
+    border: 1px solid #999;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
+    list-style: none;
+}
+
+/* footer */
+footer {
+    text-align: center;
+    padding: 1.4rem;
+    background: #000;
+    color: #eee;
+}

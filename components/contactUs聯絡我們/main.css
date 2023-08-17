@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 微軟正黑體;
+}
+
+body {
+    min-height: 100vh;
+    background: url("https://picsum.photos/id/990/1920/1080") no-repeat center center / cover;
+}
+
+/* container */
+
+.container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* header */
+header {
+    text-align: center;
+    line-height: 3;
+    color: #fff;
+    text-shadow: 1px 1px 5px black;
+}
+
+/* card */
+
+.card {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px black;
+}
+
+.card figure {
+    padding: 8px;
+    margin: -2rem;
+    
+    box-shadow: 0 3px 5px black;
+    border-radius: 50%;
+    background: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card figure img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.card-body {
+    margin: 2rem 0;
+    padding: .5rem 1rem;
+    text-align: center;
+}
+
+.card .card-body h2 {
+    font-weight: bold;
+    margin: 1rem 0;
+    font-size: 2rem;
+    color: #333;
+}
+
+.card .card-body .card-text {
+    color: #999;
+}
+
+.card a {
+    width: 100%;
+    padding: .5rem 2rem;
+
+    color: rgb(43, 67, 226);
+    background: rgb(202, 246, 255);
+    border-radius: 0 0 5px 5px;
+
+    text-align: center;
+    position: relative;
+    text-decoration: none;
+}
+
+.card a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+
+    background: rgba(135, 155, 255, 0.5);
+
+    transform: scaleX(0);
+    transition: transform .5s;
+    transform-origin: right;
+}
+
+.card a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}

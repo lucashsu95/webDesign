@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 微軟正黑體;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* item */
+.item {
+    position: relative;
+    width: 25%;
+    height: 100vh;
+    color: #fff;
+    text-shadow: 1px 1px 5px #000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+
+    isolation: isolate;
+    transition: width 1s;
+    font-weight: bold;
+}
+
+.item:hover {
+    width: 45%;
+}
+
+.item::after {
+    content: '';
+    inset: 0;
+    z-index: -1;
+    position: absolute;
+}
+
+.item.active {
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* article */
+.item article {
+    display: none;
+}
+
+.item.active article {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    line-height: 2;
+    font-size: 1.2rem;
+    margin-top: 3rem;
+}
+
+/* component */
+.item h1 {
+    text-transform: uppercase;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    margin-top: 3rem;
+
+    border: none;
+    border-radius: 25px;
+    background: #fff;
+    color: #37f;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+button:hover {
+    background: #39f;
+    color: #fff;
+}   

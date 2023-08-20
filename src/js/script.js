@@ -56,6 +56,7 @@ const app = Vue.createApp({
         "vue-lg.html",
         "vue-sm.html",
         '火車過山洞.html'],
+      shopcar: ['index.html', 'index-vue.html']
     };
   },
 }).mount("#app");

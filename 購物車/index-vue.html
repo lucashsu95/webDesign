@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>購物車</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.css'
+        integrity='sha512-lp6wLpq/o3UVdgb9txVgXUTsvs0Fj1YfelAbza2Kl/aQHbNnfTYPMLiQRvy3i+3IigMby34mtcvcrh31U50nRw=='
+        crossorigin='anonymous' />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.js'
+        integrity='sha512-w39cIBZHEf0ac8RERRGs+aTrQbBIpb+0qGsMCKfwvJSmN6YV8brsbYN1a/nTmuQgfrGyg7p3WI4HRu1rs3rLvw=='
+        crossorigin='anonymous'></script>
+
+</head>
+
+<body>
+    <div id='app' class="container mt-5">
+        <div class="row row-cols-3">
+            <div class="col" v-for="product in products">
+                <!-- card -->
+                <div class="card w-100 h-100 shadow-lg">
+                    <img :src="product.img" :style="product.style" class="w-75 mx-auto mt-3">
+                    <!-- card-body -->
+                    <div class="card-body">
+                        <h1 class="card-title">{{product.title}}</h1>
+                        <!-- control -->
+                        <h6 class='bg-success text-light px-3 py-2 rounded' style='width:max-content'>
+                            ${{product.price}}元
+                        </h6>
+                        <div class="d-flex gap-3 justify-content-center">
+                            <button class="btn btn-primary" @click="product.amount++">+</button>
+                            <input type="text" class="form-control text-center" v-model="product.amount">
+                            <button class="btn btn-primary"
+                                @click="product.amount = Math.max(0,--product.amount)">-</button>
+                        </div>
+                        <div class="card-text mt-3 text-start">{{product.desc}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary mt-3" @click="onSubmit()">送出結帳</button>
+    </div>
+    <script>
+        const { ref, createApp } = Vue;
+        const app = createApp({
+            setup() {
+                const products = ref([
+                    {
+                        title: '招牌鍋貼',
+                        price: 10,
+                        desc: `不知道哪個不用心的人打錯字，而不小心亂入的鍋貼君，希望最後可以讓他回到安心的家(反正最後會被吃掉....)`,
+                        img: './菠蘿麵包.jpg',
+                        amount: 0,
+                        style: '',
+                    },
+                    {
+                        title: '灰色的波羅麵包',
+                        price: 100,
+                        desc: `像這款灰色波羅麵包；我就是逛商城的時侯看到的；當下就試用了相關的功能很滿意。所以心裡就把型號記了下來`,
+                        img: './菠蘿麵包.jpg',
+                        amount: 0,
+                        style: 'filter:grayscale(100)',
+                    },
+                    {
+                        title: '神秘的波羅麵包',
+                        price: 300,
+                        desc: `實用起來真的很滿意。而且如果買到不良品也有退貨的服務；我根本也不憺心^^`,
+                        img: './菠蘿麵包.jpg',
+                        amount: 0,
+                        style: 'filter:blur(11px)',
+                    },
+                ])
+                const onSubmit = () => {
+                    const total = products.value.reduce((sum, x) => x.amount * x.price + sum, 0)
+                    alert(`總共是${total}元`)
+                }
+
+                return {
+                    products,
+                    onSubmit,
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+</body>
+
+</html>

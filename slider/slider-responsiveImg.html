@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --slider-w: 100vw;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .slider {
+            display: flex;
+            width: var(--slider-w);
+            height: 100vh;
+            transition: transform .5s;
+        }
+
+        .slider img {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+
+        /* <------control------> */
+        .control {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100vw;
+            height: 100vh;
+            z-index: 99;
+
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control button {
+            background: none;
+            border: none;
+            color: #333;
+            padding: 2%;
+
+            cursor: pointer;
+            font-size: 55px;
+            opacity: 0.85;
+            transition: opacity .5s;
+        }
+
+        .control button:hover {
+            opacity: 1;
+        }
+
+        /* <------index------> */
+
+        .slider_index {
+            width: 100%;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            bottom: 5%;
+            z-index: 99;
+        }
+
+        .slider_index div {
+            width: 100px;
+            height: 8px;
+            background: #3339;
+            border: 1px solid #444;
+            cursor: pointer;
+            transition: all .5s;
+        }
+
+        .slider_index div:hover {
+            background: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="slider">
+            <!-- 只要增加圖片即可，其它東西會自己增加 -->
+            <img src="https://picsum.photos/id/660/1920/1080">
+            <img src="https://picsum.photos/id/409/1920/1080">
+            <img src="https://picsum.photos/id/78/1920/1080">
+            <img src="https://picsum.photos/id/825/1920/1080">
+            <img src="https://picsum.photos/id/1084/1920/1080">
+        </div>
+        <!-- control -->
+        <div class="control">
+            <button class="prev" onclick="changeSlider(-1)">&lt;</button>
+            <button class="next" onclick="changeSlider()">></button>
+        </div>
+        <!-- index -->
+        <div class="slider_index"></div>
+    </header>
+    <script>
+        const slider = document.querySelector('.slider')
+        const slider_index = document.querySelector('.slider_index')
+        const slider_index_Divs = []
+        const img_len = slider.querySelectorAll('img').length // 輪播圖數量
+        let currentIndex = 0 // 目前輪播圖的索引
+        let auto = null // 自動輪播的計時器
+
+        // 更新 css --slider-w 變數 依照圖片數量
+        const root = document.documentElement
+        root.style.setProperty('--slider-w', `${img_len * 100}vw`)
+
+
+        // 製造 索引index 的 Div
+        for (let i = 0; i < img_len; i++) {
+            const div = document.createElement('div')
+            slider_index_Divs.push(div)
+            slider_index.appendChild(div)
+        }
+
+        // 渲染輪播圖
+        function renderSlider() {
+            clearInterval(auto); // 清除自動輪播的計時器
+            auto = setTimeout(changeSlider, 3000); // 在 3000 毫秒後呼叫 changeSlider 函式，實現自動輪播
+            slider.style.transform = `translateX(-${100 * currentIndex}vw)`; // 根據目前索引設定輪播圖的偏移
+        }
+
+        // 切換輪播圖
+        function changeSlider(flag = 1) {
+            // 根據旗標切換到下一張或上一張輪播圖
+            currentIndex = (currentIndex + flag + img_len) % img_len;
+            renderSlider(); // 重新渲染輪播圖
+        }
+
+        // 為每個索引圓點加入點擊事件監聽
+        slider_index_Divs.forEach((div, index) => {
+            div.addEventListener('click', () => {
+                currentIndex = index; // 更新目前索引為被點擊的索引
+                renderSlider(); // 渲染輪播圖
+            });
+        });
+
+        // 初始渲染輪播圖
+        renderSlider();
+
+    </script>
+
+</body>
+
+</html>

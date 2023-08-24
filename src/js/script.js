@@ -50,12 +50,13 @@ const app = Vue.createApp({
         '超簡單版/todoList.html',
       ],
       slider: [
-        "slider-fade.html",
         "slider.html",
+        '火車過山洞.html',
+        "slider-responsiveImg.html",
+        "slider-fade.html",
         "only-css.html",
         "vue-lg.html",
-        "vue-sm.html",
-        '火車過山洞.html'],
+      ],
       shopcar: ['index.html', 'index-vue.html']
     };
   },

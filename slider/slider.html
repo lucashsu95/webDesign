@@ -4,147 +4,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slider</title>
+    <title>圖片輸播</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 微軟正黑體;
         }
 
-        :root {
-            --slider-w: 100vw;
-        }
-
-        body {
-            overflow-x: hidden;
-        }
-
-        .slider {
+        /* wrap */
+        .wrap {
+            margin-top: 10rem;
+            width: 100%;
+            height: 60vh;
             display: flex;
-            width: var(--slider-w);
-            height: 100vh;
-            transition: transform .5s;
+            align-items: center;
+            position: relative;
         }
 
-        .slider img {
-            width: 100vw;
-            height: 100vh;
+        img {
             object-fit: cover;
-        }
-
-        /* <------control------> */
-        .control {
+            height: 100%;
+            box-shadow: 2px 2px 10px black;
             position: absolute;
             top: 0;
+            transition: .5s all;
+        }
+
+        /* prev , next , show */
+        .prev {
+            width: 25%;
             left: 0;
-
-            width: 100vw;
-            height: 100vh;
-            z-index: 99;
-
-            display: flex;
-            justify-content: space-between;
+            transform: scale(0.8);
+            z-index: 4;
         }
 
-        .control button {
-            background: none;
-            border: none;
-            color: #333;
-            padding: 2%;
-
-            cursor: pointer;
-            font-size: 55px;
-            opacity: 0.85;
-            transition: opacity .5s;
+        .next {
+            width: 25%;
+            left: 100%;
+            transform: translateX(-100%) scale(0.8);
+            z-index: 4;
         }
 
-        .control button:hover {
-            opacity: 1;
+        .show {
+            width: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
         }
 
-        /* <------index------> */
-
-        .slider_index {
-            width: 100%;
-            position: absolute;
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            bottom: 5%;
-            z-index: 99;
-        }
-
-        .slider_index div {
-            width: 100px;
-            height: 8px;
-            background: #3339;
-            border: 1px solid #444;
-            cursor: pointer;
-            transition: all .5s;
-        }
-
-        .slider_index div:hover {
-            background: #999;
+        /* button */
+        button {
+            padding: 5px 10px;
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <div class="slider">
-            <img src="https://picsum.photos/id/660/1920/1080">
-            <img src="https://picsum.photos/id/409/1920/1080">
-            <img src="https://picsum.photos/id/78/1920/1080">
-            <img src="https://picsum.photos/id/825/1920/1080">
-            <img src="https://picsum.photos/id/1084/1920/1080">
-        </div>
-        <!-- control -->
-        <div class="control">
-            <button class="prev" onclick="changeSlider(-1)">&lt;</button>
-            <button class="next" onclick="changeSlider()">></button>
-        </div>
-        <!-- index -->
-        <div class="slider_index"></div>
-    </header>
+    <div class="wrap">
+        <img src="https://picsum.photos/id/277/700/500" class="show">
+        <img src="https://picsum.photos/id/660/700/500" class="prev">
+        <img src="https://picsum.photos/id/777/700/500" class="next">
+    </div>
+
+    <button onclick="changeCard(-1)">&lt;</button>
+    <button onclick="changeCard()">&gt;</button>
     <script>
-        const slider = document.querySelector('.slider')
-        const slider_index = document.querySelector('.slider_index')
-        const slider_index_Divs = []
-        const img_len = slider.querySelectorAll('img').length
-        let currentIndex = 0
-        let auto = null
+        let index = 0
+        const imgs = Array.from(document.querySelectorAll('.wrap > img'))
 
-        const root = document.documentElement
-        root.style.setProperty('--slider-w', `${img_len * 100}vw`)
 
-        for (let i = 0; i < img_len; i++) {
-            const div = document.createElement('div')
-            slider_index_Divs.push(div)
-            slider_index.appendChild(div)
-        }
-
-        function renderSlider() {
-            clearInterval(auto)
-            auto = setTimeout(changeSlider, 3000)
-            slider.style.transform = `translateX(-${100 * currentIndex}vw)`
-        }
-
-        function changeSlider(flag = 1) {
-            currentIndex = (currentIndex + flag + img_len) % img_len;
-            renderSlider()
-        }
-
-        slider_index_Divs.forEach((div, index) => {
-            div.addEventListener('click', () => {
-                currentIndex = index;
-                renderSlider()
+        function changeCard(num = 1) {
+            index = (index + num + imgs.length) % imgs.length
+            imgs.forEach((x, i) => {
+                switch (index) {
+                    case i:
+                        x.className = 'show'
+                        break;
+                    case (i + 1) % 3:
+                        x.className = 'next'
+                        break;
+                    case (i + 2) % 3:
+                        x.className = 'prev'
+                        break;
+                }
             })
-        })
+        }
 
-        renderSlider()
     </script>
-
 </body>
 
 </html>

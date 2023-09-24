@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 微軟正黑體;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: linear-gradient( 135deg, #5EFCE8 10%, #736EFE 100%);
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 50px;
+            padding: 100px 50px;
+        }
+
+        .container .card {
+            position: relative;
+            width: 350px;
+            height: 300px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 35px 80px #0002;
+            transition: .5s;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container .card:hover {
+            height: 400px;
+        }
+
+        .container .card .imgBx {
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            top: 20px;
+            width: 300px;
+            height: 220px;
+            background: #333;
+            border-radius: 12px;
+            transition: .5s;
+            overflow: hidden;
+        }
+
+        .container .card:hover .imgBx {
+            top: -100px;
+            scale: .75;
+            box-shadow: 0 15px 45px #0002;
+        }
+
+        .container .card:hover .imgBx img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .container .card .content {
+            position: absolute;
+            width: 100%;
+            padding: 0 30px;
+            text-align: center;
+            top: 252px;
+            height: 35px;
+            overflow: hidden;
+            transition: .5s;
+        }
+
+        .container .card:hover .content {
+            height: 250px;
+            top: 130px;
+        }
+
+        .container .card .content h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--clr);
+        }
+
+        .container .card .content p {
+            color: #333;
+
+        }
+
+        .container .card .content a {
+            position: relative;
+            top: 15px;
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--clr);
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card" style="--clr:#2ef">
+            <div class="imgBx">
+                <img src="https://picsum.photos/500/300/?random=10">
+            </div>
+            <div class="content">
+                <h2>Title 1</h2>
+                <p>Lorem ipsum dolor,
+                    sit amet consectetur
+                    adipisicing elit. Beatae
+                    tempora repudiandae sed
+                    accusantium esse atque
+                    aspernatur nihil repellendus
+                    quae praesentium?</p>
+                <a href="#">Read more</a>
+            </div>
+        </div>
+        <div class="card" style="--clr:#f60">
+            <div class="imgBx">
+                <img src="https://picsum.photos/500/300/?random=11">
+            </div>
+            <div class="content">
+                <h2>Title 2</h2>
+                <p>Lorem ipsum dolor,
+                    sit amet consectetur
+                    adipisicing elit. Beatae
+                    tempora repudiandae sed
+                    accusantium esse atque
+                    aspernatur nihil repellendus
+                    quae praesentium?</p>
+                <a href="#">Read more</a>
+            </div>
+        </div>
+        <div class="card" style="--clr:#39f">
+            <div class="imgBx">
+                <img src="https://picsum.photos/500/300/?random=12">
+            </div>
+            <div class="content">
+                <h2>Title 3</h2>
+                <p>Lorem ipsum dolor,
+                    sit amet consectetur
+                    adipisicing elit. Beatae
+                    tempora repudiandae sed
+                    accusantium esse atque
+                    aspernatur nihil repellendus
+                    quae praesentium?</p>
+                <a href="#">Read more</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

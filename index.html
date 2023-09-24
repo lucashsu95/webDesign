@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WebDesing</title>
-  <script src="./src/js/vue.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.min.js' integrity='sha512-Wbf9QOX8TxnLykSrNGmAc5mDntbpyXjOw9zgnKql3DgQ7Iyr5TCSPWpvpwDuo+jikYoSNMD9tRRH854VfPpL9A==' crossorigin='anonymous'></script>
   <script src="./src/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="./src/css/bootstrap.min.css" />
   <link rel="stylesheet" href="./src/css/style.css">
@@ -14,6 +14,7 @@
 
 <body>
   <div id="app">
+    <!-- toggle_nav_btn -->
     <div class="toggle_nav_btn" @click="navToggleFlag = !navToggleFlag">
       <svg width="50px" height="40px" preserveAspectRatio="xMidYMid slice">
         <rect width="30px" height="5px" fill="black" x="10px" y="10px" />
@@ -21,267 +22,31 @@
         <rect width="30px" height="5px" fill="black" x="10px" y="30px" />
       </svg>
     </div>
+
+    <!-- nav -->
     <nav class="nav nav-pills flex-column" :style="{left:navToggleFlag ? '3%' : ''}">
-      <a href="#item-1" class="nav-link">animation</a>
-      <a href="#item-2" class="nav-link">background</a>
-      <a href="#item-3" class="nav-link">button</a>
-      <a href="#item-4" class="nav-link">canvas</a>
-      <a href="#item-5" class="nav-link">card</a>
-      <a href="#item-6" class="nav-link">進制轉換計算機</a>
-      <a href="#item-7" class="nav-link">Chat聊天機器人</a>
-      <a href="#item-8" class="nav-link">clip</a>
-      <a href="#item-9" class="nav-link">input</a>
-      <a href="#item-10" class="nav-link">JS動畫</a>
-      <a href="#item-11" class="nav-link">Light-Dark-Theme</a>
-      <a href="#item-12" class="nav-link">Navbar</a>
-      <a href="#item-13" class="nav-link">Parallax視差</a>
-      <a href="#item-14" class="nav-link">Q&A</a>
-      <a href="#item-15" class="nav-link">TodoList</a>
-      <a href="#item-16" class="nav-link">Scroll</a>
-      <a href="#item-17" class="nav-link">Slider</a>
-      <a href="#item-18" class="nav-link">Components</a>
-      <a href="#item-19" class="nav-link">購物車</a>
-      <nav class="nav nav-pills flex-column"></nav>
+      <a v-for="(value,key ,index) in main" :href="'#item-' + index" class="nav-link">{{ key }}</a>
     </nav>
+
+    <!-- main -->
     <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true"
       class="scrollspy-example container" tabindex="0">
-      <section id="item-1" class="active">
-        <h1>animation</h1>
+      <!-- section -->
+      <section v-for="(value,key,index) in main" :id="'item-' + index">
+        <h1>{{key}}</h1>
         <hr />
         <ul>
-          <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-            href="./animation/" target="_blank">All</a>
-
-          <li v-for="i in animation">
+          <li v-for="i in value">
             <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              :href="`animation/${i}`" target="_blank">{{i}}</a>
+              :href="`${key}/${i}`" target="_blank">{{i}}</a>
           </li>
         </ul>
       </section>
-      <section id="item-2">
-        <h1>background</h1>
-        <hr />
-        <ul>
-          <li v-for="i in background">
-            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              :href="`background/${i}`" target="_blank">{{i}}</a>
-          </li>
-        </ul>
-      </section>
-      <section id="item-3">
-        <h1>button</h1>
-        <hr />
-        <ul>
-          <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="./button"
-            target="_blank">All</a>
-          <li v-for="i in button">
-            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              :href="`button/${i}`" target="_blank">{{i}}</a>
-          </li>
-        </ul>
-      </section>
-      <section id="item-4">
-        <h1>canvas</h1>
-        <hr />
-        <ul>
-          <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="./canvas"
-            target="_blank">All</a>
-          <li v-for="i in canvas">
-            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              :href="`canvas/${i}`" target="_blank">{{i}}</a>
-          </li>
-        </ul>
-      </section>
-      <section id="item-5">
-        <h1>card</h1>
-        <hr />
-        <ul>
-          <li v-for="i in card">
-            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              :href="`card/${i}`" target="_blank">{{i}}</a>
-          </li>
-        </ul>
-      </section>
-      <section id="item-6">
-        <h1>進制轉換計算機</h1>
-        <hr />
-        <ul>
-          <li v-for="i in carry_system">
-            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              :href="`Carry_system/${i}`" target="_blank">{{i}}</a>
-          </li>
-        </ul>
-      </section>
-      <section id="item-7">
-        <h1>Chat聊天機器人</h1>
-        <hr />
-        <ul>
-          <li v-for="i in chat">
-            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              :href="`chat聊天機器人/${i}`" target="_blank">{{i}}</a>
-          </li>
-        </ul>
-      </section>
-      <section id="item-8">
-        <h1>clip</h1>
-        <hr />
-        <ul>
-          <li v-for="i in clipPath">
-            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              :href="`clip-path/${i}`" target="_blank">{{i}}</a>
-          </li>
-        </ul>
-      </section>
-      <section id="item-9">
-        <h1>input</h1>
-        <hr />
-        <ul>
-          <li id="item-9-1">
-            <h5>input</h5>
-            <ul>
-              <li v-for="i in input">
-                <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                  :href="`input/${i}`" target="_blank">{{i}}</a>
-              </li>
-            </ul>
-          </li>
-          <li id="item-9-3">
-            <h5>range</h5>
-            <ul>
-              <li v-for="i in range">
-                <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                  :href="`range/${i}`" target="_blank">{{i}}</a>
-              </li>
-            </ul>
-          </li>
-          <li id="item-9-4">
-            <h5>hover</h5>
-            <ul>
-              <li v-for="i in hover">
-                <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                  :href="`hover/${i}`" target="_blank">{{i}}</a>
-              </li>
-            </ul>
-          </li>
-          <li id="item-9-5">
-            <h5>audio</h5>
-            <ul>
-              <li>
-                <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                  href="./音樂播放器/index.html" target="_blank">音樂播放器</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </section>
-      <section id="item-10">
-        <h1>JS動畫</h1>
-        <hr />
-        <ul>
-          <li>
-            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              href="JS動畫/JS動畫.html" target="_blank">JS動畫</a>
-          </li>
-        </ul>
-      </section>
-      <section id="item-11">
-        <h1>Light-Dark-Theme</h1>
-        <hr />
-        <ul>
-          <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-            href="./light-dark-theme/index.html" target="_blank">Light-Dark-Theme</a>
-        </ul>
-      </section>
-      <section id="item-12">
-        <h1>navbar</h1>
-        <hr />
-        <ul>
-          <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="./navbar"
-            target="_blank">All</a>
-          <li v-for="i in navbar">
-            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              :href="`navbar/${i}`" target="_blank">{{i}}</a>
-          </li>
-        </ul>
-      </section>
-      <section id="item-13">
-        <h1>parallax視差</h1>
-        <hr />
-        <ul>
-          <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-            href="./parallax視差" target="_blank">All</a>
-          <li v-for="i in parallax">
-            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              :href="`parallax視差/${i}`" target="_blank">{{i}}</a>
-          </li>
-        </ul>
-      </section>
-      <section id="item-14">
-        <h1>Q&A</h1>
-        <hr />
-        <ul>
-          <li v-for="i in QandA">
-            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              :href="`Q&A/${i}`" target="_blank">{{i}}</a>
-          </li>
-        </ul>
-      </section>
-      <section id="item-15">
-        <h1>TodoList</h1>
-        <hr />
-        <ul>
-          <li v-for="i in TodoList">
-            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              :href="`TodoList/${i}`" target="_blank">{{i}}</a>
-          </li>
-        </ul>
-      </section>
-      <section id="item-16">
-        <h1>Scroll</h1>
-        <hr />
-        <ul>
-          <li v-for="i in scroll">
-            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              :href="`Scroll/${i}`" target="_blank">{{i}}</a>
-          </li>
-        </ul>
-      </section>
-      <section id="item-17">
-        <h1>slider</h1>
-        <hr />
-        <ul>
-          <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="./slider"
-            target="_blank">All</a>
-          <li v-for="i in slider">
-            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              :href="`slider/${i}`" target="_blank">{{i}}</a>
-          </li>
-        </ul>
-      </section>
-      <section id="item-18">
-        <h1>Components</h1>
-        <hr />
-        <ul>
-          <li v-for="i in components">
-            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              :href="`components/${i}`" target="_blank">{{i}}</a>
-          </li>
-        </ul>
-      </section>
-      <section id="item-19">
-        <h1>購物車</h1>
-        <hr />
-        <ul>
-          <li v-for="i in shopcar">
-            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              :href="`購物車/${i}`" target="_blank">{{i}}</a>
-          </li>
-        </ul>
-      </section>
-
     </div>
   </div>
-  <script src="./src/js/script.js"></script>
+
+  <!-- script.js -->
+  <script type="module" src="./src/js/script.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>figcaption_on_hover</title>
+    <style>
+        body {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            
+            color: #fff;
+            background: #222;
+            font-family: monospace;
+        }
+
+        figure {
+            position: relative;
+        }
+
+        figure>img {
+            width: 100%;
+        }
+
+        figure>figcaption {
+            position: absolute;
+            inset: 0;
+
+            opacity: 0;
+            background: #000c;
+            transition: opacity 200ms;
+            font-size: 28px;
+
+            display: grid;
+            place-items: center;
+        }
+
+        figure:hover>figcaption {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        Hover this ⤵️
+        <figure>
+            <img src="https://picsum.photos/id/277/500/300">
+            <figcaption>
+                Hellow, world
+            </figcaption>
+        </figure>
+    </div>
+</body>
+
+</html>

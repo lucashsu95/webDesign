@@ -65,12 +65,17 @@ nav:nth-of-type(1) {
     cursor: pointer;
 }
 
+.nav:nth-of-type(1){
+    height: 100vh;
+    padding: 5px;
+}
+
 .nav-pills {
     display: flex;
     flex-direction: column;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
     nav:nth-of-type(1) {
         left: -50%;
     }
@@ -78,9 +83,10 @@ nav:nth-of-type(1) {
     .toggle_nav_btn {
         display: block;
     }
-.nav-pills {
-    background: #fff;
-}
+
+    .nav-pills {
+        background: #fff;
+    }
 }
 
 @keyframes shadow {

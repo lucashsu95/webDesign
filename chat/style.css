@@ -1,24 +1,28 @@
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 微軟正黑體;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --color1: #67c;
+  --color2: #37c;
+}
+
 #chat {
   position: absolute;
-  right: 15%;
-  bottom: 15%;
-  width: 300px;
-  height: 500px;
+  right: 12%;
+  bottom: 19%;
+  width: 350px;
+  height: 600px;
 
   display: grid;
-  grid-template-rows: 1fr 9fr 1fr;
+  grid-template-rows: 1fr 15fr 2fr;
 
-  background: #fff;
-  border: 1px solid aqua;
-  box-shadow: 5px 5px 10px #ccc;
+  background: #fefefe;
+  box-shadow: 2px 3px 10px #aaa;
   border-radius: 25px;
   overflow: hidden;
 
@@ -34,7 +38,7 @@ html {
   width: 100px;
   height: 100px;
 
-  background-color: rgb(255, 217, 0);
+  background-color: var(--color1);
   border-radius: 50%;
 
   display: flex;
@@ -45,11 +49,8 @@ html {
 }
 
 .chatBtn:hover {
-  opacity: 0.8;
-}
-
-.chatBtn.active {
-  background-color: rgb(196, 166, 0);
+  filter: brightness(.85);
+  background-color: var(--color1);
 }
 
 .chatBtn img {
@@ -59,15 +60,17 @@ html {
 /* header */
 
 header {
-  background: #39f;
-  color: #fff;
-  padding: 10px 15px;
+  background: var(--color1);
+  color: #fefefe;
+  padding: 0 20px;
 }
 
 /* main */
 
 main {
   overflow: auto;
+  padding: 0 20px;
+  padding-bottom: 10px;
 }
 
 .message {
@@ -81,49 +84,64 @@ main {
   align-items: end;
 }
 
-.people-img img {
+.avatar img {
   width: 50px;
   height: 50px;
   object-fit: cover;
   object-position: center;
+  border-radius: 50%;
+  box-shadow: 1px 2px 3px #0005;
 }
 
 .content {
   background: rgb(189, 255, 192);
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 5px 20px;
   margin: 0 40px;
 }
 
 /* message-input */
 
 .message-input {
+  padding-inline: 20px;
+  padding-bottom: 10px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 input,
 button {
   padding: 10px;
-  margin: 10px;
+  margin: 5px;
 }
 
 input {
   width: 100%;
   border-radius: 4px;
   border: 1px solid #ccc;
+  border-radius: 45px;
 }
 
 button {
-  background: #39f;
+  flex: 1 1 auto;
+  background: var(--color1);
   border: none;
   border-radius: 6px;
   color: #fff;
   cursor: pointer;
   font-size: 15px;
+  transition: scale .3s;
 }
 
 button:hover {
-  background: #58f;
+  filter: brightness(0.85);
+}
+
+button:active{
+  scale: 0.85;
+}
+
+.send-btn {
+  padding-inline: 20px;
+  border-radius: 45px;
 }

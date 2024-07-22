@@ -24,7 +24,7 @@
       </header>
       <main ref="mainDiv">
         <div v-for="item in main" class="message" :class="{myChat:item.role === 'user'}">
-          <div class="people-img">
+          <div class="avatar">
             <img :src="item.role === 'user' ? './img/R.jpg' : './img/L.jpg' " alt="" />
           </div>
           <div class="content">{{item.message}}</div>
@@ -47,7 +47,7 @@
       </section>
       <form class="message-input" @submit.prevent="onChatInput">
         <input type="text" placeholder="請輸入訊息" v-model="chatInput" />
-        <button>send</button>
+        <button class="send-btn">send</button>
       </form>
     </div>
   </div>

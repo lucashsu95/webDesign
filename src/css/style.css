@@ -41,13 +41,13 @@ section {
 
 nav:nth-of-type(1) {
     transition: 0.5s;
-    border-radius: 25px;
     padding: 20px;
     position: fixed;
-    left: 3%;
+    left: 0%;
     top: 50%;
+    height: 100vh;
+    padding: 5px;
     transform: translateY(-50%);
-    background: #ffffff48;
 
     &:hover {
         box-shadow: 2px 2px 50px #ddd;
@@ -63,11 +63,7 @@ nav:nth-of-type(1) {
     bottom: 5%;
     background: #ddd;
     cursor: pointer;
-}
-
-.nav:nth-of-type(1){
-    height: 100vh;
-    padding: 5px;
+    z-index: 999;
 }
 
 .nav-pills {
@@ -77,19 +73,18 @@ nav:nth-of-type(1) {
 
 @media (max-width: 1024px) {
     nav:nth-of-type(1) {
-        left: -50%;
+        left: -100%;
+        width: 100%;
     }
 
     .toggle_nav_btn {
         display: block;
     }
+}
 
-    .nav-pills {
+@media (max-width:400px) {
+    #app .nav-pills {
         background: #fff;
-    }
-
-    body{
-        font-size: 12px;
     }
 }
 

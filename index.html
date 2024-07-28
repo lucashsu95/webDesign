@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WebDesing</title>
+  <link rel="shortcut icon" href="./src/54_logo-1-1.png" type="image/x-icon">
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.min.js' integrity='sha512-Wbf9QOX8TxnLykSrNGmAc5mDntbpyXjOw9zgnKql3DgQ7Iyr5TCSPWpvpwDuo+jikYoSNMD9tRRH854VfPpL9A==' crossorigin='anonymous'></script>
   <script src="./src/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="./src/css/bootstrap.min.css" />
@@ -34,7 +35,6 @@
       <!-- section -->
       <section v-for="(value,key,index) in main" :id="'item-' + index">
         <h1>{{key}}</h1>
-        <hr />
         <ul>
           <li v-for="i in value">
             <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"

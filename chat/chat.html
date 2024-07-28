@@ -29,15 +29,6 @@
           </div>
           <div class="content">{{item.message}}</div>
         </div>
-        <!-- <div class="message myChat">
-          <div class="people-img"><img src="./L.jpg" alt="" /></div>
-          <div class="content">Hi ~</div>
-        </div>
-
-        <div class="message">
-          <div class="people-img"><img src="./R.jpg" alt="" /></div>
-          <div class="content">Hello ~</div>
-        </div> -->
       </main>
 
       <section class="message-input">
@@ -110,78 +101,6 @@
       },
     }).mount("#app");
   </script>
-
-  <!-- <script>
-      const robotMessage = () => {
-        main.innerHTML += `
-          <div class="message">
-            <div class="people-img"><img src="./L.jpg" alt="" /></div>
-            <div class="content">感謝您的回覆，如果還有什麼需求可以再告訴我喔~</div>
-          </div>`;
-        main.scrollTop = main.scrollHeight;
-      };
-
-      const main = document.querySelector("main");
-      const input = document.querySelector("input");
-      const form = document.querySelector(".message-input");
-
-      const handleMessageSubmit = (e) => {
-        e.preventDefault();
-        const value = input.value;
-        main.innerHTML += `
-              <div class="message myChat">
-                  <div class="people-img"><img src="./R.jpg" alt="" /></div>
-                  <div class="content">${value}</div>
-              </div>`;
-        input.value = "";
-        setTimeout(() => {
-          robotMessage();
-        }, 500);
-      };
-
-      form.addEventListener("submit", handleMessageSubmit);
-    </script> -->
-  <!-- <script>
-      const main = document.querySelector("main");
-      const btns = [...document.querySelectorAll("button")];
-
-      const robotMessage = (msg) => {
-        let data = "";
-        if (msg === "4月最強新番") {
-          data =
-            "「在演藝圈（這個世界）裡，謊言就是武器。」2023年4月最強廣世巨作「我推的孩子」";
-        } else if (msg === "戀愛類型動漫") {
-          data =
-            "最近有「我內心的糟糕念頭」是最甜最甜的純真戀愛動漫，保證甜死你!";
-        } else if (msg === "異世界爛大街中脫穎而出的") {
-          data =
-            "如果你問我，那我也只能說高橋李依最棒!不訪試試看「為美好的世界獻上爆焰」！";
-        }
-        main.innerHTML += `
-          <div class="message">
-            <div class="people-img"><img src="./L.jpg" alt="" /></div>
-            <div class="content">${data}</div>
-          </div>`;
-
-        main.scrollTop = main.scrollHeight;
-      };
-
-      const handleMessageSubmit = (e) => {
-        const msg = e.target.dataset.key;
-        main.innerHTML += `
-              <div class="message myChat">
-                  <div class="people-img"><img src="./R.jpg" alt="" /></div>
-                  <div class="content">${msg}</div>
-              </div>`;
-        setTimeout(() => {
-          robotMessage(msg);
-        }, 500);
-      };
-
-      for (btn of btns) {
-        btn.addEventListener("click", handleMessageSubmit);
-      }
-    </script> -->
 </body>
 
 </html>

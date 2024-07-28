@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>chat</title>
+    <style>
+        * {
+            font-family: 微軟正黑體;
+        }
+
+        :root {
+            --color1: #67c;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* chat */
+        #chat {
+            width: 350px;
+            height: 600px;
+
+            display: grid;
+            grid-template-rows: 1fr 15fr 2fr;
+
+            background: #fefefe;
+            box-shadow: 2px 3px 10px #aaa;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* chat header */
+
+        header {
+            background: var(--color1);
+            color: #fefefe;
+            padding: 0 20px;
+        }
+
+        /* chat main */
+
+        main {
+            overflow-y: auto;
+            border-bottom: 1px solid #ddd;
+            padding: 0 20px;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .message {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+        }
+
+        .message.user {
+            align-items: end;
+        }
+
+        .avatar img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+            box-shadow: 1px 2px 3px #0005;
+        }
+
+        .content {
+            background: rgb(189, 255, 192);
+            border-radius: 5px;
+            padding: 5px 20px;
+            margin: 0 40px;
+        }
+
+        /* chat message-input */
+
+        .message-input {
+            padding-inline: 20px;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            margin: 0 2px;
+        }
+
+        input {
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            border-radius: 45px;
+            outline: none;
+        }
+
+        input:focus {
+            border: 1px solid var(--color1);
+        }
+
+        button {
+            flex: 1 1 auto;
+            background: var(--color1);
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 15px;
+            transition: scale .3s;
+            text-wrap: nowrap;
+
+            &:hover {
+                filter: brightness(0.85);
+            }
+
+            &:active {
+                scale: 0.85;
+            }
+        }
+
+        .send-btn {
+            padding-inline: 20px;
+            border-radius: 45px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chat">
+        <header>
+            <h2>New Chat</h2>
+        </header>
+        <main></main>
+        <section class="message-input">
+            <button data-key="4月最強">4月最強</button>
+            <button data-key="戀愛">戀愛</button>
+            <button data-key="異世界">異世界</button>
+        </section>
+        <form class="message-input">
+            <input type="text" placeholder="請輸入訊息" />
+            <button class="send-btn">送出</button>
+        </form>
+    </div>
+    <script>
+        // DOM抓取
+        const main = document.querySelector("main");
+        const btns = [...document.querySelectorAll("button")];
+        const input = document.querySelector("input");
+        const form = document.querySelector(".message-input");
+
+        // 機器人
+        const robotMessage = (msg) => {
+            let data = "";
+            switch (msg) {
+                case '4月最強':
+                    data = "「在演藝圈（這個世界）裡，謊言就是武器。」2023年4月最強廣世巨作「我推的孩子」";
+                    break;
+                case '戀愛':
+                    data = "最近有「我內心的糟糕念頭」是最甜最甜的純真戀愛動漫，保證甜死你!";
+                    break;
+                case '異世界':
+                    data = "如果你問我，那我也只能說高橋李依最棒!不訪試試看「為美好的世界獻上爆焰」！";
+                    break;
+                default:
+                    data = '感謝您的回覆，如果還有什麼需求可以再告訴我喔';
+                    break;
+            }
+
+            main.innerHTML += `
+                <div class='message'>
+                    <div class="avatar">
+                        <img src="img/L.jpg" alt="L.jpg" />
+                    </div>
+                    <div class="content">${data}</div>
+                </div>
+            `;
+
+            main.scrollTop = main.scrollHeight;
+        };
+
+        // 使用者輸入
+        const handleMessageSubmit = (e) => {
+            e.preventDefault();
+
+            const msg = e.target.dataset.key ?? input.value;
+            main.innerHTML += `
+                <div class='message user'>
+                    <div class="avatar">
+                        <img src="img/R.jpg" alt="R.jpg" />
+                    </div>
+                    <div class="content">${msg}</div>
+                </div>`;
+            input.value = "";
+
+            setTimeout(() => {
+                robotMessage(msg);
+            }, 500);
+        };
+
+        // 點擊和送出事件
+        for (btn of btns) {
+            btn.addEventListener("click", handleMessageSubmit);
+        }
+        form.addEventListener("submit", handleMessageSubmit);
+    </script>
+</body>
+
+</html>

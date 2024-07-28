@@ -21,7 +21,7 @@ const main_data = {
     card: ["border-cards", "Glass-morphism", "img-card", "img-light-card/card.html"],
     Carry_system: ["Carry_system.html"],
     clipPath: ["index.html"],
-    chat: ['chat.html', 'chat2.html'],
+    chat: ['chat.html', 'chat2.html','vanilla.html'],
     components: [
         '頁面/index.html',
         '書店/index.html',

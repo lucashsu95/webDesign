@@ -19,7 +19,7 @@ const main_data = {
     ],
     canvas: ["drawball.html", "調色盤.html", "小畫家"],
     card: ["border-cards", "Glass-morphism", "img-card", "img-light-card/card.html"],
-    carry_system: ["Carry_system.html"],
+    Carry_system: ["Carry_system.html"],
     clipPath: ["index.html"],
     chat: ['chat.html', 'chat2.html'],
     components: [

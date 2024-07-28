@@ -82,7 +82,7 @@ nav:nth-of-type(1) {
     }
 }
 
-@media (max-width:400px) {
+@media (max-width:500px) {
     #app .nav-pills {
         background: #fff;
     }

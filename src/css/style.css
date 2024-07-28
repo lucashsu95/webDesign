@@ -48,6 +48,7 @@ nav:nth-of-type(1) {
     height: 100vh;
     padding: 5px;
     transform: translateY(-50%);
+    background: #fff !important;
 
     &:hover {
         box-shadow: 2px 2px 50px #ddd;
@@ -82,14 +83,8 @@ nav:nth-of-type(1) {
     }
 }
 
-@media (max-width:500px) {
-    #app .nav-pills {
-        background: #fff;
-    }
-}
-
 @keyframes shadow {
     100% {
-        box-shadow: 2px 2px 50px 20px #bbb;
+        box-shadow: 2px 2px 40px 20px #bbb;
     }
 }

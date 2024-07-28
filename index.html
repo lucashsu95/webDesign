@@ -25,7 +25,7 @@
     </div>
 
     <!-- nav -->
-    <nav class="nav nav-pills flex-column" :style="{left:navToggleFlag ? '3%' : ''}">
+    <nav class="nav nav-pills flex-column" :style="{left:navToggleFlag ? '0' : ''}">
       <a v-for="(value,key ,index) in main" :href="'#item-' + index" class="nav-link">{{ key }}</a>
     </nav>
 

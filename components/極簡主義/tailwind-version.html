@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif]">
+    <section class="grid grid-cols-2">
+        <article>
+            <h1 class="text-2xl font-bold">Example</h1>
+            <img src="./example.jpg" alt="">
+        </article>
+
+        <article>
+            <h1 class="text-2xl font-bold">Demo</h1>
+            <form action=""
+                class="bg-[#ececec] border-4 border-[#212121] rounded-3xl p-5 w-max h-[32rem] grid grid-rows-[1fr_5fr_1.5fr]">
+                <!-- form-head -->
+                <div>
+                    <h2 class="font-black text-xl">Create Palette</h2>
+                </div>
+                <!-- form-body -->
+                <div>
+                    <p><input type="text" placeholder="Account"
+                            class="w-[360px] h-[50px] bg-white border-[2.8px] border-[#212121] rounded-md outline-none p-2 m-2.5 text-lg shadow-[8px_8px_0_#212121] placeholder-font-bold">
+                    </p>
+                    <p><input type="text" placeholder="Password"
+                            class="w-[360px] h-[50px] bg-white border-[2.8px] border-[#212121] rounded-md outline-none p-2 m-2.5 text-lg shadow-[8px_8px_0_#212121] placeholder-font-bold">
+                    </p>
+                </div>
+                <!-- form-footer -->
+                <div class="flex justify-center">
+                    <button type="button"
+                        class="bg-white border-[2.8px] border-[#212121] rounded-md w-[250px] h-[50px] text-[22px] font-bold shadow-[5px_5px_0_#212121] transition-transform duration-300 hover:scale-110 active:scale-90">Save</button>
+                </div>
+            </form>
+        </article>
+    </section>
+</body>
+
+</html>

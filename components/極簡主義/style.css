@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.form1 {
+    background: #ececec;
+    border: 5px solid #212121;
+    border-radius: 25px;
+    padding: 5px 25px;
+    width: max-content;
+    height: 32rem;
+    display: grid;
+    grid-template-rows: 1fr 5fr 1.5fr;
+}
+
+.form-head h2 {
+    font-weight: 900;
+}
+
+.form-body input, .form-footer button {
+    background: #fefefe;
+    border-radius: 5px;
+}
+
+.form-body input {
+    width: 360px;
+    height: 50px;
+    border: 2.8px solid #212121;
+    outline: none;
+    padding: 5px 8px;
+    margin: 10px;
+    font-size: 18px;
+    box-shadow: 8px 8px 0 #212121;
+}
+
+.form-body input::placeholder {
+    font-weight: bold;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.form-footer button {
+    border: 2.8px solid #212121;
+    cursor: pointer;
+    width: 250px;
+    height: 50px;
+    font-size: 22px;
+    font-weight: bold;
+    box-shadow: 5px 5px 0 #212121;
+    transition: transform 300ms;
+}
+
+.form-footer button:hover {
+    transform: scale(1.1);
+}
+
+.form-footer button:active {
+    transform: scale(.9);
+}

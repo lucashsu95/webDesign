@@ -22,13 +22,7 @@ const main_data = {
     Carry_system: ["Carry_system.html"],
     clipPath: ["index.html"],
     chat: ['chat.html', 'chat2.html','vanilla.html'],
-    components: [
-        '頁面/index.html',
-        '書店/index.html',
-        'contactUs聯絡我們/index.html',
-        'login登入/login.html',
-    ],
-    hover: ["hover.html"],
+    hover: ["hover.html","figcaption_on_hover.html"],
     input: ["input.html"],
     navbar: [
         "menu-hover-part2",
@@ -40,8 +34,7 @@ const main_data = {
     ],
     parallax: ["scroll.html", "mousemove.html"],
     QandA: ["Q&A.html"],
-    range: ["range.html"],
-    scroll: ["index.html", "opacity.html"],
+    scroll: ["index.html", "opacity.html","range.html"],
     TodoList: [
         'index.html',
         'index-modal.html',
@@ -57,7 +50,13 @@ const main_data = {
     ],
     light_dark_theme: ['index.html'],
     shopcar: ['index.html', 'index-vue.html'],
-    figcaption_on_hover: ['index.html'],
+    components: [
+        '頁面/index.html',
+        '書店/index.html',
+        'contactUs聯絡我們/index.html',
+        'login登入/login.html',
+        '極簡主義/index.html',
+    ],
 }
 
 

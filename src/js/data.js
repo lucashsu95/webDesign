@@ -34,7 +34,7 @@ const main_data = {
     ],
     parallax: ["scroll.html", "mousemove.html"],
     QandA: ["Q&A.html"],
-    scroll: ["index.html", "opacity.html","range.html"],
+    scroll: ["index.html", "opacity.html","range.html","scroll-anime/scroll-anime.html"],
     TodoList: [
         'index.html',
         'index-modal.html',

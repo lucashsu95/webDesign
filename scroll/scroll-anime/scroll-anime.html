@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Anime</title>
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="anime.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'
+        integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=='
+        crossorigin='anonymous'></script>
+    <style>
+        h1 {
+            display: flex;
+
+            padding: 5px 10px;
+            margin: 5px;
+
+            width: min-content;
+            font-size: 28px;
+
+            box-shadow: 2px 3px 5px #121212;
+            border-radius: 4px;
+            background: #eee;
+        }
+
+        .title2 {
+            animation: fade-left 5s forwards;
+            animation-timeline: scroll();
+            animation-range: 0 100vh;
+        }
+
+        .title3 {
+            animation: fade-right 5s forwards;
+            animation-timeline: scroll();
+            animation-range: 100vh 200vh;
+        }
+
+        #s4 {
+            overflow-x: hidden;
+            overflow-y: scroll;
+            scroll-timeline: --customTimeline y;
+            position: relative;
+
+            &>.a1 {
+                position: absolute;
+                top:50%;
+                width: 100%;
+                min-height: 200vh;
+                font-size: 42px;
+
+                display: grid;
+                grid-auto-rows: 1fr;
+                justify-items: center;
+                align-items: center;
+
+                &>div {
+                    animation-timeline: --customTimeline;
+                    animation-name: fade-in;
+                    animation-duration: 1s;
+                    animation-fill-mode: forwards;
+                    opacity: 0;
+                }
+            }
+        }
+
+        #s4::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="s1">
+        <h1 class="title1">Section1</h1>
+    </section>
+    <section id="s2">
+        <h1 class="title2">Section2</h1>
+    </section>
+    <section id="s3">
+        <h1 class="title3">Section3</h1>
+    </section>
+    <section id="s4">
+        <article class="a1">
+            <div>偉大</div>
+            <div>簡約</div>
+            <div>優雅</div>
+            <div>快樂</div>
+            <div>樂觀</div>
+        </article>
+    </section>
+    <section id="s5">
+    </section>
+    <script>
+        function bindScrollAnime() {
+            let scrollScreen = 10;
+            $('.a1 > div').each(function () {
+                $(this).css('animation-range', `${scrollScreen}% ${scrollScreen + 20}%`);
+                scrollScreen += 20;
+            })
+        }
+        bindScrollAnime();
+    </script>
+</body>
+
+</html>

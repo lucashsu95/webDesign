@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  padding: 3% 2%;
+  height: 100vh;
+}
+
+#s1 {
+  background: #ffbcbc;
+}
+
+#s2 {
+  background: #d5ffbc;
+}
+
+#s3 {
+  background: #bcccff;
+}
+
+#s4 {
+  background: #ffefbc;
+}
+
+#s5 {
+  background: #bcffd8;
+}

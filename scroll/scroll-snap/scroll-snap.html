@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Snap</title>
+    <link rel="stylesheet" href="./main.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'
+        integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=='
+        crossorigin='anonymous'></script>
+</head>
+
+<body>
+    <section id="app">
+        <div class="tags">
+
+        </div>
+        <article class="pages">
+
+        </article>
+    </section>
+
+    <script>
+        $(document).ready(() => {
+            const tags = ['頁面1', '頁面2', '頁面3', '頁面4']
+            let pagesPositionLeft = []
+            let currentIdx = 0
+
+            function renderPages() {
+                tags.forEach((tag, idx) => {
+                    $('.pages').append(`
+                        <div class="page" id="page${idx}">
+                            <h2>${tag}</h2>
+                            <p>輕輕的用手指左右滑動頁面</p>
+                        </div>`)
+                })
+                $('.page').each((idx, page) => {
+                    pagesPositionLeft.push($(page).position().left)
+                })
+            }
+            renderPages()
+
+            function renderTags() {
+                $('.tags').empty();
+                tags.forEach((tags, idx) => {
+                    $('.tags').append(`
+                        <a href="#page${idx}" class="tag ${idx === currentIdx ? 'active' : ''}">${tags}</a>
+                    `)
+                })
+                handleTagClick()
+            }
+            renderTags()
+
+            function handleTagClick() {
+                $('.tag').each((idx, tag) => {
+                    $(tag).on('click', () => {
+                        $('.tag.active').removeClass('active')
+                        $(tag).addClass('active')
+                        // $('.pages').scrollLeft(pagesPositionLeft[idx])
+                        currentIdx = idx
+                    })
+                })
+            }
+
+            $('.pages').on('scroll', () => {
+                const scrollLeft = $('.pages').scrollLeft()
+
+                pagesPositionLeft.forEach((left, idx) => {
+                    if (scrollLeft >= left) {
+                        currentIdx = idx
+                        renderTags()
+                        return
+                    }
+                })
+            })
+
+        })
+
+    </script>
+</body>
+
+</html>

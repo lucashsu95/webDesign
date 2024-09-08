@@ -21,8 +21,8 @@ const main_data = {
     card: ["border-cards", "Glass-morphism", "img-card", "img-light-card/card.html"],
     Carry_system: ["Carry_system.html"],
     clipPath: ["index.html"],
-    chat: ['chat.html', 'chat2.html','vanilla.html'],
-    hover: ["hover.html","figcaption_on_hover.html"],
+    chat: ['chat.html', 'chat2.html', 'vanilla.html'],
+    hover: ["hover.html", "figcaption_on_hover.html"],
     input: ["input.html"],
     navbar: [
         "menu-hover-part2",
@@ -34,7 +34,7 @@ const main_data = {
     ],
     parallax: ["scroll.html", "mousemove.html"],
     QandA: ["Q&A.html"],
-    scroll: ["index.html", "opacity.html","range.html","scroll-anime/scroll-anime.html"],
+    scroll: ["index.html", "opacity.html", "range.html", "scroll-anime/scroll-anime.html", "scroll-snap/scroll-snap.html"],
     TodoList: [
         'index.html',
         'index-modal.html',

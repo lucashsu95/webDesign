@@ -56,6 +56,7 @@ const main_data = {
         'contactUs聯絡我們/index.html',
         'login登入/login.html',
         '極簡主義/index.html',
+        'training/1102/index.html',
     ],
 }
 

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML練習</title>
+  </head>
+  <body>
+    <h1>2023/5/19</h1>
+    <li><a href="#heading">第一題</a></li>
+    <li><a href="#list">第二題</a></li>
+    <li><a href="#table">第三題</a></li>
+    <li><a href="#form">第四題</a></li>
+    <li><a href="#display-img">第五題</a></li>
+
+    <!-- 第一題 -->
+    <h2 id="heading">第一題</h2>
+    <h3>請標出h2-h6</h3>
+    <h4>請標出h2-h6</h4>
+    <h5>請標出h2-h6</h5>
+    <h6>請標出h2-h6</h6>
+
+    <!-- 第二題 -->
+    <h2 id="list">第二題</h2>
+    <ul>
+      <li>第一小題</li>
+      <hr />
+      <ol>
+        <li>第一點</li>
+        <li>第二點</li>
+        <li>第三點</li>
+      </ol>
+    </ul>
+
+    <ul>
+      <li>第二小題</li>
+      <hr />
+      <ol style="list-style-type: upper-alpha">
+        <li>第一點</li>
+        <li>第二點</li>
+        <li>第三點</li>
+      </ol>
+    </ul>
+
+    <!-- 第三題 -->
+    <h2 id="table">第三題</h2>
+    <table border="1">
+      <tr>
+        <th>標題一</th>
+        <th>標題二</th>
+        <th>標題三</th>
+      </tr>
+      <tr>
+        <td colspan="2">內容</td>
+        <td rowspan="3">內容</td>
+      </tr>
+      <tr>
+        <td>內容</td>
+        <td>內容</td>
+      </tr>
+      <tr>
+        <td>內容</td>
+        <td>內容</td>
+      </tr>
+    </table>
+
+    <!-- 第四題 -->
+    <h2 id="form">第四題</h2>
+    <form action="#" method="get">
+      下拉選單
+      <select name="" id="">
+        <option value="">選擇一</option>
+        <option value="">選擇二</option>
+        <option value="">選擇三</option>
+      </select>
+
+      <p>姓名：<input type="text" /></p>
+      <p>年齡：<input type="number" /> 只能輸入數字</p>
+      <p>日期：<input type="date" /></p>
+      <p>時間：<input type="time" /></p>
+      <p>上傳檔案：<input type="file" /></p>
+      <p>
+        姓別 男：<input type="radio" name="" id="" /> 女：<input
+          type="radio"
+          name=""
+          id=""
+        />
+      </p>
+      <p>
+        運動：
+        <span>跑步<input type="checkbox" name="" id="" /></span>
+        <span>游泳<input type="checkbox" name="" id="" /></span>
+        <span>羽球<input type="checkbox" name="" id="" /></span>
+      </p>
+      <p>備註：<br /><textarea name="" id="" cols="20" rows="5"></textarea></p>
+      <button type="submit">送出</button>
+      <button type="reset">重製</button>
+    </form>
+
+    <!-- 第五題 -->
+    <h2 id="display-img">第五題</h2>
+    <img
+      src="https://picsum.photos/200/300"
+      alt="招生海報"
+      style="margin-bottom: 60vh"
+    />
+  </body>
+</html>

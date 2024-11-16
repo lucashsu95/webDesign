@@ -57,6 +57,7 @@ const main_data = {
         'login登入/login.html',
         '極簡主義/index.html',
         'training/1102/index.html',
+        'html-tag/index.html',
     ],
 }
 

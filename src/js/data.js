@@ -58,6 +58,7 @@ const main_data = {
         '極簡主義/index.html',
         'training/1102/index.html',
         'html-tag/index.html',
+        '終極密碼/index.html',
     ],
 }
 

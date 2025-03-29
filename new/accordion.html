@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      details {
+        inline-size: 50ch;
+        interpolate-size: allow-keywords;
+
+        &::details-content {
+          opacity: 0;
+          block-size: 0;
+          overflow-y: clip;
+          transition: all 0.2s allow-discrete;
+        }
+
+        &[open]::details-content {
+          opacity: 1;
+          block-size: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <details>
+      <summary>Details 1</summary>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+        voluptatibus, quisquam, quia, voluptates quibusdam voluptatibus
+        voluptatibus quibusdam voluptatibus voluptatibus voluptatibus
+        voluptatibus voluptatibus voluptatibus voluptatibus voluptatibus
+        voluptatibus voluptatibus.
+      </p>
+    </details>
+    <details>
+      <summary>Details 2</summary>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti error
+        nostrum nisi aliquid, molestias maiores sit accusantium architecto ab
+        vero!
+      </p>
+    </details>
+  </body>
+</html>

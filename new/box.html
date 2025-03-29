@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h1:hover + .box {
+        background-color: lightblue;
+        height: auto;
+      }
+      .box {
+        interpolate-size: allow-keywords;
+        transition: all 0.5s;
+        width: 500px;
+        height: 0;
+        border: 1px solid red;
+        overflow-y: clip;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Box</h1>
+    <div class="box">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, iusto.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+[fade-left],
+[fade-right],
+[fade-up] {
+  border: 1px solid red;
+  opacity: 1;
+}
+
+[fade-left] {
+  animation: fade-left linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 100%;
+}
+
+[fade-right] {
+  animation: fade-right linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 100%;
+}
+
+[fade-up] {
+  animation: fade-up linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 100%;
+}
+
+@keyframes fade-left {
+  from {
+    opacity: 0;
+    transform: translateX(18%);
+  }
+}
+@keyframes fade-right {
+  from {
+    opacity: 0;
+    transform: translateX(-18%);
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(-18%);
+  }
+}

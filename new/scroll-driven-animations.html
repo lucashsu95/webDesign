@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 200vh;
+        overflow-y: auto;
+        border: 1px solid oklch(70% 0.3 150);
+
+        & > div {
+          height: 200px;
+          animation: slide-in-from-left linear both;
+          animation-timeline: view();
+          animation-range: entry 0% entry 100%;
+          opacity: 1;
+        }
+      }
+
+      @keyframes slide-in-from-left {
+        from {
+          opacity: 0;
+          transform: translatey(-10%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>Item 1</div>
+    <div>Item 2</div>
+    <div>Item 3</div>
+    <div>Item 4</div>
+    <div>Item 5</div>
+    <div>Item 6</div>
+    <div>Item 7</div>
+    <div>Item 8</div>
+    <div>Item 9</div>
+    <div>Item 10</div>
+    <div>Item 11</div>
+    <div>Item 12</div>
+    <div>Item 13</div>
+    <div>Item 14</div>
+    <div>Item 15</div>
+    <div>Item 16</div>
+    <div>Item 17</div>
+    <div>Item 18</div>
+    <div>Item 19</div>
+    <div>Item 20</div>
+  </body>
+</html>

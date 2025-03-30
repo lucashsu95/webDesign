@@ -27,7 +27,7 @@ const main_data = {
   Carry_system: ["Carry_system.html"],
   clipPath: ["index.html"],
   chat: ["chat.html", "chat2.html", "vanilla.html"],
-  hover: ["hover.html", "figcaption_on_hover.html"],
+  hover: ["hover.html", "figcaption_on_hover.html", "mousemove.html"],
   input: ["input.html"],
   navbar: [
     "menu-hover-part2",

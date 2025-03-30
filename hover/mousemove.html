@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --color1: oklch(80% 0.3 100);
+        --color2: oklch(85% 0.4 100);
+      }
+
+      .cursor {
+        position: fixed;
+        pointer-events: none;
+        z-index: 10000;
+
+        border-radius: 50%;
+        border: 2px solid var(--color1);
+      }
+      .cursor--1 {
+        width: 46px;
+        height: 46px;
+        transition: width 0.5s ease, height 0.5s ease, border 0.2s ease;
+        &.active {
+          border-color: var(--color2);
+          width: 18px;
+          height: 18px;
+        }
+      }
+
+      .cursor--3 {
+        width: 14px;
+        height: 14px;
+        transition: width 0.2s ease, height 0.2s ease, border 0.2s ease;
+        &.active {
+          border-color: var(--color2);
+          width: 54px;
+          height: 54px;
+        }
+      }
+
+      section {
+        min-height: 100vh;
+        padding: 25px;
+
+        &:nth-child(1) {
+          background: oklch(70% 0.2 165);
+        }
+        &:nth-child(2) {
+          background: #39f;
+        }
+        &:nth-child(3) {
+          background: oklch(70% 0.2 0);
+        }
+      }
+
+      p {
+        line-height: 1.8;
+        margin-top: 20px;
+      }
+
+      .btn {
+        margin-top: 10px;
+        display: block;
+        padding: 5px 15px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cursor cursor--1"></div>
+    <div class="cursor cursor--3"></div>
+    <section>
+      <h1>Lorem 1</h1>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit porro
+        sapiente quasi doloremque quo quaerat quos esse soluta quidem vero ipsam
+        dignissimos ratione, excepturi sed nulla sunt illo magni reprehenderit.
+        <button class="btn">Read More</button>
+      </p>
+    </section>
+    <section>
+      <h1>Lorem 2</h1>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit porro
+        sapiente quasi doloremque quo quaerat quos esse soluta quidem vero ipsam
+        dignissimos ratione, excepturi sed nulla sunt illo magni reprehenderit.
+        <button class="btn">Read More</button>
+      </p>
+    </section>
+    <section>
+      <h1>Lorem 3</h1>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit porro
+        sapiente quasi doloremque quo quaerat quos esse soluta quidem vero ipsam
+        dignissimos ratione, excepturi sed nulla sunt illo magni reprehenderit.
+        <button class="btn">Read More</button>
+      </p>
+    </section>
+
+    <script>
+      let cursor1 = document.querySelector(".cursor--1");
+      let cursor3 = document.querySelector(".cursor--3");
+      document.addEventListener("mousemove", (e) => {
+        if (e.target.classList.contains("btn")) {
+          cursor1.classList.add("active");
+          cursor3.classList.add("active");
+        } else {
+          cursor1.classList.remove("active");
+          cursor3.classList.remove("active");
+        }
+        setTimeout(() => {
+          cursor1.style.left = e.x - cursor1.offsetWidth / 2 + "px";
+          cursor1.style.top = e.y - cursor1.offsetHeight / 2 + "px";
+        }, 140);
+        setTimeout(() => {
+          cursor3.style.left = e.x - cursor3.offsetWidth / 2 + "px";
+          cursor3.style.top = e.y - cursor3.offsetHeight / 2 + "px";
+        }, 90);
+      });
+    </script>
+  </body>
+</html>

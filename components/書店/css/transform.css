@@ -1,6 +1,7 @@
 [fade-left],
 [fade-right],
-[fade-up] {
+[fade-up]
+[fade-down] {
   border: 1px solid red;
   opacity: 1;
 }
@@ -23,6 +24,12 @@
   animation-range: entry 20% entry 90%;
 }
 
+[fade-down] {
+  animation: fade-down linear both;
+  animation-timeline: view();
+  animation-range: entry 20% entry 90%;
+}
+
 @keyframes fade-left {
   from {
     opacity: 0;
@@ -39,5 +46,11 @@
   from {
     opacity: 0;
     transform: translateY(-18%);
+  }
+}
+@keyframes fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(18%);
   }
 }

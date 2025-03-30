@@ -8,19 +8,19 @@
 [fade-left] {
   animation: fade-left linear both;
   animation-timeline: view();
-  animation-range: entry 0% entry 100%;
+  animation-range: entry 20% entry 90%;
 }
 
 [fade-right] {
   animation: fade-right linear both;
   animation-timeline: view();
-  animation-range: entry 0% entry 100%;
+  animation-range: entry 20% entry 90%;
 }
 
 [fade-up] {
   animation: fade-up linear both;
   animation-timeline: view();
-  animation-range: entry 0% entry 100%;
+  animation-range: entry 20% entry 90%;
 }
 
 @keyframes fade-left {

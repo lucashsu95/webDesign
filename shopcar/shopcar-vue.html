@@ -9,8 +9,8 @@
   </head>
 
   <body>
-    <div class="container">
-      <div id="app" class="cards">
+    <div id="app" class="container">
+      <div class="cards">
         <div class="card" v-for="(product, index) in products" :key="index">
           <img :src="product.img" :style="product.style" />
           <div class="card-body">
@@ -39,7 +39,9 @@
           </div>
         </div>
       </div>
-      <div class="total-price">總計<span class="total">0</span>元</div>
+      <div class="total-price">
+        總計<span class="total">{{ total }}</span>元
+      </div>
       <div>
         <button class="btn btn-primary mt-3">送出結帳</button>
         <button class="btn btn-secondary mt-3">取消</button>
@@ -85,11 +87,15 @@
           const resetCart = () => {
             products.value.forEach((product) => (product.amount = 0));
           };
+          const total = Vue.computed(() =>
+            products.value.reduce((sum, x) => sum + x.amount * x.price, 0)
+          );
 
           return {
             products,
             onSubmit,
             resetCart,
+            total,
           };
         },
       });

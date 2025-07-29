@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3.2.37/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app" class="chat">
+        <div class="messages" ref="messages">
+            <div v-for="message in messages" :dir="message.dir">
+                <img :src="message.img" width="30" height="30">
+                <div class="message">{{ message.text }}</div>
+            </div>
+        </div>
+        <div class="operations">
+            <button @click="send('訂購')">訂購</button>
+            <button @click="send('推薦')">推薦</button>
+            <button @click="send('服務')">服務</button>
+        </div>
+        <div>
+            <input type="text" v-model.trim="message" @keydown.enter="send(message)">
+        </div>
+    </div>
+    <media-block></media-block>
+    <script>
+        const { createApp } = Vue
+        createApp({
+            data() {
+                return {
+                    messages: [{
+                        img: './images/天線寶寶1.jpg',
+                        text: 'Hi～我是小i，歡迎來到"爆米時刻"！若有問題的話可以直接詢問我或是點擊下方關鍵字做諮詢喔！',
+                        dir: 'ltr',
+                    }],
+                    message: '',
+                }
+            },
+            methods: {
+                reply(e, message = '感謝您提供建議與問題，稍後將有專人為您服務！') {
+                    this.messages.push({
+                        img: './images/天線寶寶1.jpg',
+                        text: message,
+                        dir: 'ltr'
+                    })
+
+                    this.updatescroll()
+                },
+                send(message) {
+                    if (!message) return
+
+                    this.messages.push({
+                        img: './images/pang.jpg',
+                        text: message,
+                        dir: 'rtl'
+                    })
+
+                    this.message = ''
+
+                    this.updatescroll()
+
+                    setTimeout(() => {
+                        this.reply()
+                    }, 500);
+                },
+                updatescroll() {
+                    setTimeout(() => {
+                        this.$refs.messages.scrollTop = this.$refs.messages.scrollHeight
+                    })
+                }
+            },
+            created() {
+
+            },
+            mounted() {
+
+            }
+        }).mount('#app');
+        app.component('media-block', {
+            template: 'media-block'
+        })
+
+    </script>
+    <script type="text/x-template" id="media-block">
+        <h1>Hello !</h1>
+        <hr>
+        <input type="text">
+    </script>
+</body>
+
+</html>

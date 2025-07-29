@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>購物車 Vanilla</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="cards"></div>
+      <div class="total-price">總計<span class="total"></span>元</div>
+      <div>
+        <button class="btn btn-primary" onclick="onSubmit()">送出結帳</button>
+        <button class="btn btn-secondary" onclick="close()">取消</button>
+      </div>
+    </div>
+    <script>
+      const products = [
+        {
+          title: "招牌鍋貼",
+          price: 10,
+          desc: `不知道哪個不用心的人打錯字，而不小心亂入的鍋貼君，希望最後可以讓他回到安心的家(反正最後會被吃掉....)`,
+          img: "./菠蘿麵包.jpg",
+          amount: 0,
+          style: "",
+        },
+        {
+          title: "灰色的波羅麵包",
+          price: 100,
+          desc: `像這款灰色波羅麵包；我就是逛商城的時侯看到的；當下就試用了相關的功能很滿意。所以心裡就把型號記了下來`,
+          img: "./菠蘿麵包.jpg",
+          amount: 0,
+          style: "filter:grayscale(100)",
+        },
+        {
+          title: "神秘的波羅麵包",
+          price: 300,
+          desc: `使用起來真的很滿意。而且如果買到不良品也有退貨的服務；我根本也不憺心^^`,
+          img: "./菠蘿麵包.jpg",
+          amount: 0,
+          style: "filter:blur(11px)",
+        },
+      ];
+      const cards = document.querySelector(".cards");
+
+      function render() {
+        products.forEach((product, index) => {
+          cards.innerHTML += `
+                <div class="card">
+                    <img src="${product.img}" style='${product.style}'>
+                    <div class="card-body">
+                        <h2 class="card-title">${product.title}</h2>
+                        <div class='bg-success' style='width:max-content'>NT$${product.price}元</div>
+                        <div class="d-flex">
+                            <button class="btn btn-primary" onclick="update_amount(-1,${index})">-</button>
+                            <input type="text" class="form-control amount-input" value="${product.amount}" data-id='${index}' readonly>
+                            <button class="btn btn-primary" onclick="update_amount(1,${index})">+</button>
+                        </div>
+                        <div class="card-text">${product.desc}</div>
+                    </div>
+                </div>
+            `;
+        });
+      }
+      render();
+
+      function update_amount(val, index) {
+        const product = products[index];
+        product.amount = Math.max(0, product.amount + val);
+        document.querySelector(`input[data-id='${index}']`).value =
+          product.amount;
+        setTotal();
+      }
+
+      function setTotal() {
+        document.querySelector("span.total").innerText = getTotlaPrice();
+      }
+      setTotal();
+
+      function getTotlaPrice() {
+        const total = products.reduce((sum, x) => x.amount * x.price + sum, 0);
+        return total;
+      }
+
+      function onSubmit() {
+        const total = getTotlaPrice();
+        alert(`總共是${total}元`);
+      }
+
+      function close() {
+        product = products.map((x) => (x.amount = 0));
+      }
+    </script>
+  </body>
+</html>

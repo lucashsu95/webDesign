@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <div id="chat">
+            <header>
+                <h1>香香麵包店</h1>
+            </header>
+            <main ref="mainDiv">
+                <div v-for="item in main" class="message" :class="{myChat:item.role === 'user'}">
+                    <div class="avatar">
+                        <img :src="item.role === 'user' ? './img/R.jpg' : './img/L.jpg' " alt="" />
+                    </div>
+                    <div class="content">{{item.message}}</div>
+                </div>
+            </main>
+
+            <section class="message-input">
+                <button @click="onChatInput">招牌麵包</button>
+                <button @click="onChatInput">甜點推薦</button>
+                <button @click="onChatInput">營業時間</button>
+            </section>
+            <form class="message-input" @submit.prevent="onChatInput">
+                <input type="text" placeholder="請輸入訊息" v-model="chatInput" />
+                <button class="send-btn">送出</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    chatInput: "",
+                    main: [
+                        {
+                            message: "歡迎來到香香麵包店！有什麼需要幫助您的嗎？",
+                            role: "robot",
+                        },
+                    ],
+                };
+            },
+            methods: {
+                onChatInput(e) {
+                    const msg = e.type === "submit" ? this.chatInput : e.target.textContent;
+
+                    if (e.type === "submit") this.chatInput = "";
+
+                    this.addMessage(msg, "user");
+                    setTimeout(() => this.robotMessage(msg), 500);
+                },
+
+                robotMessage(msg) {
+                    const responses = {
+                        招牌麵包: "我們的招牌商品有：奶油餐包、波蘿麵包、紅豆麵包和起司吐司，每天新鮮出爐，香氣四溢！",
+                        甜點推薦: "推薦您試試我們的招牌甜點：提拉米蘇、巧克力蛋糕、草莓塔和檸檬司康，都是店內最受歡迎的商品！",
+                        營業時間: "我們的營業時間是週一到週日早上7:00到晚上8:00，歡迎隨時光臨！週三公休日。",
+                    };
+
+                    const response =
+                        responses[msg] ||
+                        "感謝您的詢問！如果您想了解更多麵包或甜點資訊，歡迎隨時告訴我們喔！";
+                    this.addMessage(response, "robot");
+                },
+
+                addMessage(message, role) {
+                    this.main.push({ message, role });
+                    this.updateScroll();
+                },
+
+                updateScroll() {
+                    this.$nextTick(() => { // 等待 DOM 更新完成
+                        const mainDiv = this.$refs.mainDiv;
+                        mainDiv.scrollTop = mainDiv.scrollHeight;
+                    });
+                },
+            },
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Chart JS</title>
+    <style>
+      .chart-box {
+        width: 100%;
+        height: 100%;
+        background: #222;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .chart {
+        padding: 0 10px;
+        width: 400px;
+        height: 300px;
+
+        background: #333;
+        position: relative;
+
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .bar {
+        background: #fc2f70;
+        width: 40px;
+        height: 100%;
+        transition: all 0.5s ease-in-out;
+        transform-origin: bottom;
+        transform: scaleY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chart-box">
+      <div class="chart" id="chart"></div>
+    </div>
+
+    <script>
+      const chartData = {
+        bars: [
+          { height: 0.1, delay: 0 },
+          { height: 0.3, delay: 0.2 },
+          { height: 0.5, delay: 0.4 },
+          { height: 0.6, delay: 0.6 },
+          { height: 0.8, delay: 0.8 },
+        ],
+      };
+
+      function initChart() {
+        const chartContainer = document.getElementById("chart");
+
+        chartData.bars.forEach((bar, index) => {
+          const barElement = document.createElement("div");
+          barElement.className = "bar";
+          barElement.style.transitionDelay = `${bar.delay}s`;
+          chartContainer.appendChild(barElement);
+        });
+      }
+
+      function showChart() {
+        const bars = document.querySelectorAll(".bar");
+        bars.forEach((bar, index) => {
+          setTimeout(() => {
+            bar.style.transform = `scaleY(${chartData.bars[index].height})`;
+          }, chartData.bars[index].delay * 1000);
+        });
+      }
+
+      function hideChart() {
+        const bars = document.querySelectorAll(".bar");
+        bars.forEach((bar) => {
+          bar.style.transform = "scaleY(0)";
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        initChart();
+
+        const chart = document.getElementById("chart");
+        chart.addEventListener("mouseenter", showChart);
+        chart.addEventListener("mouseleave", hideChart);
+      });
+    </script>
+  </body>
+</html>

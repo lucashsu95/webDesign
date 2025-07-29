@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>購物車 Vue</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="app" class="cards">
+        <div class="card" v-for="(product, index) in products" :key="index">
+          <img :src="product.img" :style="product.style" />
+          <div class="card-body">
+            <h2 class="card-title">{{ product.title }}</h2>
+            <div class="bg-success" style="width: max-content">
+              NT${{ product.price }}元
+            </div>
+            <div class="d-flex">
+              <button
+                class="btn btn-primary"
+                @click="product.amount = Math.max(0, product.amount - 1)"
+              >
+                -
+              </button>
+              <input
+                type="text"
+                class="form-control amount-input"
+                v-model="product.amount"
+                readonly
+              />
+              <button class="btn btn-primary" @click="product.amount++">
+                +
+              </button>
+            </div>
+            <div class="card-text">{{ product.desc }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="total-price">總計<span class="total">0</span>元</div>
+      <div>
+        <button class="btn btn-primary mt-3">送出結帳</button>
+        <button class="btn btn-secondary mt-3">取消</button>
+      </div>
+    </div>
+    <script>
+      const { ref, createApp } = Vue;
+      const app = createApp({
+        setup() {
+          const products = ref([
+            {
+              title: "招牌鍋貼",
+              price: 10,
+              desc: `不知道哪個不用心的人打錯字，而不小心亂入的鍋貼君，希望最後可以讓他回到安心的家(反正最後會被吃掉....)`,
+              img: "./菠蘿麵包.jpg",
+              amount: 0,
+              style: "",
+            },
+            {
+              title: "灰色的波羅麵包",
+              price: 100,
+              desc: `像這款灰色波羅麵包；我就是逛商城的時侯看到的；當下就試用了相關的功能很滿意。所以心裡就把型號記了下來`,
+              img: "./菠蘿麵包.jpg",
+              amount: 0,
+              style: "filter:grayscale(100)",
+            },
+            {
+              title: "神秘的波羅麵包",
+              price: 300,
+              desc: `使用起來真的很滿意。而且如果買到不良品也有退貨的服務；我根本也不憺心^^`,
+              img: "./菠蘿麵包.jpg",
+              amount: 0,
+              style: "filter:blur(11px)",
+            },
+          ]);
+          const onSubmit = () => {
+            const total = products.value.reduce(
+              (sum, x) => x.amount * x.price + sum,
+              0
+            );
+            alert(`總共是${total}元`);
+          };
+          const resetCart = () => {
+            products.value.forEach((product) => (product.amount = 0));
+          };
+
+          return {
+            products,
+            onSubmit,
+            resetCart,
+          };
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

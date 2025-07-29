@@ -1,0 +1,123 @@
+.container {
+  min-height: 100vh;
+  width: 70%;
+
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cards {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-radius: 0.5rem;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.card img {
+  width: 75%;
+  margin: 1rem auto 0 auto;
+  display: block;
+}
+
+.card-body {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.bg-success {
+  background: #198754;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+  display: inline-block;
+}
+
+.d-flex {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.d-flex .form-control {
+  flex: 1;
+}
+
+.amount-input {
+  width: 60px;
+  text-align: center;
+}
+
+.card-text {
+  margin-top: 1rem;
+  text-align: left;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.total-price {
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #dc3545;
+}
+
+.btn {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 0.5rem;
+
+  display: inline-block;
+}
+
+.btn-primary {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: #fff;
+}
+
+.form-control {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  background: #fff;
+  color: #212529;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+  text-align: center;
+}
+
+.form-control:focus {
+  border-color: #0d6efd;
+  outline: none;
+}

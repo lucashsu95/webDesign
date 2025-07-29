@@ -26,7 +26,8 @@ const main_data = {
   ],
   Carry_system: ["Carry_system.html"],
   clipPath: ["index.html"],
-  chat: ["chat.html", "chat2.html", "vanilla.html"],
+  chat: ["chat-vanilla.html", "chat-jquery.html", "chat-vue.html", "chat2-vue.html"],
+  chart: ["chart-v1-css.html", "chart-v1-js.html", "chart-v2-css.html"],
   hover: ["hover.html", "figcaption_on_hover.html", "mousemove.html"],
   input: ["input.html"],
   navbar: [
@@ -63,7 +64,7 @@ const main_data = {
     "vue-lg.html",
   ],
   light_dark_theme: ["index.html"],
-  shopcar: ["index.html", "index-vue.html"],
+  shopcar: ["shopcar-vanilla.html", "shopcar-jquery.html", "shopcar-vue.html"],
   components: [
     "頁面/index.html",
     "書店/index.html",

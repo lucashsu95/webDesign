@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat JQuery</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <div id="chat">
+        <header>
+            <h1>香香麵包店</h1>
+        </header>
+        <main>
+            <div class="message">
+                <div class="avatar">
+                    <img src="img/L.jpg" alt="L.jpg" />
+                </div>
+                <div class="content">歡迎來到香香麵包店！有什麼需要幫助您的嗎？</div>
+            </div>
+        </main>
+        <section class="message-input">
+            <button data-key="招牌麵包">招牌麵包</button>
+            <button data-key="甜點推薦">甜點推薦</button>
+            <button data-key="營業時間">營業時間</button>
+        </section>
+        <form class="message-input">
+            <input type="text" placeholder="請輸入訊息" />
+            <button class="send-btn text-nowrap">送出</button>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function () {
+            const responses = {
+                招牌麵包: "我們的招牌商品有：奶油餐包、波蘿麵包、紅豆麵包和起司吐司，每天新鮮出爐，香氣四溢！",
+                甜點推薦: "推薦您試試我們的招牌甜點：提拉米蘇、巧克力蛋糕、草莓塔和檸檬司康，都是店內最受歡迎的商品！",
+                營業時間: "我們的營業時間是週一到週日早上7:00到晚上8:00，歡迎隨時光臨！週三公休日。",
+            };
+
+            const addMessage = (message, isUser = false) => {
+                const avatar = isUser ? "img/R.jpg" : "img/L.jpg";
+                const userClass = isUser ? " user" : "";
+
+                const messageHtml = `
+                    <div class="message${userClass}">
+                        <div class="avatar">
+                            <img src="${avatar}" alt="${avatar}" />
+                        </div>
+                        <div class="content">${message}</div>
+                    </div>`;
+
+                $("main").append(messageHtml);
+                $("main")[0].scrollTop = $("main")[0].scrollHeight;
+            };
+
+            const robotMessage = (msg) => {
+                const response =
+                    responses[msg] ||
+                    "感謝您的詢問！如果您想了解更多麵包或甜點資訊，歡迎隨時告訴我們喔！";
+                addMessage(response);
+            };
+
+            const handleMessageSubmit = (e) => {
+                e.preventDefault();
+
+                const msg = $(e.target).data("key") || $("input").val().trim();
+                if (!msg) return;
+
+                addMessage(msg, true);
+                $("input").val("");
+
+                setTimeout(() => robotMessage(msg), 500);
+            };
+
+            $("button").on("click", handleMessageSubmit);
+            $("form").on("submit", handleMessageSubmit);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>購物車 JQuery</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="cards"></div>
+        <div class="total-price">總計<span class="total"></span>元</div>
+        <div>
+            <button class="btn btn-primary" id="submit-btn">送出結帳</button>
+            <button class="btn btn-secondary" id="cancel-btn">取消</button>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            const products = [
+                {
+                    title: "招牌鍋貼",
+                    price: 10,
+                    desc: `不知道哪個不用心的人打錯字，而不小心亂入的鍋貼君，希望最後可以讓他回到安心的家(反正最後會被吃掉....)`,
+                    img: "./菠蘿麵包.jpg",
+                    amount: 0,
+                    style: "",
+                },
+                {
+                    title: "灰色的波羅麵包",
+                    price: 100,
+                    desc: `像這款灰色波羅麵包；我就是逛商城的時侯看到的；當下就試用了相關的功能很滿意。所以心裡就把型號記了下來`,
+                    img: "./菠蘿麵包.jpg",
+                    amount: 0,
+                    style: "filter:grayscale(100)",
+                },
+                {
+                    title: "神秘的波羅麵包",
+                    price: 300,
+                    desc: `使用起來真的很滿意。而且如果買到不良品也有退貨的服務；我根本也不憺心^^`,
+                    img: "./菠蘿麵包.jpg",
+                    amount: 0,
+                    style: "filter:blur(11px)",
+                },
+            ];
+
+            const $cards = $(".cards");
+            const $total = $("span.total");
+
+            function render() {
+                const cardsHtml = products
+                    .map(
+                        (product, index) => `
+                        <div class="card">
+                            <img src="${product.img}" style='${product.style}'>
+                            <div class="card-body">
+                                <h2 class="card-title">${product.title}</h2>
+                                <div class='bg-success' style='width:max-content'>NT$${product.price}元</div>
+                                <div class="d-flex">
+                                    <button class="btn btn-primary decrease-btn" data-index="${index}">-</button>
+                                    <input type="text" class="form-control amount-input" value="${product.amount}" data-index='${index}' readonly>
+                                    <button class="btn btn-primary increase-btn" data-index="${index}">+</button>
+                                </div>
+                                <div class="card-text">${product.desc}</div>
+                            </div>
+                        </div>`)
+                    .join("");
+
+                $cards.html(cardsHtml);
+            }
+
+            function updateAmount(val, index) {
+                products[index].amount = Math.max(0, products[index].amount + val);
+                $(`.amount-input[data-index='${index}']`).val(products[index].amount);
+                updateTotal();
+            }
+
+            function updateTotal() {
+                const total = products.reduce(
+                    (sum, product) => sum + product.amount * product.price,
+                    0
+                );
+                $total.text(total);
+            }
+
+            function submitOrder() {
+                const total = products.reduce(
+                    (sum, product) => sum + product.amount * product.price,
+                    0
+                );
+                alert(`總共是${total}元`);
+            }
+
+            function clearCart() {
+                products.forEach((product) => (product.amount = 0));
+                $(".amount-input").val(0);
+                updateTotal();
+            }
+
+            $cards.on("click", ".increase-btn", function () {
+                updateAmount(1, $(this).data("index"));
+            });
+
+            $cards.on("click", ".decrease-btn", function () {
+                updateAmount(-1, $(this).data("index"));
+            });
+
+            $cards.on("input", ".amount-input", function () {
+                const index = $(this).data("index");
+                const value = Math.max(0, parseInt($(this).val()) || 0);
+                products[index].amount = value;
+                $(this).val(value);
+                updateTotal();
+            });
+
+            $("#submit-btn").on("click", submitOrder);
+            $("#cancel-btn").on("click", clearCart);
+
+            render();
+            updateTotal();
+        });
+    </script>
+</body>
+
+</html>
